@@ -1,7 +1,7 @@
 {
   "name": "tarojs-router",
-  "version": "1.0.0",
-  "description": "Made with create-react-library",
+  "version": "1.0.1",
+  "description": "Taro 路由增强，任意传参、跨页取值、路由中间件",
   "author": "lblblong",
   "license": "MIT",
   "repository": "lblblong/tarojs-router",
