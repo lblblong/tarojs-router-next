@@ -1,22 +1,32 @@
 {
   "compilerOptions": {
-    "outDir": "dist",
-    "module": "esnext",
-    "lib": ["dom", "esnext"],
+    "target": "es2017",
+    "module": "commonjs",
+    "removeComments": false,
+    "preserveConstEnums": true,
     "moduleResolution": "node",
-    "jsx": "react",
-    "sourceMap": true,
-    "declaration": true,
-    "esModuleInterop": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
+    "experimentalDecorators": true,
+    "noImplicitAny": false,
+    "allowSyntheticDefaultImports": true,
+    "outDir": "lib",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "allowSyntheticDefaultImports": true
+    "strictNullChecks": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "rootDir": ".",
+    "jsx": "react",
+    "jsxFactory": "React.createElement",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "typeRoots": [
+      "node_modules/@types",
+      "global.d.ts"
+    ]
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "build"]
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
+  "compileOnSave": false
 }

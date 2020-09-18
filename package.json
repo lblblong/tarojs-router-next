@@ -7,11 +7,12 @@
   "repository": "lblblong/tarojs-router",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
-  "source": "src/index.tsx",
+  "source": "src/index.ts",
   "engines": {
     "node": ">=10"
   },
   "scripts": {
+    "serve": "microbundle-crl watch --no-compress --format modern,cjs",
     "build": "microbundle-crl --no-compress --format modern,cjs",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "prepare": "run-s build",
@@ -22,9 +23,6 @@
     "test:watch": "react-scripts test --env=jsdom",
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
-  },
-  "peerDependencies": {
-    "react": "^16.0.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -55,7 +53,19 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1",
-    "typescript": "^3.7.5"
+    "typescript": "^3.7.5",
+    "@types/koa-compose": "^3.2.5"
+  },
+  "peerDependencies": {
+    "@tarojs/taro": "^3.0.10",
+    "@tarojs/react": "^3.0.10",
+    "react": "^16.13.1"
+  },
+  "dependencies": {
+    "@tarojs/taro": "^3.0.10",
+    "@tarojs/react": "^3.0.10",
+    "react": "^16.13.1",
+    "koa-compose": "^4.1.0"
   },
   "files": [
     "dist"
