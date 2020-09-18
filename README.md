@@ -15,6 +15,7 @@
 Taro.navigateTo({
   url: '/pages/user/index?name=李四&id=1',
 })
+
 // ✔ tarojs-router 自动拼接，可传任意类型任意大小的数据
 Router.navigate(
   { url: '/pages/user/index' },
@@ -25,6 +26,7 @@ Router.navigate(
     data: [1, 2, 3, 4],
   }
 )
+
 // 目标页面获取数据，函数组件：
 const { params, data } = useRouter()
 // 目标页面获取数据，Class 组件：
@@ -36,9 +38,11 @@ const params = getCurrentInstance().router?.params
 
 ```typescript
 // ✘ 简单做法是跳转过去后把选中的值全局存储起来，回到页面后再去取，自己实现这个过程比较麻烦
+
 // ✔ tarojs-router 封装了这个过程，直接使用
 const cityData = await Router.navigate({ url: '/pages/sel-city/index' })
 console.log(cityData?.cityName)
+
 // src/pages/sel-city/index.tsx
 const { backData } = useRouter()
 backData({ cityName: '深圳', adcode: 'xxxx' })
@@ -48,6 +52,7 @@ backData({ cityName: '深圳', adcode: 'xxxx' })
 
 ```typescript
 // tarojs-router 提供和 koa 一致的路由中间件功能
+
 // 实现一个登录检查的路由中间件
 // auth-check.ts
 export const AuthCheck: IMiddlware<{ mustLogin: boolean }> = async (ctx, next) => {
@@ -64,10 +69,12 @@ export const AuthCheck: IMiddlware<{ mustLogin: boolean }> = async (ctx, next) =
   }
   await next()
 }
+
 // router.ts
 Router.config({
   middlewares: [AuthCheck],
 })
+
 // ext 携带 mustLogin 并且为 true 则会检查 token，token 不存在则跳转登录
 Router.navigate({ url: '/pages/home/index', ext: { mustLogin: true } })
 ```
