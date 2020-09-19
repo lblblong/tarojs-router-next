@@ -1,7 +1,9 @@
 
 
 export interface IRoute<E = any> {
+  /** 页面 url，与配置在 app.config.ts 中的一致 */
   url: string
+  /** 附加数据 */
   ext?: E
 }
 
@@ -18,11 +20,10 @@ export interface RouterConfig {
   middlewares?: IMiddlware[]
 }
 
-
 export interface NavigateOptions {
-  /** Taro.redirectTo */
+  /** 效果与 Taro.redirectTo 一致 */
   replace?: boolean
-  /** Taro.reLaunch */
+  /** 效果与 Taro.reLaunch 一致*/
   reLaunch?: boolean
   /** 跳转页面携带的数据，可以是任何类型，到目标页面后使用 useRouter 或 Router.getData 获取 */
   data?: any

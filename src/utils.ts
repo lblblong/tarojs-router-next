@@ -1,6 +1,7 @@
 import Taro from '@tarojs/taro'
-import { IRoute } from './common'
+import { IRoute } from './interfaces'
 
+/** @internal */
 export function objectToUrlParams(data: any) {
   let _result: Array<any> = []
   for (let key in data) {
@@ -17,6 +18,7 @@ export function objectToUrlParams(data: any) {
   return _result.join('&')
 }
 
+/** @internal */
 export function getCurrentRoute() {
   const currentPages = Taro.getCurrentPages()
   if (currentPages.length == 0) return null
@@ -24,7 +26,7 @@ export function getCurrentRoute() {
   return '/' + currentPage.route
 }
 
-
+/** @internal */
 export function formatPath(route: IRoute, params?: object) {
   let url = route.url
   if (params) {

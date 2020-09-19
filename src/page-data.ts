@@ -1,7 +1,6 @@
-
-import { Router } from "./router"
 import { getCurrentRoute } from "./utils"
 
+/** @internal */
 export class PageData {
   static _pageData: Map<string, any> = new Map()
   static _pagePromise: Map<
@@ -80,13 +79,4 @@ export class PageData {
     PageData._backErr.set(route as string, err)
   }
 
-  static backData(data?: any, url?: string) {
-    PageData.setBackData(data)
-    Router.back(url)
-  }
-
-  static backError(err: any, url?: string) {
-    PageData.setBackError(err)
-    Router.back(url)
-  }
 }

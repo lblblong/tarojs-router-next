@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro'
 import compose from 'koa-compose'
-import { RouterConfig, IRoute, NavigateOptions } from './common'
+import { RouterConfig, IRoute, NavigateOptions } from './interfaces'
 import { PageData } from './page-data'
 import { formatPath } from './utils'
 
@@ -89,23 +89,38 @@ export class Router {
     }
   }
 
-  /** 获取上一个页面携带过来的数据 */
-  static getData = PageData.getPageData
+  /** 发送 backData、backError 数据到上一个页面 */
+  static emitBack() {
+    PageData.emitBack()
+  }
+
+  /**
+   * 获取上一个页面携带过来的数据 
+   * @param default_data 当数据不存在时返回的默认数据
+   */
+  static getData<T = any>(default_data?: T): T {
+    return PageData.getPageData(default_data)
+  }
 
   /**
    * 返回上一个页面并返回数据
    * 如果是 class 页面组件，请在 componentWillUnmount 调用 Router.emitBack()
    * 如果是函数组件，请调用 useRouter
+   * @param data 返回的数据
    */
-  static backData = PageData.backData
+  static backData(data?: any) {
+    PageData.setBackData(data)
+    Router.back()
+  }
 
   /**
    * 返回上一个页面并抛出异常
    * 如果是 class 页面组件，请在 componentWillUnmount 调用 Router.emitBack()
    * 如果是函数组件，请调用 useRouter
+   * @param err 需要抛出的异常
    */
-  static backError = PageData.backError
-
-  /** 发送 backData、backError 数据到上一个页面 */
-  static emitBack = PageData.emitBack
+  static backError(err: any) {
+    PageData.setBackError(err)
+    Router.back()
+  }
 }
