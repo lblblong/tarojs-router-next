@@ -1,7 +1,7 @@
 ## 文档
 [tarojs-router 文档](https://www.yuque.com/lblblong/rgfig4/ggr8bh)
 
-[API 文档](http://lblblib.gitee.io/tarojs-router)
+[API 文档](http://lblblib.gitee.io/tarojs-router/classes/_router_.router.html)
 
 ## 示例
 
