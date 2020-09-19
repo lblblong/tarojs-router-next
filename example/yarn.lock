@@ -1264,6 +1264,13 @@
   dependencies:
     "@tarojs/runtime" "3.0.10"
 
+"@tarojs/api@^3.0.11":
+  version "3.0.11"
+  resolved "https://registry.yarnpkg.com/@tarojs/api/-/api-3.0.11.tgz#8819f33e87f7d3cf6b619a48606620e110938c52"
+  integrity sha512-oCUhl7pNIgJ3W2Ui5G0kdfsNIt51cZcDA6rYt36oMTRwhZ7uuNK4mK8eHTIkHZV1lH2uDr/MxIDh82mXW4YlPg==
+  dependencies:
+    "@tarojs/runtime" "^3.0.11"
+
 "@tarojs/components@3.0.10":
   version "3.0.10"
   resolved "https://registry.npm.taobao.org/@tarojs/components/download/@tarojs/components-3.0.10.tgz?cache=0&sync_timestamp=1599739831997&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40tarojs%2Fcomponents%2Fdownload%2F%40tarojs%2Fcomponents-3.0.10.tgz#e1ca1a4a60aef0a1aad63484e0790af3fe7adc2b"
@@ -1305,20 +1312,46 @@
     resolve "1.15.1"
     yauzl "2.10.0"
 
-"@tarojs/mini-runner@3.0.10":
-  version "3.0.10"
-  resolved "https://registry.npm.taobao.org/@tarojs/mini-runner/download/@tarojs/mini-runner-3.0.10.tgz#881b3b9d4e06faf8caa7e5ad595ece577d8bb73b"
-  integrity sha1-iBs7nU4G+vjKp+WtWV7OV32Ltzs=
+"@tarojs/helper@^3.0.11":
+  version "3.0.11"
+  resolved "https://registry.yarnpkg.com/@tarojs/helper/-/helper-3.0.11.tgz#5dbdf8718fc95839c34f516369a8c210f2572d39"
+  integrity sha512-Q16ChwPbUtM1xHdk1GD42zxbKKcPDZJ9tA6j3t3KRh+4uSi8e6veNxBPqfq4ybPXVxemWWTHlACwkNWYVAaImA==
+  dependencies:
+    "@babel/core" "7.9.0"
+    "@babel/plugin-proposal-class-properties" "7.8.3"
+    "@babel/plugin-proposal-decorators" "7.8.3"
+    "@babel/plugin-proposal-object-rest-spread" "7.9.0"
+    "@babel/plugin-transform-runtime" "7.9.0"
+    "@babel/preset-env" "7.9.0"
+    "@babel/preset-typescript" "7.9.0"
+    "@babel/register" "7.9.0"
+    "@babel/runtime" "7.9.2"
+    "@tarojs/taro" "^3.0.11"
+    babel-plugin-transform-react-jsx "^6.24.1"
+    chalk "3.0.0"
+    chokidar "3.3.1"
+    cross-spawn "7.0.3"
+    debug "4.1.1"
+    find-yarn-workspace-root "1.2.1"
+    fs-extra "8.1.0"
+    lodash "4.17.20"
+    resolve "1.15.1"
+    yauzl "2.10.0"
+
+"@tarojs/mini-runner@^3.0.11":
+  version "3.0.11"
+  resolved "https://registry.yarnpkg.com/@tarojs/mini-runner/-/mini-runner-3.0.11.tgz#b8eb298056d09f2dfc9a950e182bf6341dca7774"
+  integrity sha512-j815axefj3QZQC/Prp48OsS7CSFhfvWfUfMByyhKaz4xdW4IsAhjaG5Iya1+YpZaaYHS5dZsDXXbXWz/3PcL0w==
   dependencies:
     "@babel/core" "7.11.1"
     "@babel/plugin-proposal-class-properties" "7.10.4"
     "@babel/preset-env" "7.11.0"
-    "@tarojs/helper" "3.0.10"
-    "@tarojs/runner-utils" "3.0.10"
-    "@tarojs/runtime" "3.0.10"
-    "@tarojs/shared" "3.0.10"
-    "@tarojs/taro" "3.0.10"
-    "@tarojs/taro-loader" "3.0.10"
+    "@tarojs/helper" "^3.0.11"
+    "@tarojs/runner-utils" "^3.0.11"
+    "@tarojs/runtime" "^3.0.11"
+    "@tarojs/shared" "^3.0.11"
+    "@tarojs/taro" "^3.0.11"
+    "@tarojs/taro-loader" "^3.0.11"
     babel-loader "8.0.6"
     babel-types "^6.26.0"
     copy-webpack-plugin "^5.0.3"
@@ -1378,6 +1411,16 @@
     universal-router "^8.3.0"
     url-parse "^1.4.7"
 
+"@tarojs/router@^3.0.11":
+  version "3.0.11"
+  resolved "https://registry.yarnpkg.com/@tarojs/router/-/router-3.0.11.tgz#7ab5ebab805c6f4477de053203f6037ff77ed7a9"
+  integrity sha512-+GO8BbHic+yhM8TrFLIsOXqo0M5RqVgHBqJiyD/N2/1atCWZ+Z8fSr0NFqaxsPUgAkFS0eVOnhhwHXzvjvntzw==
+  dependencies:
+    "@tarojs/runtime" "^3.0.11"
+    history "^4.10.1"
+    universal-router "^8.3.0"
+    url-parse "^1.4.7"
+
 "@tarojs/runner-utils@3.0.10":
   version "3.0.10"
   resolved "https://registry.npm.taobao.org/@tarojs/runner-utils/download/@tarojs/runner-utils-3.0.10.tgz#00371fc8e82788f10d8e8082544bf153323e804b"
@@ -1390,15 +1433,37 @@
     lodash "^4.17.15"
     scss-bundle "^3.0.2"
 
+"@tarojs/runner-utils@^3.0.11":
+  version "3.0.11"
+  resolved "https://registry.yarnpkg.com/@tarojs/runner-utils/-/runner-utils-3.0.11.tgz#a67f1ffe88fac1d63c5efe2d5a7d7bd0e64bfd09"
+  integrity sha512-l3w6kw/OsNhYOxj5HUtUuEwsZaSVKdJD0A8ulO0SI2iB7LApU2FHgufW+Fx6wAcsHZIXkRyXafPtzPudM4pckQ==
+  dependencies:
+    "@babel/core" "^7.8.4"
+    "@tarojs/helper" "^3.0.11"
+    chalk "^3.0.0"
+    fs-extra "^8.1.0"
+    lodash "^4.17.15"
+    scss-bundle "^3.0.2"
+
 "@tarojs/runtime@3.0.10":
   version "3.0.10"
   resolved "https://registry.npm.taobao.org/@tarojs/runtime/download/@tarojs/runtime-3.0.10.tgz#5c12ec4ca27fd4fefb3f3e054dc711e4d93c680e"
   integrity sha1-XBLsTKJ/1P77Pz4FTccR5Nk8aA4=
 
+"@tarojs/runtime@^3.0.11":
+  version "3.0.11"
+  resolved "https://registry.yarnpkg.com/@tarojs/runtime/-/runtime-3.0.11.tgz#b85091901973ed62b0a42c29ad4b21a8838b8cdb"
+  integrity sha512-6ciRaRoeG+2zBIh3H/dPx2kPBu8CgQKMTAHjKq3I4D9kZE9K6J+tU9nZNw12wpqnRoMkrK96CeVHS9sxEgTTig==
+
 "@tarojs/shared@3.0.10":
   version "3.0.10"
   resolved "https://registry.npm.taobao.org/@tarojs/shared/download/@tarojs/shared-3.0.10.tgz#e0e41786ff2ae7709dd4dd7537dc5fd0e5e794ec"
   integrity sha1-4OQXhv8q53Cd1N11N9xf0OXnlOw=
+
+"@tarojs/shared@^3.0.11":
+  version "3.0.11"
+  resolved "https://registry.yarnpkg.com/@tarojs/shared/-/shared-3.0.11.tgz#17ab5250dc0704d95cfe8e1809cae6989dd9769f"
+  integrity sha512-rR3nbxvZE7nCJPEiJOixeFu48f3UZL1YPlF6gs2YzA3wj8BpHRv1tWeYddMNXh8xm029a54e90EGmCkY2T1lPA==
 
 "@tarojs/taro-h5@3.0.10":
   version "3.0.10"
@@ -1415,10 +1480,32 @@
     unfetch "^4.1.0"
     whatwg-fetch "^2.0.4"
 
+"@tarojs/taro-h5@^3.0.11":
+  version "3.0.11"
+  resolved "https://registry.yarnpkg.com/@tarojs/taro-h5/-/taro-h5-3.0.11.tgz#71833c840701cb14365a79666027b10accc2d4a8"
+  integrity sha512-j5gQsyhdfJ9Z3+GmicYiJOY+37phqMApWtvnQtZjlPaEDKdWQlg9iTIxasHC4o5lOb+wE7BogTMEhIuNUBR17A==
+  dependencies:
+    "@tarojs/api" "^3.0.11"
+    "@tarojs/router" "^3.0.11"
+    "@tarojs/runtime" "^3.0.11"
+    base64-js "^1.3.0"
+    jsonp-retry "^1.0.3"
+    mobile-detect "^1.4.2"
+    raf "^3.4.1"
+    unfetch "^4.1.0"
+    whatwg-fetch "^2.0.4"
+
 "@tarojs/taro-loader@3.0.10":
   version "3.0.10"
   resolved "https://registry.npm.taobao.org/@tarojs/taro-loader/download/@tarojs/taro-loader-3.0.10.tgz#252eb5c53c98188d383c5bcf98f83338496b0d72"
   integrity sha1-JS61xTyYGI04PFvPmPgzOElrDXI=
+  dependencies:
+    loader-utils "^1.2.3"
+
+"@tarojs/taro-loader@^3.0.11":
+  version "3.0.11"
+  resolved "https://registry.yarnpkg.com/@tarojs/taro-loader/-/taro-loader-3.0.11.tgz#020193c0475cea0b108c2b6bff720a1e015e205d"
+  integrity sha512-wKQPnsiYpjFQGFCVW7bn/O+w4+h8r/gvwyv4TXJkr4kcRb1C/W/4o5pbqCESLdpA4v/g45SadisxHE2rUWUDfA==
   dependencies:
     loader-utils "^1.2.3"
 
@@ -1429,6 +1516,14 @@
   dependencies:
     "@tarojs/api" "3.0.10"
     "@tarojs/taro-h5" "3.0.10"
+
+"@tarojs/taro@^3.0.11":
+  version "3.0.11"
+  resolved "https://registry.yarnpkg.com/@tarojs/taro/-/taro-3.0.11.tgz#ef97540a25b917a30a8e1f25d70a4c87c9140936"
+  integrity sha512-Goeb1ciGsKvkLHO0jjwsyaVae5gmK5cLPs8nSzN9AwGoXP1EfQd0OTyBsaeKR9pn9m+UN+Gv/N9ZMfELh7RJ/A==
+  dependencies:
+    "@tarojs/api" "^3.0.11"
+    "@tarojs/taro-h5" "^3.0.11"
 
 "@tarojs/webpack-runner@3.0.10":
   version "3.0.10"
