@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { getCurrentInstance } from '@tarojs/taro'
 import { View, Button } from '@tarojs/components'
-import { Router } from 'tarojs-router'
+import { Router, RouterEmit } from 'tarojs-router'
 import './index.css'
 
+@RouterEmit
 export default class App extends Component {
   state = {
     params: null,
@@ -15,11 +16,6 @@ export default class App extends Component {
       params: getCurrentInstance().router?.params,
       data: Router.getData(),
     })
-  }
-
-  componentWillUnmount() {
-    // class 组件必须调用 emitBack 才会使 backData 和 backError 生效
-    Router.emitBack()
   }
 
   render() {
