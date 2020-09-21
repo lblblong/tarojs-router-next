@@ -104,7 +104,7 @@ export class Router {
 
   /**
    * 返回上一个页面并返回数据
-   * 如果是 class 页面组件，请在 componentWillUnmount 调用 Router.emitBack()
+   * 如果是 class 页面组件，请使用 @RouterEmit 装饰器
    * 如果是函数组件，请调用 useRouter
    * @param data 返回的数据
    */
@@ -115,7 +115,7 @@ export class Router {
 
   /**
    * 返回上一个页面并抛出异常
-   * 如果是 class 页面组件，请在 componentWillUnmount 调用 Router.emitBack()
+   * 如果是 class 页面组件，请使用 @RouterEmit 装饰器
    * 如果是函数组件，请调用 useRouter
    * @param err 需要抛出的异常
    */
