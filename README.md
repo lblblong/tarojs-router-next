@@ -1,3 +1,20 @@
+
+## 文档
+[tarojs-router 文档](https://www.yuque.com/lblblong/rgfig4/ggr8bh)
+
+#### 安装
+```bash
+npm install tarojs-router
+# or
+yarn add tarojs-router
+```
+
+## 示例
+
+[Demo（代码）](https://github.com/lblblong/tarojs-router/tree/master/example)
+[Demo（微信开发者工具打开）](https://developers.weixin.qq.com/s/3Zts2wmU7Ok0)
+
+
 ## 前言
 最近用Taro开发小程序发现一些不好用的地方：
 - 页面传参需要手动拼接 url
@@ -91,11 +108,3 @@ Router.config({
 // ext 携带 mustLogin 并且为 true 则会检查 token，token 不存在则跳转登录
 Router.navigate({ url: '/pages/home/index', ext: { mustLogin: true } })
 ```
-
-## 文档
-[tarojs-router 文档](https://www.yuque.com/lblblong/rgfig4/ggr8bh)
-
-## 示例
-
-[Demo（代码）](https://github.com/lblblong/tarojs-router/tree/master/example)
-[Demo（微信开发者工具打开）](https://developers.weixin.qq.com/s/3Zts2wmU7Ok0)
