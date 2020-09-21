@@ -3,6 +3,7 @@ import Taro from '@tarojs/taro'
 import { View, Button } from '@tarojs/components'
 import './index.css'
 import { toClassDemo, toMe, toPageData, toPageDataParams, toPageParams, toSelCity } from '../../router'
+import { useEffect } from 'react'
 
 const data = [
   {
@@ -14,6 +15,13 @@ const data = [
 ]
 
 const Index: FC = () => {
+
+  useEffect(() => {
+    console.log('文档：https://www.yuque.com/lblblong/rgfig4/ggr8bh')
+    console.log('API文档：http://lblblib.gitee.io/tarojs-router/classes/_router_.router.html')
+    console.log('Demo 源代码：https://github.com/lblblong/tarojs-router/tree/master/example')
+  }, [])
+
   const onSelCity = async () => {
     try {
       const res = await toSelCity()

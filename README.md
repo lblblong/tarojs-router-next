@@ -6,7 +6,7 @@
 ## 示例
 
 [Demo（代码）](https://github.com/lblblong/tarojs-router/tree/master/example)
-[Demo（微信开发者工具打开）](https://developers.weixin.qq.com/s/S1fXKsmq7dkK)
+[Demo（微信开发者工具打开）](https://developers.weixin.qq.com/s/3Zts2wmU7Ok0)
 
 ## 解决开发中的痛点
 
