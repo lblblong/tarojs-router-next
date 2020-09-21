@@ -1,14 +1,15 @@
-## 文档
-[tarojs-router 文档](https://www.yuque.com/lblblong/rgfig4/ggr8bh)
+## 前言
+最近用Taro开发小程序发现一些不好用的地方：
+- 页面传参需要手动拼接 url
+- 页面传参无法携带大量任意类型数据
+- 跳页面取值比较麻烦（比如填写表单跳页面选择城市，往往需要全局存储，回到页面再去取，也可以通过event，但是总要写很多代码）
 
-[API 文档](http://lblblib.gitee.io/tarojs-router/classes/_router_.router.html)
 
-## 示例
+为了实现上面的需求更方便，于是封装了一下：[tarojs-router](https://www.npmjs.com/package/tarojs-router)
 
-[Demo（代码）](https://github.com/lblblong/tarojs-router/tree/master/example)
-[Demo（微信开发者工具打开）](https://developers.weixin.qq.com/s/3Zts2wmU7Ok0)
 
-## 解决开发中的痛点
+
+## 看看 tarojs-router 如何解决上面的问题
 
 #### 一、页面传参
 
@@ -37,10 +38,20 @@ const params = getCurrentInstance().router?.params
 ```
 
 #### 二、跳页面取值
+实现这种需求，简单做法是跳转过去后把选中的值全局存储起来，回到页面后再去取，自己实现这个过程比较麻烦
+
+熟悉flutter的可能知道
+```dart
+// 跳转到目标页面
+final cityData = await Navigator.push(...)
+
+// 返回值到上一个页面
+Navigator.pop({cityName: '深圳', adcode: 'xxxx'})
+```
+
+tarojs-router 中写法基本一致，内部通过 promise 实现
 
 ```typescript
-// ✘ 简单做法是跳转过去后把选中的值全局存储起来，回到页面后再去取，自己实现这个过程比较麻烦
-
 // ✔ tarojs-router 封装了这个过程，直接使用
 const cityData = await Router.navigate({ url: '/pages/sel-city/index' })
 console.log(cityData?.cityName)
@@ -51,10 +62,10 @@ backData({ cityName: '深圳', adcode: 'xxxx' })
 ```
 
 #### 三、路由中间件（附加功能）
+tarojs-router 提供和 koa 一致的路由中间件功能
+![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8cbad684af27455cb4a297f0e3e64a92~tplv-k3u1fbpfcp-zoom-1.image)
 
 ```typescript
-// tarojs-router 提供和 koa 一致的路由中间件功能
-
 // 实现一个登录检查的路由中间件
 // auth-check.ts
 export const AuthCheck: IMiddlware<{ mustLogin: boolean }> = async (ctx, next) => {
@@ -80,3 +91,11 @@ Router.config({
 // ext 携带 mustLogin 并且为 true 则会检查 token，token 不存在则跳转登录
 Router.navigate({ url: '/pages/home/index', ext: { mustLogin: true } })
 ```
+
+## 文档
+[tarojs-router 文档](https://www.yuque.com/lblblong/rgfig4/ggr8bh)
+
+## 示例
+
+[Demo（代码）](https://github.com/lblblong/tarojs-router/tree/master/example)
+[Demo（微信开发者工具打开）](https://developers.weixin.qq.com/s/3Zts2wmU7Ok0)
