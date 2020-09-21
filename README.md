@@ -1,5 +1,7 @@
 
 ## 文档
+[快速开始](https://www.yuque.com/lblblong/rgfig4/ksuuhi)
+
 [tarojs-router 文档](https://www.yuque.com/lblblong/rgfig4/ggr8bh)
 
 #### 安装
