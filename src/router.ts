@@ -30,7 +30,7 @@ export class Router {
     const middlwares = Router._config?.middlewares || []
     try {
       const fn = compose(middlwares)
-      await fn({ route })
+      await fn({ route, params: options.params })
     } catch (err) {
       throw err
     }

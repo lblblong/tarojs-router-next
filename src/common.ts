@@ -8,7 +8,10 @@ export interface IRoute<E = any> {
 }
 
 export interface RouteContext<E = any> {
+  /** 目标路由 */
   route: IRoute<E>
+  /** 路由参数 */
+  params: any
 }
 
 export type IMiddlware<E = any> = (ctx: RouteContext<E>, next: () => Promise<any>) => Promise<void>
