@@ -1,4 +1,4 @@
-import { getCurrentRoute } from "./utils"
+import { getCurrentRouteKey } from "./utils"
 
 /** @internal */
 export class PageData {
@@ -14,55 +14,55 @@ export class PageData {
   static _backData: Map<string, any> = new Map()
 
   static getPageData<T = any>(default_data?: T): T {
-    let route = getCurrentRoute()
-    let result = PageData._pageData.get(route as string) || default_data
+    let route_key = getCurrentRouteKey()
+    let result = PageData._pageData.get(route_key) || default_data
     return result
   }
 
   static delPageData() {
-    let route = getCurrentRoute()
-    PageData._pageData.delete(route as string)
+    let route_key = getCurrentRouteKey()
+    PageData._pageData.delete(route_key)
   }
 
   static getPagePromise() {
-    let route = getCurrentRoute()
-    return PageData._pagePromise.get(route as string)
+    let route_key = getCurrentRouteKey()
+    return PageData._pagePromise.get(route_key)
   }
 
   static delPagePromise() {
-    let route = getCurrentRoute()
-    PageData._pagePromise.delete(route as string)
+    let route_key = getCurrentRouteKey()
+    PageData._pagePromise.delete(route_key)
   }
 
-  static setPageData(router_url: string, data: any) {
-    this._pageData.set(router_url, data)
+  static setPageData(route_key: string, data: any) {
+    this._pageData.set(route_key, data)
   }
 
   static setPagePromise(
-    router_url: string,
+    route_key: string,
     options: {
       res: (val: any) => void
       rej: (err: any) => void
     }
   ) {
-    this._pagePromise.set(router_url, options)
+    this._pagePromise.set(route_key, options)
   }
 
   static emitBack() {
     const pme = PageData.getPagePromise()
     if (!pme) return
-    let route = getCurrentRoute() as string
-    let err = PageData._backErr.get(route)
-    let data = PageData._backData.get(route)
+    let route_key = getCurrentRouteKey()
+    let err = PageData._backErr.get(route_key)
+    let data = PageData._backData.get(route_key)
 
     PageData.delPageData()
     PageData.delPagePromise()
 
     if (err) {
-      PageData._backErr.delete(route)
+      PageData._backErr.delete(route_key)
       pme.rej(err)
     } else if (data) {
-      PageData._backData.delete(route)
+      PageData._backData.delete(route_key)
       pme.res(data)
     } else {
       pme.res(null)
@@ -70,13 +70,13 @@ export class PageData {
   }
 
   static setBackData(data?: any) {
-    let route = getCurrentRoute()
-    PageData._backData.set(route as string, data)
+    let route_key = getCurrentRouteKey()
+    PageData._backData.set(route_key, data)
   }
 
   static setBackError(err: any) {
-    let route = getCurrentRoute()
-    PageData._backErr.set(route as string, err)
+    let route_key = getCurrentRouteKey()
+    PageData._backErr.set(route_key, err)
   }
 
 }

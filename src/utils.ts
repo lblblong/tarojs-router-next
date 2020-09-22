@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro'
-import { IRoute } from './interfaces'
+import { IRoute, ROUTE_KEY } from './common'
 
 /** @internal */
 export function objectToUrlParams(data: any) {
@@ -19,20 +19,17 @@ export function objectToUrlParams(data: any) {
 }
 
 /** @internal */
-export function getCurrentRoute() {
-  const currentPages = Taro.getCurrentPages()
-  if (currentPages.length == 0) return null
-  let currentPage = currentPages[currentPages.length - 1]
-  return '/' + currentPage.route
+export function getCurrentRouteKey(): string {
+  const params = Taro.getCurrentInstance().router?.params
+  if (!params || !params[ROUTE_KEY]) throw Error('无法获取 route_key')
+  return params[ROUTE_KEY]!
 }
 
 /** @internal */
-export function formatPath(route: IRoute, params?: object) {
+export function formatPath(route: IRoute, params: object) {
   let url = route.url
-  if (params) {
-    let paramsStr = objectToUrlParams(params)
-    url = `${route.url}?${paramsStr}`
-  }
+  let paramsStr = objectToUrlParams(params)
+  url = `${route.url}?${paramsStr}`
 
   return url
 }

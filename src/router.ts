@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro'
 import compose from 'koa-compose'
-import { RouterConfig, IRoute, NavigateOptions } from './interfaces'
+import { RouterConfig, IRoute, NavigateOptions, NavigateType, ROUTE_KEY } from './common'
 import { PageData } from './page-data'
 import { formatPath } from './utils'
 
@@ -15,12 +15,16 @@ export class Router {
   /** 页面跳转 */
   static async navigate<T = Taro.General.CallbackResult>(
     route: IRoute,
-    options: NavigateOptions = { replace: false }
+    options?: NavigateOptions
   ): Promise<T> {
-    let url = formatPath(route, options.params)
+    options = { ...{ type: NavigateType.push, params: {} }, ...options }
+    if (options.params![ROUTE_KEY]) throw Error('params 中 route_key 为保留字段，请用其他名称')
+    const route_key = options.params![ROUTE_KEY] = Date.now() + ''
+
+    let url = formatPath(route, options.params!)
 
     if (options.data) {
-      PageData.setPageData(route.url, options.data)
+      PageData.setPageData(route_key, options.data)
     }
 
     const middlwares = Router._config?.middlewares || []
@@ -32,40 +36,22 @@ export class Router {
     }
 
     return new Promise((res, rej) => {
-      PageData.setPagePromise(route.url, { res, rej })
+      PageData.setPagePromise(route_key, { res, rej })
 
-      if (options.reLaunch) {
-        Taro.reLaunch({ url })
-      } else if (options.replace) {
-        Taro.redirectTo({ url })
-      } else {
-        Taro.navigateTo({ url })
+      switch (options!.type) {
+        case NavigateType.reLaunch:
+          Taro.reLaunch({ url })
+          break
+        case NavigateType.replace:
+          Taro.redirectTo({ url })
+          break
+        case NavigateType.swichTab:
+          Taro.switchTab({ url })
+          break
+        default:
+          Taro.navigateTo({ url })
+          break
       }
-    })
-  }
-
-  /** 跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面 */
-  static async switchTab<T = Taro.General.CallbackResult>(
-    route: IRoute,
-    options?: { data?: any, params?: any }
-  ): Promise<T> {
-    let url = formatPath(route, options?.params)
-
-    if (options?.data) {
-      PageData.setPageData(route.url, options.data)
-    }
-
-    const middlwares = Router._config?.middlewares || []
-    try {
-      const fn = compose(middlwares)
-      await fn({ route })
-    } catch (err) {
-      throw err
-    }
-
-    return new Promise((res, rej) => {
-      PageData.setPagePromise(route.url, { res, rej })
-      Taro.switchTab({ url })
     })
   }
 
