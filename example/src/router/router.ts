@@ -1,9 +1,9 @@
-import { Router } from 'tarojs-router'
+import { Router, NavigateType } from 'tarojs-router'
 import { routes } from './route'
 
 export function toIndex() {
   return Router.navigate(routes.index, {
-    reLaunch: true
+    type: NavigateType.navigateTo
   })
 }
 

@@ -17,7 +17,7 @@ export class Router {
     route: IRoute,
     options?: NavigateOptions
   ): Promise<T> {
-    options = { ...{ type: NavigateType.push, params: {} }, ...options }
+    options = { ...{ type: NavigateType.navigateTo, params: {} }, ...options }
     if (options.params![ROUTE_KEY]) throw Error('params 中 route_key 为保留字段，请用其他名称')
     const route_key = options.params![ROUTE_KEY] = Date.now() + ''
 
@@ -42,10 +42,10 @@ export class Router {
         case NavigateType.reLaunch:
           Taro.reLaunch({ url })
           break
-        case NavigateType.replace:
+        case NavigateType.redirectTo:
           Taro.redirectTo({ url })
           break
-        case NavigateType.swichTab:
+        case NavigateType.switchTab:
           Taro.switchTab({ url })
           break
         default:

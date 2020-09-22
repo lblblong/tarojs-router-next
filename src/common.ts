@@ -22,13 +22,13 @@ export interface RouterConfig {
 
 export enum NavigateType {
   /** 保留当前页面，跳转到应用内的某个页面。但是不能跳到 tabbar 页面。使用 Router.back 可以返回到原页面。小程序中页面栈最多十层。 */
-  push,
+  navigateTo,
   /** 关闭当前页面，跳转到应用内的某个页面。但是不允许跳转到 tabbar 页面。 */
-  replace,
+  redirectTo,
   /** 关闭所有页面，打开到应用内的某个页面 */
   reLaunch,
   /** 跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面 */
-  swichTab
+  switchTab
 }
 
 export interface NavigateOptions {
