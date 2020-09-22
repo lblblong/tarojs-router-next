@@ -12,6 +12,7 @@ const Index: FC = () => {
         onClick={async() => {
           Taro.showLoading({title:'登陆中'})
           await sleep()
+          Taro.hideLoading()
           Taro.setStorageSync('token', '我是token')
           Router.back()
         }}
