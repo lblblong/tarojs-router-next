@@ -1,11 +1,18 @@
 import { useEffect } from 'react'
-import { useRouter as useRouterTaro } from '@tarojs/taro'
+import { getCurrentInstance, useRouter as useRouterTaro } from '@tarojs/taro'
 import { Router } from './router'
 
 
 export function useRouter(defaultParams?: any) {
   useEffect(() => {
-    return () => {
+    const instance = getCurrentInstance()
+    if (!instance.page) return
+    const routerEmit = instance.page['routerEmit']
+    if (routerEmit) return
+    instance.page['routerEmit'] = true
+    const originOnUnload = instance.page.onUnload
+    instance.page.onUnload = () => {
+      originOnUnload()
       Router.emitBack()
     }
   }, [])

@@ -84,7 +84,7 @@ export class Router {
    * 获取上一个页面携带过来的数据 
    * @param default_data 当数据不存在时返回的默认数据
    */
-  static getData<T = any>(default_data?: T): T {
+  static getData<T = any>(default_data?: T): T | undefined {
     return PageData.getPageData(default_data)
   }
 
