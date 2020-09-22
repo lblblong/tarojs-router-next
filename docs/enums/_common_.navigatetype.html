@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IRoute | tarojs-router</title>
+	<title>NavigateType | tarojs-router</title>
 	<meta name="description" content="Documentation for tarojs-router">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,78 +54,94 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_interfaces_.html">&quot;interfaces&quot;</a>
+					<a href="../modules/_common_.html">&quot;common&quot;</a>
 				</li>
 				<li>
-					<a href="_interfaces_.iroute.html">IRoute</a>
+					<a href="_common_.navigatetype.html">NavigateType</a>
 				</li>
 			</ul>
-			<h1>Interface IRoute&lt;E&gt;</h1>
+			<h1>Enumeration NavigateType</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-type-parameters">
-				<h3>Type parameters</h3>
-				<ul class="tsd-type-parameters">
-					<li>
-						<h4>E = <span class="tsd-signature-type">any</span></h4>
-					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel tsd-hierarchy">
-				<h3>Hierarchy</h3>
-				<ul class="tsd-hierarchy">
-					<li>
-						<span class="target">IRoute</span>
-					</li>
-				</ul>
-			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section tsd-is-external">
-							<h3>Properties</h3>
+							<h3>Enumeration members</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="_interfaces_.iroute.html#ext" class="tsd-kind-icon">ext</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="_interfaces_.iroute.html#url" class="tsd-kind-icon">url</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum tsd-is-external"><a href="_common_.navigatetype.html#push" class="tsd-kind-icon">push</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum tsd-is-external"><a href="_common_.navigatetype.html#relaunch" class="tsd-kind-icon">re<wbr>Launch</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum tsd-is-external"><a href="_common_.navigatetype.html#replace" class="tsd-kind-icon">replace</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum tsd-is-external"><a href="_common_.navigatetype.html#swichtab" class="tsd-kind-icon">swich<wbr>Tab</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-external">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-					<a name="ext" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> ext</h3>
-					<div class="tsd-signature tsd-kind-icon">ext<span class="tsd-signature-symbol">:</span> <a href="" class="tsd-signature-type">E</a></div>
+				<h2>Enumeration members</h2>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum tsd-is-external">
+					<a name="push" class="tsd-anchor"></a>
+					<h3>push</h3>
+					<div class="tsd-signature tsd-kind-icon">push<span class="tsd-signature-symbol">:</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/lblblong/tarojs-router/blob/204646e/src/interfaces.ts#L7">interfaces.ts:7</a></li>
+							<li>Defined in common.ts:25</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>附加数据</p>
+							<p>保留当前页面，跳转到应用内的某个页面。但是不能跳到 tabbar 页面。使用 Router.back 可以返回到原页面。小程序中页面栈最多十层。</p>
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-					<a name="url" class="tsd-anchor"></a>
-					<h3>url</h3>
-					<div class="tsd-signature tsd-kind-icon">url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum tsd-is-external">
+					<a name="relaunch" class="tsd-anchor"></a>
+					<h3>re<wbr>Launch</h3>
+					<div class="tsd-signature tsd-kind-icon">re<wbr>Launch<span class="tsd-signature-symbol">:</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/lblblong/tarojs-router/blob/204646e/src/interfaces.ts#L5">interfaces.ts:5</a></li>
+							<li>Defined in common.ts:29</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>页面 url，与配置在 app.config.ts 中的一致</p>
+							<p>关闭所有页面，打开到应用内的某个页面</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum tsd-is-external">
+					<a name="replace" class="tsd-anchor"></a>
+					<h3>replace</h3>
+					<div class="tsd-signature tsd-kind-icon">replace<span class="tsd-signature-symbol">:</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in common.ts:27</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>关闭当前页面，跳转到应用内的某个页面。但是不允许跳转到 tabbar 页面。</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum tsd-is-external">
+					<a name="swichtab" class="tsd-anchor"></a>
+					<h3>swich<wbr>Tab</h3>
+					<div class="tsd-signature tsd-kind-icon">swich<wbr>Tab<span class="tsd-signature-symbol">:</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in common.ts:31</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面</p>
 						</div>
 					</div>
 				</section>
@@ -146,14 +162,14 @@
 					<li class="label tsd-is-external">
 						<span>Externals</span>
 					</li>
+					<li class="current tsd-kind-module tsd-is-external">
+						<a href="../modules/_common_.html">&quot;common&quot;</a>
+					</li>
 					<li class=" tsd-kind-module tsd-is-external">
 						<a href="../modules/_decorator_router_emit_.html">&quot;decorator/router-<wbr>emit&quot;</a>
 					</li>
 					<li class=" tsd-kind-module tsd-is-external">
 						<a href="../modules/_hooks_.html">&quot;hooks&quot;</a>
-					</li>
-					<li class="current tsd-kind-module tsd-is-external">
-						<a href="../modules/_interfaces_.html">&quot;interfaces&quot;</a>
 					</li>
 					<li class=" tsd-kind-module tsd-is-external">
 						<a href="../modules/_router_.html">&quot;router&quot;</a>
@@ -164,30 +180,42 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter tsd-is-external">
-						<a href="_interfaces_.iroute.html" class="tsd-kind-icon">IRoute</a>
+					<li class="current tsd-kind-enum tsd-parent-kind-module tsd-is-external">
+						<a href="_common_.navigatetype.html" class="tsd-kind-icon">Navigate<wbr>Type</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-								<a href="_interfaces_.iroute.html#ext" class="tsd-kind-icon">ext</a>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-external">
+								<a href="_common_.navigatetype.html#push" class="tsd-kind-icon">push</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-								<a href="_interfaces_.iroute.html#url" class="tsd-kind-icon">url</a>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-external">
+								<a href="_common_.navigatetype.html#relaunch" class="tsd-kind-icon">re<wbr>Launch</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-external">
+								<a href="_common_.navigatetype.html#replace" class="tsd-kind-icon">replace</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-external">
+								<a href="_common_.navigatetype.html#swichtab" class="tsd-kind-icon">swich<wbr>Tab</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter tsd-is-external">
+						<a href="../interfaces/_common_.iroute.html" class="tsd-kind-icon">IRoute</a>
+					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-is-external">
-						<a href="_interfaces_.navigateoptions.html" class="tsd-kind-icon">Navigate<wbr>Options</a>
+						<a href="../interfaces/_common_.navigateoptions.html" class="tsd-kind-icon">Navigate<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter tsd-is-external">
-						<a href="_interfaces_.routecontext.html" class="tsd-kind-icon">Route<wbr>Context</a>
+						<a href="../interfaces/_common_.routecontext.html" class="tsd-kind-icon">Route<wbr>Context</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-is-external">
-						<a href="_interfaces_.routerconfig.html" class="tsd-kind-icon">Router<wbr>Config</a>
+						<a href="../interfaces/_common_.routerconfig.html" class="tsd-kind-icon">Router<wbr>Config</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter tsd-is-external">
-						<a href="../modules/_interfaces_.html#imiddlware" class="tsd-kind-icon">IMiddlware</a>
+						<a href="../modules/_common_.html#imiddlware" class="tsd-kind-icon">IMiddlware</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module tsd-is-external">
+						<a href="../modules/_common_.html#route_key" class="tsd-kind-icon">ROUTE_<wbr>KEY</a>
 					</li>
 				</ul>
 			</nav>
