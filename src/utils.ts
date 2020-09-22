@@ -21,7 +21,7 @@ export function objectToUrlParams(data: any) {
 /** @internal */
 export function getCurrentRouteKey(): string {
   const params = Taro.getCurrentInstance().router?.params
-  if (!params || !params[ROUTE_KEY]) throw Error('无法获取 route_key')
+  if (!params || !params[ROUTE_KEY]) return ''
   return params[ROUTE_KEY]!
 }
 
