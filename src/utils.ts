@@ -22,7 +22,7 @@ export function objectToUrlParams(data: any) {
 export function getCurrentRouteKey(): string {
   const params = Taro.getCurrentInstance().router?.params
   if (!params || !params[ROUTE_KEY]) return ''
-  return params[ROUTE_KEY]!
+  return params[ROUTE_KEY] + ''
 }
 
 /** @internal */
