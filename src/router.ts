@@ -24,10 +24,7 @@ export class Router {
       PageData.setPageData(route_key, options.data)
     }
 
-    const middlwares = Router._config?.middlewares || []
-    if (route.beforeRouteEnter) {
-      middlwares.push(...route.beforeRouteEnter)
-    }
+    const middlwares = [...(Router._config?.middlewares || []), ...(route.beforeRouteEnter || [])]
     try {
       const fn = compose(middlwares)
       await fn({ route, params: options.params })
