@@ -1,6 +1,6 @@
 {
   "name": "tarojs-router",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Taro 路由增强，任意传参、跳转页面取值、路由中间件",
   "author": "lblblong",
   "license": "MIT",
