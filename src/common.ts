@@ -6,7 +6,7 @@ export interface IRoute<E = any> {
   /** 附加数据 */
   ext?: E
   /** 进入路由前的路由中间件 */
-  beforeRouteEnter?: IMiddlware
+  beforeRouteEnter?: IMiddlware[]
 }
 
 export interface RouteContext<E = any> {

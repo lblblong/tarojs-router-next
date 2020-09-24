@@ -26,7 +26,7 @@ export class Router {
 
     const middlwares = Router._config?.middlewares || []
     if (route.beforeRouteEnter) {
-      middlwares.push(route.beforeRouteEnter)
+      middlwares.push(...route.beforeRouteEnter)
     }
     try {
       const fn = compose(middlwares)
