@@ -5,6 +5,8 @@ export interface IRoute<E = any> {
   url: string
   /** 附加数据 */
   ext?: E
+  /** 进入路由前的路由中间件 */
+  beforeRouteEnter?: IMiddlware
 }
 
 export interface RouteContext<E = any> {
@@ -31,7 +33,7 @@ export enum NavigateType {
   /** 关闭所有页面，打开到应用内的某个页面 */
   reLaunch,
   /** 跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面 */
-  switchTab
+  switchTab,
 }
 
 export interface NavigateOptions {

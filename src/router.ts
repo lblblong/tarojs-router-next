@@ -13,13 +13,10 @@ export class Router {
   }
 
   /** 页面跳转 */
-  static async navigate<T = Taro.General.CallbackResult>(
-    route: IRoute,
-    options?: NavigateOptions
-  ): Promise<T> {
+  static async navigate<T = Taro.General.CallbackResult>(route: IRoute, options?: NavigateOptions): Promise<T> {
     options = { ...{ type: NavigateType.navigateTo, params: {} }, ...options }
     if (options.params![ROUTE_KEY]) throw Error('params 中 route_key 为保留字段，请用其他名称')
-    const route_key = options.params![ROUTE_KEY] = Date.now() + ''
+    const route_key = (options.params![ROUTE_KEY] = Date.now() + '')
 
     let url = formatPath(route, options.params!)
 
@@ -28,6 +25,9 @@ export class Router {
     }
 
     const middlwares = Router._config?.middlewares || []
+    if (route.beforeRouteEnter) {
+      middlwares.push(route.beforeRouteEnter)
+    }
     try {
       const fn = compose(middlwares)
       await fn({ route, params: options.params })
@@ -81,7 +81,7 @@ export class Router {
   }
 
   /**
-   * 获取上一个页面携带过来的数据 
+   * 获取上一个页面携带过来的数据
    * @param default_data 当数据不存在时返回的默认数据
    */
   static getData<T = any>(default_data?: T): T | undefined {
