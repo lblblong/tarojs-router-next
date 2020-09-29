@@ -12,7 +12,11 @@ export class Router {
     Router._config = config
   }
 
-  /** 页面跳转 */
+  /**
+   * 页面跳转
+   * @param route 目标路由对象
+   * @param options 跳转选项
+   */
   static async navigate<T = Taro.General.CallbackResult>(route: IRoute, options?: NavigateOptions): Promise<T> {
     options = { ...{ type: NavigateType.navigateTo, params: {} }, ...options }
     if (options.params![ROUTE_KEY]) throw Error('params 中 route_key 为保留字段，请用其他名称')
@@ -48,9 +52,7 @@ export class Router {
     })
   }
 
-  /**
-   * 返回上一个页面
-   */
+  /** 返回上一个页面 */
   static back() {
     return Taro.navigateBack()
   }
@@ -62,16 +64,16 @@ export class Router {
 
   /**
    * 获取上一个页面携带过来的数据
-   * @param default_data 当数据不存在时返回的默认数据
+   * @param default_data 默认数据
    */
   static getData<T = any>(default_data?: T): T | undefined {
     return PageData.getPageData(default_data)
   }
 
   /**
-   * 返回上一个页面并返回数据
-   * 如果是 class 页面组件，请使用 @RouterEmit 装饰器
-   * 如果是函数组件，请调用 useRouter
+   * 返回上一个页面并返回数据。
+   * 如果是 class 页面组件，请在页面级组件使用 @RouterEmit 装饰，
+   * 如果是函数组件，请调用 useRouter，否则 backData 无法成功返回数据到上一个页面
    * @param data 返回的数据
    */
   static backData(data?: any) {
@@ -81,9 +83,9 @@ export class Router {
 
   /**
    * 返回上一个页面并抛出异常
-   * 如果是 class 页面组件，请使用 @RouterEmit 装饰器
-   * 如果是函数组件，请调用 useRouter
-   * @param err 需要抛出的异常
+   * 如果是 class 页面组件，请在页面级组件使用 @RouterEmit 装饰，
+   * 如果是函数组件，请调用 useRouter，否则 backError 无法成功抛出异常到上一个页面
+   * @param err 抛出的异常
    */
   static backError(err: any) {
     PageData.setBackError(err)
