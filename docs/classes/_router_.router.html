@@ -108,7 +108,7 @@
 					<div class="tsd-signature tsd-kind-icon">_config<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_common_.routerconfig.html" class="tsd-signature-type">RouterConfig</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/lblblong/tarojs-router/blob/42beeff/src/router.ts#L8">router.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/lblblong/tarojs-router/blob/5ea3841/src/router.ts#L8">router.ts:8</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -119,13 +119,13 @@
 					<a name="back" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> back</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">back<span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">back<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">CallbackResult</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/lblblong/tarojs-router/blob/42beeff/src/router.ts#L62">router.ts:62</a></li>
+									<li>Defined in <a href="https://github.com/lblblong/tarojs-router/blob/5ea3841/src/router.ts#L56">router.ts:56</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -133,16 +133,7 @@
 									<p>返回上一个页面</p>
 								</div>
 							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> url: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>退无可退的时候进入的页面</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">CallbackResult</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -150,20 +141,20 @@
 					<a name="backdata" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> back<wbr>Data</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">back<wbr>Data<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">back<wbr>Data<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">CallbackResult</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/lblblong/tarojs-router/blob/42beeff/src/router.ts#L97">router.ts:97</a></li>
+									<li>Defined in <a href="https://github.com/lblblong/tarojs-router/blob/5ea3841/src/router.ts#L79">router.ts:79</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>返回上一个页面并返回数据
-										如果是 class 页面组件，请使用 @RouterEmit 装饰器
-									如果是函数组件，请调用 useRouter</p>
+									<p>返回上一个页面并返回数据。
+										如果是 class 页面组件，请在页面级组件使用 @RouterEmit 装饰，
+									如果是函数组件，请调用 useRouter，否则 backData 无法成功返回数据到上一个页面</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -175,7 +166,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">CallbackResult</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -183,20 +174,20 @@
 					<a name="backerror" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> back<wbr>Error</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">back<wbr>Error<span class="tsd-signature-symbol">(</span>err<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">back<wbr>Error<span class="tsd-signature-symbol">(</span>err<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">CallbackResult</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/lblblong/tarojs-router/blob/42beeff/src/router.ts#L108">router.ts:108</a></li>
+									<li>Defined in <a href="https://github.com/lblblong/tarojs-router/blob/5ea3841/src/router.ts#L90">router.ts:90</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>返回上一个页面并抛出异常
-										如果是 class 页面组件，请使用 @RouterEmit 装饰器
-									如果是函数组件，请调用 useRouter</p>
+										如果是 class 页面组件，请在页面级组件使用 @RouterEmit 装饰，
+									如果是函数组件，请调用 useRouter，否则 backError 无法成功抛出异常到上一个页面</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -204,11 +195,11 @@
 								<li>
 									<h5>err: <span class="tsd-signature-type">any</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>需要抛出的异常</p>
+										<p>抛出的异常</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">CallbackResult</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -222,7 +213,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/lblblong/tarojs-router/blob/42beeff/src/router.ts#L11">router.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/lblblong/tarojs-router/blob/5ea3841/src/router.ts#L11">router.ts:11</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -250,7 +241,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/lblblong/tarojs-router/blob/42beeff/src/router.ts#L79">router.ts:79</a></li>
+									<li>Defined in <a href="https://github.com/lblblong/tarojs-router/blob/5ea3841/src/router.ts#L61">router.ts:61</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -272,7 +263,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/lblblong/tarojs-router/blob/42beeff/src/router.ts#L87">router.ts:87</a></li>
+									<li>Defined in <a href="https://github.com/lblblong/tarojs-router/blob/5ea3841/src/router.ts#L69">router.ts:69</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -291,7 +282,7 @@
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> default_data: <a href="" class="tsd-signature-type">T</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>当数据不存在时返回的默认数据</p>
+										<p>默认数据</p>
 									</div>
 								</li>
 							</ul>
@@ -309,7 +300,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/lblblong/tarojs-router/blob/42beeff/src/router.ts#L16">router.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/lblblong/tarojs-router/blob/5ea3841/src/router.ts#L20">router.ts:20</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -327,9 +318,15 @@
 							<ul class="tsd-parameters">
 								<li>
 									<h5>route: <a href="../interfaces/_common_.iroute.html" class="tsd-signature-type">IRoute</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>目标路由对象</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> options: <a href="../interfaces/_common_.navigateoptions.html" class="tsd-signature-type">NavigateOptions</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>跳转选项</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
