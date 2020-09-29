@@ -25,12 +25,8 @@ export class Router {
     }
 
     const middlwares = [...(Router._config?.middlewares || []), ...(route.beforeRouteEnter || [])]
-    try {
-      const fn = compose(middlwares)
-      await fn({ route, params: options.params })
-    } catch (err) {
-      throw err
-    }
+    const fn = compose(middlwares)
+    await fn({ route, params: options.params })
 
     return new Promise((res, rej) => {
       PageData.setPagePromise(route_key, { res, rej })
@@ -54,22 +50,9 @@ export class Router {
 
   /**
    * 返回上一个页面
-   * @param url 退无可退的时候进入的页面
    */
-  static back(url?: string) {
-    const currentPages = Taro.getCurrentPages()
-    if (currentPages.length > 1) {
-      Taro.navigateBack()
-      return
-    }
-
-    if (url) {
-      Taro.reLaunch({ url })
-    } else if (Router._config?.rootPath) {
-      Taro.reLaunch({ url: Router._config?.rootPath })
-    } else {
-      throw Error('没有页面可以返回')
-    }
+  static back() {
+    return Taro.navigateBack()
   }
 
   /** 发送 backData、backError 数据到上一个页面 */
@@ -93,7 +76,7 @@ export class Router {
    */
   static backData(data?: any) {
     PageData.setBackData(data)
-    Router.back()
+    return Router.back()
   }
 
   /**
@@ -104,6 +87,6 @@ export class Router {
    */
   static backError(err: any) {
     PageData.setBackError(err)
-    Router.back()
+    return Router.back()
   }
 }
