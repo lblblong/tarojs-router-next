@@ -80,7 +80,7 @@ const { backData } = useRouter()
 backData({ cityName: '深圳', adcode: 'xxxx' })
 ```
 
-#### 三、路由中间件（附加功能）
+#### 三、路由中间件
 tarojs-router 提供和 koa 一致的路由中间件功能
 ![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8cbad684af27455cb4a297f0e3e64a92~tplv-k3u1fbpfcp-zoom-1.image)
 
@@ -109,4 +109,10 @@ Router.config({
 
 // ext 携带 mustLogin 并且为 true 则会检查 token，token 不存在则跳转登录
 Router.navigate({ url: '/pages/home/index', ext: { mustLogin: true } })
+```
+
+##### 单个页面路由中间件
+有的时候只有部分页面需要做一些处理，则可以定义单页面路由中间件，使用方式如下
+```typescript
+Router.navigate({ url: '/pages/home/index', beforeRouteEnter: [AuthCheck], ext: { mustLogin: true } })
 ```
