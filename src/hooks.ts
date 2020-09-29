@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import { getCurrentInstance, useRouter as useRouterTaro } from '@tarojs/taro'
 import { Router } from './router'
 
-
 export function useRouter(defaultParams?: any) {
   useEffect(() => {
     const instance = getCurrentInstance()
@@ -21,7 +20,7 @@ export function useRouter(defaultParams?: any) {
 
   return {
     /** 路由参数 */
-    params: { ...params, ...defaultParams },
+    params: { ...defaultParams, ...params },
     /** 上一个页面携带过来的数据 */
     data,
     /** 返回上一个页面并返回数据 */
@@ -29,6 +28,6 @@ export function useRouter(defaultParams?: any) {
     /** 返回上一个页面并抛出异常 */
     backError: Router.backError,
     /** 返回上一个页面 */
-    back: Router.back
+    back: Router.back,
   }
 }
