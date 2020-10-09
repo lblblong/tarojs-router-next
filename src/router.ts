@@ -52,9 +52,18 @@ export class Router {
     })
   }
 
-  /** 返回上一个页面 */
-  static back() {
-    return Taro.navigateBack()
+  /**
+   * 返回上一个页面
+   * @param path 当没有页面可以返回，前往的页面
+   */
+  static back(path?: string) {
+    path = path || this._config?.backRootPath
+
+    if (path) {
+      return this.navigate({ url: path })
+    } else {
+      return Taro.navigateBack()
+    }
   }
 
   /** 发送 backData、backError 数据到上一个页面 */
