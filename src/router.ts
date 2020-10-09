@@ -54,13 +54,12 @@ export class Router {
 
   /**
    * 返回上一个页面
-   * @param path 当没有页面可以返回，前往的页面
+   * @param route 当没有页面可以返回，前往的页面
    */
-  static back(path?: string) {
-    path = path || this._config?.backRootPath
-
-    if (path) {
-      return this.navigate({ url: path })
+  static back(route?: IRoute) {
+    route = route || this._config?.backRootRoute
+    if (route) {
+      return this.navigate(route)
     } else {
       return Taro.navigateBack()
     }

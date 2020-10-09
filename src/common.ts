@@ -20,7 +20,7 @@ export type IMiddlware<E = any> = (ctx: RouteContext<E>, next: () => Promise<any
 
 export interface RouterConfig {
   /** 当没有页面可以返回，调用 Router.back 前往的页面 */
-  backRootPath?: string
+  backRootRoute?: IRoute
   /** 进入页面前的路由中间件（洋葱模型），参考 koa */
   middlewares?: IMiddlware[]
 }
