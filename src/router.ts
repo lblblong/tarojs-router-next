@@ -57,11 +57,17 @@ export class Router {
    * @param route 当没有页面可以返回，前往的页面
    */
   static back(route?: IRoute) {
-    route = route || this._config?.backRootRoute
-    if (route) {
-      return this.navigate(route)
-    } else {
+    const currentPages = Taro.getCurrentPages()
+    if (currentPages.length > 1) {
       return Taro.navigateBack()
+    }
+
+    route = route || Router._config?.backRootRoute
+    if (route) {
+      return Router.navigate(route, { type: NavigateType.redirectTo })
+    } else {
+      console.error('没有页面可以回退了')
+      return Promise.resolve()
     }
   }
 
