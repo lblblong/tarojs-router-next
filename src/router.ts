@@ -23,7 +23,7 @@ export class Router {
     if (options.params![ROUTE_KEY]) throw Error('params 中 route_key 为保留字段，请用其他名称')
     const route_key = (options.params![ROUTE_KEY] = Date.now() + '')
 
-    let url = formatPath(route, options.params!)
+
 
     if (options.data) {
       PageData.setPageData(route_key, options.data)
@@ -32,6 +32,8 @@ export class Router {
     const middlewares = [...(Router._config?.middlewares || []), ...(route.beforeRouteEnter || [])]
     const fn = compose(middlewares)
     await fn({ route, params: options.params })
+    let url = formatPath(route, options.params!)
+
     return new Promise((res, rej) => {
       PageData.setPagePromise(route_key, { res, rej })
 
