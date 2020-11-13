@@ -1,9 +1,8 @@
+import { IMiddleware } from "tarojs-router";
 import Taro from '@tarojs/taro'
-import { IMiddlware } from "tarojs-router";
 import { toLogin } from "..";
 
-
-export const AuthCheck: IMiddlware<{ mustLogin: boolean }> = async (ctx, next) => {
+export const AuthCheck: IMiddleware<{ mustLogin: boolean }> = async (ctx, next) => {
   if (ctx.route.ext?.mustLogin) {
     const token = Taro.getStorageSync('token')
     if (!token) {

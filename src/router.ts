@@ -1,7 +1,8 @@
+import { IRoute, NavigateOptions, NavigateType, ROUTE_KEY, RouterConfig } from './common'
+
+import { PageData } from './page-data'
 import Taro from '@tarojs/taro'
 import compose from 'koa-compose'
-import { RouterConfig, IRoute, NavigateOptions, NavigateType, ROUTE_KEY } from './common'
-import { PageData } from './page-data'
 import { formatPath } from './utils'
 
 export class Router {
@@ -28,10 +29,9 @@ export class Router {
       PageData.setPageData(route_key, options.data)
     }
 
-    const middlwares = [...(Router._config?.middlewares || []), ...(route.beforeRouteEnter || [])]
-    const fn = compose(middlwares)
+    const middlewares = [...(Router._config?.middlewares || []), ...(route.beforeRouteEnter || [])]
+    const fn = compose(middlewares)
     await fn({ route, params: options.params })
-
     return new Promise((res, rej) => {
       PageData.setPagePromise(route_key, { res, rej })
 
