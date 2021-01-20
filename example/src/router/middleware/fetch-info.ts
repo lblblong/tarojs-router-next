@@ -1,10 +1,9 @@
+import { IMiddleware } from "tarojs-router";
 import Taro from '@tarojs/taro'
 import { UserStore } from '../../store/user';
-import { IMiddlware } from "tarojs-router";
 import { sleep } from '../../utils';
 
-
-export const FetchInfo: IMiddlware<{ mustLogin: boolean }> = async (ctx, next) => {
+export const FetchInfo: IMiddleware<{ mustLogin: boolean }> = async (ctx, next) => {
   const token = Taro.getStorageSync('token')
 
   if (token && !UserStore.userinfo) {

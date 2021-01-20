@@ -87,7 +87,7 @@ tarojs-router 提供和 koa 一致的路由中间件功能
 ```typescript
 // 实现一个登录检查的路由中间件
 // auth-check.ts
-export const AuthCheck: IMiddlware<{ mustLogin: boolean }> = async (ctx, next) => {
+export const AuthCheck: IMiddleware<{ mustLogin: boolean }> = async (ctx, next) => {
   if (ctx.route.ext?.mustLogin) {
     const token = Taro.getStorageSync('token')
     if (!token) {
