@@ -1,4 +1,4 @@
-import { IMiddleware } from "tarojs-router";
+import { IMiddleware } from "tarojs-router-next";
 import Taro from '@tarojs/taro'
 import { toLogin } from "..";
 

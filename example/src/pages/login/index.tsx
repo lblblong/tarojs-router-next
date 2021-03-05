@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import Taro from '@tarojs/taro'
 import { View, Button } from '@tarojs/components'
 import './index.css'
-import { Router } from 'tarojs-router'
+import { Router } from 'tarojs-router-next'
 import { sleep } from '../../utils'
 
 const Index: FC = () => {

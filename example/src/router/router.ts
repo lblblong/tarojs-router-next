@@ -1,4 +1,4 @@
-import { Router, NavigateType } from 'tarojs-router'
+import { Router, NavigateType } from 'tarojs-router-next'
 import { routes } from './route'
 
 export function toIndex() {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { getCurrentInstance } from '@tarojs/taro'
 import { View, Button } from '@tarojs/components'
-import { Router, RouterEmit } from 'tarojs-router'
+import { Router, RouterEmit } from 'tarojs-router-next'
 import './index.css'
 
 @RouterEmit

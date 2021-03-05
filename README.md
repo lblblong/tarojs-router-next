@@ -2,18 +2,18 @@
 ## 文档
 [快速开始](https://www.yuque.com/lblblong/rgfig4/ksuuhi)
 
-[API 文档](http://lblblib.gitee.io/tarojs-router/classes/_router_.router.html)
+[API 文档](http://lblblib.gitee.io/tarojs-router-next/classes/_router_.router.html)
 
 #### 安装
 ```bash
-npm install tarojs-router
+npm install tarojs-router-next
 # or
-yarn add tarojs-router
+yarn add tarojs-router-next
 ```
 
 ## 示例
 
-[Demo（代码）](https://github.com/lblblong/tarojs-router/tree/master/example)
+[Demo（代码）](https://github.com/lblblong/tarojs-router-next/tree/master/example)
 [Demo（微信开发者工具打开）](https://developers.weixin.qq.com/s/3Zts2wmU7Ok0)
 
 
@@ -24,11 +24,11 @@ yarn add tarojs-router
 - 跳页面取值比较麻烦（比如填写表单跳页面选择城市，往往需要全局存储，回到页面再去取，也可以通过event，但是总要写很多代码）
 
 
-为了实现上面的需求更方便，于是封装了一下：[tarojs-router](https://www.npmjs.com/package/tarojs-router)
+为了实现上面的需求更方便，于是封装了一下：[tarojs-router-next](https://www.npmjs.com/package/tarojs-router-next)
 
 
 
-## 看看 tarojs-router 如何解决上面的问题
+## 看看 tarojs-router-next 如何解决上面的问题
 
 #### 一、页面传参
 
@@ -38,7 +38,7 @@ Taro.navigateTo({
   url: '/pages/user/index?name=李四&id=1',
 })
 
-// ✔ tarojs-router 自动拼接，可传任意类型任意大小的数据
+// ✔ tarojs-router-next 自动拼接，可传任意类型任意大小的数据
 Router.navigate(
   { url: '/pages/user/index' },
   {
@@ -68,10 +68,10 @@ final cityData = await Navigator.push(...)
 Navigator.pop({cityName: '深圳', adcode: 'xxxx'})
 ```
 
-tarojs-router 中写法基本一致，内部通过 promise 实现
+tarojs-router-next 中写法基本一致，内部通过 promise 实现
 
 ```typescript
-// ✔ tarojs-router 封装了这个过程，直接使用
+// ✔ tarojs-router-next 封装了这个过程，直接使用
 const cityData = await Router.navigate({ url: '/pages/sel-city/index' })
 console.log(cityData?.cityName)
 
@@ -81,7 +81,7 @@ backData({ cityName: '深圳', adcode: 'xxxx' })
 ```
 
 #### 三、路由中间件
-tarojs-router 提供和 koa 一致的路由中间件功能
+tarojs-router-next 提供和 koa 一致的路由中间件功能
 ![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8cbad684af27455cb4a297f0e3e64a92~tplv-k3u1fbpfcp-zoom-1.image)
 
 ```typescript

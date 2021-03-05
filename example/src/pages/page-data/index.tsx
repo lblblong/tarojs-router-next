@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { View, Text, Button } from '@tarojs/components'
-import { useRouter } from 'tarojs-router'
+import { useRouter } from 'tarojs-router-next'
 import './index.css'
 
 const Index: FC = () => {
