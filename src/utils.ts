@@ -7,7 +7,7 @@ export function objectToUrlParams(data: any) {
   for (let key in data) {
     let value = data[key]
     if (value === undefined || value === null) continue
-    if (value.constructor == Array) {
+    if (value.constructor === Array) {
       value.forEach(function (_value) {
         _result.push(key + '=' + _value)
       })

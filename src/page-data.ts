@@ -1,4 +1,4 @@
-import { getCurrentRouteKey } from "./utils"
+import { getCurrentRouteKey } from './utils'
 
 /** @internal */
 export class PageData {
@@ -10,7 +10,9 @@ export class PageData {
       rej: (err: any) => void
     }
   > = new Map()
+
   static _backErr: Map<string, any> = new Map()
+
   static _backData: Map<string, any> = new Map()
 
   static getPageData<T = any>(default_data?: T): T {
@@ -78,5 +80,4 @@ export class PageData {
     let route_key = getCurrentRouteKey()
     PageData._backErr.set(route_key, err)
   }
-
 }

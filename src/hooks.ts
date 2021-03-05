@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
 import { getCurrentInstance, useRouter as useRouterTaro } from '@tarojs/taro'
+import { useEffect } from 'react'
 import { Router } from './router'
 
 export function useRouter(defaultParams?: any) {
