@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>tarojs-router</title>
-	<meta name="description" content="Documentation for tarojs-router">
+	<title>tarojs-router-next</title>
+	<meta name="description" content="Documentation for tarojs-router-next">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">tarojs-router</a>
+					<a href="index.html" class="title">tarojs-router-next</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -54,7 +54,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1>tarojs-router</h1>
+			<h1>tarojs-router-next</h1>
 		</div>
 	</div>
 </header>
@@ -66,17 +66,17 @@
 					<h2>文档</h2>
 				</a>
 				<p><a href="https://www.yuque.com/lblblong/rgfig4/ksuuhi">快速开始</a></p>
-				<p><a href="http://lblblib.gitee.io/tarojs-router/classes/_router_.router.html">API 文档</a></p>
+				<p><a href="http://lblblib.gitee.io/tarojs-router-next/classes/_router_.router.html">API 文档</a></p>
 				<a href="#安装" id="安装" style="color: inherit; text-decoration: none;">
 					<h4>安装</h4>
 				</a>
-				<pre><code class="language-bash">npm install tarojs-router
+				<pre><code class="language-bash">npm install tarojs-router-next
 <span class="hljs-comment"># or</span>
-yarn add tarojs-router</code></pre>
+yarn add tarojs-router-next</code></pre>
 				<a href="#示例" id="示例" style="color: inherit; text-decoration: none;">
 					<h2>示例</h2>
 				</a>
-				<p><a href="https://github.com/lblblong/tarojs-router/tree/master/example">Demo（代码）</a>
+				<p><a href="https://github.com/lblblong/tarojs-router-next/tree/master/example">Demo（代码）</a>
 				<a href="https://developers.weixin.qq.com/s/3Zts2wmU7Ok0">Demo（微信开发者工具打开）</a></p>
 				<a href="#前言" id="前言" style="color: inherit; text-decoration: none;">
 					<h2>前言</h2>
@@ -87,9 +87,9 @@ yarn add tarojs-router</code></pre>
 					<li>页面传参无法携带大量任意类型数据</li>
 					<li>跳页面取值比较麻烦（比如填写表单跳页面选择城市，往往需要全局存储，回到页面再去取，也可以通过event，但是总要写很多代码）</li>
 				</ul>
-				<p>为了实现上面的需求更方便，于是封装了一下：<a href="https://www.npmjs.com/package/tarojs-router">tarojs-router</a></p>
-				<a href="#看看-tarojs-router-如何解决上面的问题" id="看看-tarojs-router-如何解决上面的问题" style="color: inherit; text-decoration: none;">
-					<h2>看看 tarojs-router 如何解决上面的问题</h2>
+				<p>为了实现上面的需求更方便，于是封装了一下：<a href="https://www.npmjs.com/package/tarojs-router-next">tarojs-router-next</a></p>
+				<a href="#看看-tarojs-router-next-如何解决上面的问题" id="看看-tarojs-router-next-如何解决上面的问题" style="color: inherit; text-decoration: none;">
+					<h2>看看 tarojs-router-next 如何解决上面的问题</h2>
 				</a>
 				<a href="#一、页面传参" id="一、页面传参" style="color: inherit; text-decoration: none;">
 					<h4>一、页面传参</h4>
@@ -99,7 +99,7 @@ Taro.navigateTo({
   url: <span class="hljs-string">&#x27;/pages/user/index?name=李四&amp;id=1&#x27;</span>,
 })
 
-<span class="hljs-comment">// ✔ tarojs-router 自动拼接，可传任意类型任意大小的数据</span>
+<span class="hljs-comment">// ✔ tarojs-router-next 自动拼接，可传任意类型任意大小的数据</span>
 Router.navigate(
   { url: <span class="hljs-string">&#x27;/pages/user/index&#x27;</span> },
   {
@@ -125,8 +125,8 @@ Router.navigate(
 
 <span class="hljs-comment">// 返回值到上一个页面</span>
 Navigator.pop({cityName: <span class="hljs-string">&#x27;深圳&#x27;</span>, adcode: <span class="hljs-string">&#x27;xxxx&#x27;</span>})</code></pre>
-				<p>tarojs-router 中写法基本一致，内部通过 promise 实现</p>
-				<pre><code class="language-typescript"><span class="hljs-comment">// ✔ tarojs-router 封装了这个过程，直接使用</span>
+				<p>tarojs-router-next 中写法基本一致，内部通过 promise 实现</p>
+				<pre><code class="language-typescript"><span class="hljs-comment">// ✔ tarojs-router-next 封装了这个过程，直接使用</span>
 <span class="hljs-keyword">const</span> cityData = <span class="hljs-keyword">await</span> Router.navigate({ url: <span class="hljs-string">&#x27;/pages/sel-city/index&#x27;</span> })
 <span class="hljs-built_in">console</span>.log(cityData?.cityName)
 
@@ -136,11 +136,11 @@ backData({ cityName: <span class="hljs-string">&#x27;深圳&#x27;</span>, adcode
 				<a href="#三、路由中间件" id="三、路由中间件" style="color: inherit; text-decoration: none;">
 					<h4>三、路由中间件</h4>
 				</a>
-				<p>tarojs-router 提供和 koa 一致的路由中间件功能
+				<p>tarojs-router-next 提供和 koa 一致的路由中间件功能
 				<img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8cbad684af27455cb4a297f0e3e64a92~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
 				<pre><code class="language-typescript"><span class="hljs-comment">// 实现一个登录检查的路由中间件</span>
 <span class="hljs-comment">// auth-check.ts</span>
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> AuthCheck: IMiddlware&lt;{ mustLogin: <span class="hljs-built_in">boolean</span> }&gt; = <span class="hljs-keyword">async</span> (ctx, next) =&gt; {
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> AuthCheck: IMiddleware&lt;{ mustLogin: <span class="hljs-built_in">boolean</span> }&gt; = <span class="hljs-keyword">async</span> (ctx, next) =&gt; {
   <span class="hljs-keyword">if</span> (ctx.route.ext?.mustLogin) {
     <span class="hljs-keyword">const</span> token = Taro.getStorageSync(<span class="hljs-string">&#x27;token&#x27;</span>)
     <span class="hljs-keyword">if</span> (!token) {
