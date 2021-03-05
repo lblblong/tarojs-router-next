@@ -2,7 +2,7 @@ import Taro from '@tarojs/taro'
 import { IRoute, ROUTE_KEY } from './common'
 
 /** @internal */
-export function objectToUrlParams(data: any) {
+export function object2Url(data: any) {
   let _result: Array<any> = []
   for (let key in data) {
     let value = data[key]
@@ -19,6 +19,22 @@ export function objectToUrlParams(data: any) {
 }
 
 /** @internal */
+export function url2Object(url: string) {
+  const result = {}
+  let paramStr = url.split('?')[1]
+  if (paramStr) {
+    let params = paramStr.split('&')
+    for (const str of params) {
+      let key = str.split('=')[0]
+      let value = str.split('=')[1]
+      result[key] = value
+    }
+  }
+
+  return result
+}
+
+/** @internal */
 export function getCurrentRouteKey(): string {
   const params = Taro.getCurrentInstance().router?.params
   if (!params || !params[ROUTE_KEY]) return ''
@@ -28,8 +44,16 @@ export function getCurrentRouteKey(): string {
 /** @internal */
 export function formatPath(route: IRoute, params: object) {
   let url = route.url
-  let paramsStr = objectToUrlParams(params)
-  url = `${route.url}?${paramsStr}`
+  const urlSplit = url.split('?')
+  if (urlSplit.length > 1 && urlSplit[1]) {
+    const urlParams = url2Object(url)
+    if (urlParams[ROUTE_KEY]) throw Error('url 中 route_key 为保留字段，请用其他名称')
+    params = Object.assign(urlParams, params)
+    url = urlSplit[0]
+  }
+
+  let paramsStr = object2Url(params)
+  url = `${url}?${paramsStr}`
 
   return url
 }
