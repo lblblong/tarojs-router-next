@@ -1,4 +1,7 @@
 
+## 说明
+该项目是原 [tarojs-router](https://www.npmjs.com/package/tarojs-router) 
+
 ## 文档
 [快速开始](https://www.yuque.com/lblblong/rgfig4/ksuuhi)
 
