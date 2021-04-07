@@ -18,8 +18,8 @@ const Index: FC = () => {
 
   useEffect(() => {
     console.log('文档：https://www.yuque.com/lblblong/rgfig4/ggr8bh')
-    console.log('API文档：http://lblblib.gitee.io/tarojs-router/classes/_router_.router.html')
-    console.log('Demo 源代码：https://github.com/lblblong/tarojs-router/tree/master/example')
+    console.log('API文档：https://lblblib.gitee.io/tarojs-router-next/classes/_router_.router.html')
+    console.log('Demo 源代码：https://github.com/lblblong/tarojs-router-next/tree/master/example')
   }, [])
 
   const onSelCity = async () => {
