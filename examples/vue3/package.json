@@ -39,7 +39,7 @@
     "@tarojs/components": "3.2.1",
     "@tarojs/runtime": "3.2.1",
     "@tarojs/taro": "3.2.1",
-    "vue": "^3.0.0",
+    "vue": "link:../../node_modules/vue",
     "tarojs-router-next": "link:../.."
   },
   "devDependencies": {

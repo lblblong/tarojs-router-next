@@ -11869,13 +11869,12 @@ vue-loader@^16.0.0-beta.8:
     loader-utils "^2.0.0"
 
 vue@^3.0.0:
-  version "3.0.11"
-  resolved "https://registry.npm.taobao.org/vue/download/vue-3.0.11.tgz#c82f9594cbf4dcc869241d4c8dd3e08d9a8f4b5f"
-  integrity sha1-yC+VlMv03MhpJB1MjdPgjZqPS18=
-  dependencies:
-    "@vue/compiler-dom" "3.0.11"
-    "@vue/runtime-dom" "3.0.11"
-    "@vue/shared" "3.0.11"
+  version "0.0.0"
+  uid ""
+
+"vue@link:../../node_modules/vue":
+  version "0.0.0"
+  uid ""
 
 w3c-hr-time@^1.0.1:
   version "1.0.2"

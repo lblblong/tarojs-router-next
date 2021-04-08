@@ -63,7 +63,8 @@
     "@tarojs/react": "^3.2.1",
     "@tarojs/taro": "^3.2.1",
     "koa-compose": "^4.1.0",
-    "react": "^17.0.1"
+    "react": "^17.0.1",
+    "vue": "^3.0.0"
   },
   "files": [
     "dist"

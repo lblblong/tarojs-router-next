@@ -7,13 +7,12 @@
 
 <script lang="ts">
 import { ref } from 'vue'
-import { getCurrentInstance } from '@tarojs/taro'
-import { Router } from 'tarojs-router-next'
+import { useRouterVue } from 'tarojs-router-next'
 import './index.scss'
 
 export default {
   setup() {
-    getCurrentInstance().page!.onUnload = Router.emitBack
+    const { backData, backError } = useRouterVue()
 
     const cityList = ref([
       {
@@ -27,11 +26,11 @@ export default {
     ])
 
     const onSel = (index: number) => {
-      Router.backData(cityList.value[index])
+      backData(cityList.value[index])
     }
 
     const onCancel = () => {
-      Router.backError('用户取消选择')
+      backError('用户取消选择')
     }
 
     return {

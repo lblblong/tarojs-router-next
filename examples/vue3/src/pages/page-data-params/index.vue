@@ -10,15 +10,15 @@
 
 <script>
 import Taro, { getCurrentInstance } from '@tarojs/taro'
-import { Router } from 'tarojs-router-next'
+import { Router, useRouterVue } from 'tarojs-router-next'
 import { sleep } from '../../utils'
-import { ref } from 'vue'
+import { ref, onBeforeMount } from 'vue'
 import './index.scss'
+import { toMe } from '../../router'
 
 export default {
   setup() {
-    const params = getCurrentInstance().router?.params
-    const data = Router.getData()
+    const { params, data } = useRouterVue()
 
     return {
       params,
