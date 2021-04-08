@@ -15,7 +15,7 @@ yarn add tarojs-router-next
 ## 示例
 
 [React Demo（代码）](https://github.com/lblblong/tarojs-router-next/tree/master/examples/react)
-[Vue3 Demo（代码）](https://github.com/lblblong/tarojs-router-next/tree/master/examples/vue)
+[Vue3 Demo（代码）](https://github.com/lblblong/tarojs-router-next/tree/master/examples/vue3)
 [Demo（微信开发者工具打开）](https://developers.weixin.qq.com/s/3Zts2wmU7Ok0)
 
 
