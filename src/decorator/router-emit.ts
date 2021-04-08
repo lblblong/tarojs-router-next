@@ -1,5 +1,4 @@
-import { Router } from "../router"
-
+import { Router } from '../router'
 
 /**
  * Class 页面组件支持

@@ -2622,68 +2622,69 @@
     "@svgr/plugin-svgo" "^5.5.0"
     loader-utils "^2.0.0"
 
-"@tarojs/api@3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@tarojs/api/-/api-3.1.1.tgz#976f06e55ab54b4bf5dc06a94f14be1c29d25234"
-  integrity sha512-ZK/NdWa0ONqI6kfuGnbNBqaVM0TZGjmBKO4oqXZH0uGVzS1WUV6zRr87VMtZI9a88yWYB+4JQhkfA6kILRLkUw==
+"@tarojs/api@3.2.1":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@tarojs/api/-/api-3.2.1.tgz#01d39c1b86ea9e9ee9d7ca2e2041bea9756046e0"
+  integrity sha512-h81pF9GVht0vYlpSyHpXH/EJUqvFV41XXT4royQjMiejhKa6yfKKiy+JIFkZotxZyWjR4V2kRtiTMCS1JJY6Mw==
   dependencies:
-    "@tarojs/runtime" "3.1.1"
+    "@tarojs/runtime" "3.2.1"
 
-"@tarojs/react@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@tarojs/react/-/react-3.1.1.tgz#c9a6a9352441b4cf712e69620367a3b5546a8605"
-  integrity sha512-Z8BUG5Dw3vJeN4NZL5BrwKwynZUmARPNNdVdwY7xyjfK6Y7PAl3PMBncfVVrzoEhwhfEDaLlDGdOFnDGUCGp8A==
+"@tarojs/react@^3.2.1":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@tarojs/react/-/react-3.2.1.tgz#118c791f9bc466399fb4da152ab20f53b442d57b"
+  integrity sha512-Sl+IPP3+rBJjXj8EkGyIXGV59vmKmdK1Q3y2/3W3e5ehuuZcf3bIfDlss3h5dJ08VXFzM9CDMgZGPodFX/K3AQ==
   dependencies:
-    "@tarojs/runtime" "3.1.1"
-    "@tarojs/shared" "3.1.1"
+    "@tarojs/runtime" "3.2.1"
+    "@tarojs/shared" "3.2.1"
     react-reconciler "0.25.1"
     scheduler "^0.17.0"
 
-"@tarojs/router@3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@tarojs/router/-/router-3.1.1.tgz#0253a0bb1e06fee35fb350ee7a339d027b8ed206"
-  integrity sha512-QEgxvkwKBCn/wrazedeecjI8tQyXDWgdPeEWogthR3SxAHYWwnll2j/WICXvhIGG+c9xgj//ZWiMSTCp4FmZHA==
+"@tarojs/router@3.2.1":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@tarojs/router/-/router-3.2.1.tgz#4ed9ad6b4f7a2cce9960eaba71e527f3f6ba6cbb"
+  integrity sha512-KZkR3PpU0kRfZfveWHIe/HM0BCVSvgHfMo5lAWqDjbVlFFpMZ/XDYjiJi0UQOQZiAq8vIAp7xKtQMa8sndlBXg==
   dependencies:
-    "@tarojs/runtime" "3.1.1"
+    "@tarojs/runtime" "3.2.1"
     history "^4.10.1"
+    query-string "^6.13.8"
     universal-router "^8.3.0"
     url-parse "^1.4.7"
 
-"@tarojs/runtime@3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@tarojs/runtime/-/runtime-3.1.1.tgz#9ad4b7db7061b68f4012f8a57919e099f8bc2ea6"
-  integrity sha512-ckEUCMYxIN5VQqS04ZXlKcB1iYksW3pV3jTF4MscJkoo+rzH8qoxdqdD18FZ3Epc+WO3xKmCp1q0JFFISbS/ig==
+"@tarojs/runtime@3.2.1":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@tarojs/runtime/-/runtime-3.2.1.tgz#8d9d56f683cfcecfaebc6bb837ff786a19f412a2"
+  integrity sha512-j1xEUm6ezH069hAvAuqYV6saOg3Lpnt9wMai1IRKIPPxqYv+UhNYGdwi41oyrBlabvTv4xOeaxnVdp295Ffveg==
   dependencies:
-    "@tarojs/shared" "3.1.1"
+    "@tarojs/shared" "3.2.1"
     lodash-es "4.17.15"
 
-"@tarojs/shared@3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@tarojs/shared/-/shared-3.1.1.tgz#dccdf290a11e55968356fc9d531d619bc489f495"
-  integrity sha512-T2T9ank7UBg/r0kP7r8Tmky2HCEi0+9xrrJJ/o2WdTR3DDvwMTaBi+hUztOpCutGP87vk8w50YxufB6BzQ7xSQ==
+"@tarojs/shared@3.2.1":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@tarojs/shared/-/shared-3.2.1.tgz#a97e9579c213ca7b93d189028d880b09c0683514"
+  integrity sha512-NyAK0X29f9pgb2SfIJ90tXJBr4Ws4cseW2xcS5Hc6yThcGZpiE59w15dzFWlCRUhjXB/+KwmUYxM4PrJjWMlCg==
 
-"@tarojs/taro-h5@3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@tarojs/taro-h5/-/taro-h5-3.1.1.tgz#0dee65c53ff86e8408627f78a37cf1a356ceb6ff"
-  integrity sha512-OeNLghs1kP/KQ2HLxhZ5rm8qglZmtXVqBpFOI6tmEXhCeJChPBeR+lgXayFKN8h3Gro0Xh9rN8hX6ZsylKnrVg==
+"@tarojs/taro-h5@3.2.1":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@tarojs/taro-h5/-/taro-h5-3.2.1.tgz#5a0d05caff4e0b80fdab1d6eebe6898d46f92f8f"
+  integrity sha512-ksAlINQU/voItrMNUnQGRPxuzTl5F2Fvjv+mTKP1BEGAfe3wRaxBreGT56kPYzIeAU6F+nFDthTbJbH3UaAPSg==
   dependencies:
-    "@tarojs/api" "3.1.1"
-    "@tarojs/router" "3.1.1"
-    "@tarojs/runtime" "3.1.1"
+    "@tarojs/api" "3.2.1"
+    "@tarojs/router" "3.2.1"
+    "@tarojs/runtime" "3.2.1"
     base64-js "^1.3.0"
     jsonp-retry "^1.0.3"
     mobile-detect "^1.4.2"
     raf "^3.4.1"
     whatwg-fetch "^3.4.0"
 
-"@tarojs/taro@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@tarojs/taro/-/taro-3.1.1.tgz#902073ad09ff8a29bf86c4a81802bb7de5f9d04e"
-  integrity sha512-Hv9lU0Y4Fup4SZn6yJ0kd+bMI0UeVXpeHtNEuYrzd+z7xfeF4INve+XqL25/uZH3yNi4bVgozpsOjvUyW6Miew==
+"@tarojs/taro@^3.2.1":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@tarojs/taro/-/taro-3.2.1.tgz#73ad8abd48fcef343d911ca7c8fcd229a448c337"
+  integrity sha512-oOUBvKgLjWDGzeFykk7yAGWo4OOFgMCdzhjT/0/vbYudVR3amNNzUfWSQEq2ql+Cmjs+wiOOgZzM7aKAGQBwLA==
   dependencies:
-    "@tarojs/api" "3.1.1"
-    "@tarojs/runtime" "3.1.1"
-    "@tarojs/taro-h5" "3.1.1"
+    "@tarojs/api" "3.2.1"
+    "@tarojs/runtime" "3.2.1"
+    "@tarojs/taro-h5" "3.2.1"
 
 "@testing-library/dom@*":
   version "7.24.2"
@@ -6699,6 +6700,11 @@ fill-range@^7.0.1:
   integrity sha512-qOo9F+dMUmC2Lcb4BbVvnKJxTPjCm+RRpe4gDuGrzkL7mEVl/djYSu2OdQ2Pa302N4oqkSg9ir6jaLWJ2USVpQ==
   dependencies:
     to-regex-range "^5.0.1"
+
+filter-obj@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/filter-obj/-/filter-obj-1.1.0.tgz#9b311112bc6c6127a16e016c6c5d7f19e0805c5b"
+  integrity sha1-mzERErxsYSehbgFsbF1/GeCAXFs=
 
 finalhandler@~1.1.2:
   version "1.1.2"
@@ -11317,6 +11323,16 @@ query-string@^4.1.0:
     object-assign "^4.1.0"
     strict-uri-encode "^1.0.0"
 
+query-string@^6.13.8:
+  version "6.14.1"
+  resolved "https://registry.yarnpkg.com/query-string/-/query-string-6.14.1.tgz#7ac2dca46da7f309449ba0f86b1fd28255b0c86a"
+  integrity sha512-XDxAeVmpfu1/6IjyT/gXHOl+S0vQ9owggJ30hhWKdHAsNPOcasn5o9BW0eejZqL2e4vMjhAxoW3jVHcD6mbcYw==
+  dependencies:
+    decode-uri-component "^0.2.0"
+    filter-obj "^1.1.0"
+    split-on-first "^1.0.0"
+    strict-uri-encode "^2.0.0"
+
 querystring-es3@^0.2.0:
   version "0.2.1"
   resolved "https://registry.npmjs.org/querystring-es3/-/querystring-es3-0.2.1.tgz#9ec61f79049875707d69414596fd907a4d711e73"
@@ -12636,6 +12652,11 @@ spdy@^4.0.2:
     select-hose "^2.0.0"
     spdy-transport "^3.0.0"
 
+split-on-first@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/split-on-first/-/split-on-first-1.1.0.tgz#f610afeee3b12bce1d0c30425e76398b78249a5f"
+  integrity sha512-43ZssAJaMusuKWL8sKUBQXHWOpq8d6CfN/u1p4gUzfJkM05C8rxTmYrkIPTXapZpORA6LkkzcUulJ8FqA7Uudw==
+
 split-string@^3.0.1, split-string@^3.0.2:
   version "3.1.0"
   resolved "https://registry.npmjs.org/split-string/-/split-string-3.1.0.tgz#7cb09dda3a86585705c64b39a6466038682e8fe2"
@@ -12748,6 +12769,11 @@ strict-uri-encode@^1.0.0:
   version "1.1.0"
   resolved "https://registry.npmjs.org/strict-uri-encode/-/strict-uri-encode-1.1.0.tgz#279b225df1d582b1f54e65addd4352e18faa0713"
   integrity sha1-J5siXfHVgrH1TmWt3UNS4Y+qBxM=
+
+strict-uri-encode@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/strict-uri-encode/-/strict-uri-encode-2.0.0.tgz#b9c7330c7042862f6b142dc274bbcc5866ce3546"
+  integrity sha1-ucczDHBChi9rFC3CdLvMWGbONUY=
 
 string-hash@^1.1.1:
   version "1.1.3"

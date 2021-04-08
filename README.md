@@ -5,8 +5,6 @@
 ## 文档
 [快速开始](https://www.yuque.com/lblblong/rgfig4/ksuuhi)
 
-[API 文档](http://lblblib.gitee.io/tarojs-router-next/classes/_router_.router.html)
-
 #### 安装
 ```bash
 npm install tarojs-router-next
@@ -16,7 +14,8 @@ yarn add tarojs-router-next
 
 ## 示例
 
-[Demo（代码）](https://github.com/lblblong/tarojs-router-next/tree/master/example)
+[React Demo（代码）](https://github.com/lblblong/tarojs-router-next/tree/master/examples/react)
+[Vue3 Demo（代码）](https://github.com/lblblong/tarojs-router-next/tree/master/examples/vue)
 [Demo（微信开发者工具打开）](https://developers.weixin.qq.com/s/3Zts2wmU7Ok0)
 
 

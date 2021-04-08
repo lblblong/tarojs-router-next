@@ -26,8 +26,7 @@
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
     "predeploy": "cd example && yarn install && yarn run build",
-    "deploy": "gh-pages -d example/build",
-    "doc": "typedoc --exclude **/node_modules/** --excludeNotExported --stripInternal --out docs src/index.ts"
+    "deploy": "gh-pages -d example/build"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -58,17 +57,11 @@
     "prettier": "^2.0.4",
     "react-dom": "^17.0.1",
     "react-scripts": "^4.0.3",
-    "typedoc": "^0.19.1",
     "typescript": "^4.2.3"
   },
-  "peerDependencies": {
-    "@tarojs/react": "^3.1.1",
-    "@tarojs/taro": "^3.1.1",
-    "react": "^17.0.1"
-  },
   "dependencies": {
-    "@tarojs/react": "^3.1.1",
-    "@tarojs/taro": "^3.1.1",
+    "@tarojs/react": "^3.2.1",
+    "@tarojs/taro": "^3.2.1",
     "koa-compose": "^4.1.0",
     "react": "^17.0.1"
   },

@@ -34,6 +34,7 @@
     "camelcase": 0,
     "promise/param-names": 0,
     "prefer-const": 0,
-    "dot-notation": 0
+    "dot-notation": 0,
+    "no-use-before-define": 0
   }
 }
