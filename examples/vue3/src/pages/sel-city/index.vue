@@ -7,12 +7,12 @@
 
 <script lang="ts">
 import { ref } from 'vue'
-import { useRouterVue } from 'tarojs-router-next'
+import { useRouter } from 'tarojs-router-next'
 import './index.scss'
 
 export default {
   setup() {
-    const { backData, backError } = useRouterVue()
+    const { backData, backError } = useRouter()
 
     const cityList = ref([
       {
