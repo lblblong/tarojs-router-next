@@ -32,4 +32,8 @@ export function useRouter(defaultParams?: any) {
   }
 }
 
+/**
+ * 已废弃，请使用 useRouter
+ * @deprecated
+ */
 export const useRouterVue = useRouter
