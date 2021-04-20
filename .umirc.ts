@@ -1,7 +1,7 @@
 import { defineConfig } from 'umi'
 
 export default defineConfig({
-  logo: '/logo.png',
+  logo: '/tarojs-router-next/logo.png',
   title: ' ',
   description: '最好的taro，小程序路由解决方案',
   mode: 'site',

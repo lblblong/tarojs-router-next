@@ -11,7 +11,7 @@ group:
 
 如以下左边页面结构会为 [Router](/api/class/router) 生成的路由方法：
 
-![](/images/code1.png)
+![](/tarojs-router-next/images/code1.png)
 
 ```typescript
 import { Router, NavigateType } from 'tarojs-router-next'
