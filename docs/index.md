@@ -8,7 +8,7 @@ hero:
     - text: 快速开始
       link: /guide
 features:
-  - icon: /images/icon/icon-gen.png
+  - icon: images/icon/icon-gen.png
     title: 自动生成
     desc: 自动为页面生成带类型提示的路由方法
   - icon: /images/icon/icon-sync.png

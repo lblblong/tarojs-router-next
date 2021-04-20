@@ -21,13 +21,13 @@ tarojs-router-next 不需要使用者手写页面 url，它会监听项目 `src/
 
 左边的页面结构会生成右边的 [Router.to**](/api/class/router#to-options-) 系列方法，全都挂在 [Router](/api/class/router) 类上
 
-![](/tarojs-router-next/images/code1.png)
+![](/images/code1.png)
 
 **2. 路由传参需要手动拼接参数、无法携带任意类型、任意大小的数据**
 
 tarojs-router-next 允许直接传递一个对象给 `params`，它会把 `params` 展开拼接到 `url` 后面。并且还可以接收一个 `data` 参数，`data` 可以传递任意类型、任意大小的数据。
 
-![](/tarojs-router-next/images/code2.gif)
+![](/images/code2.gif)
 
 **3. Taro(小程序) 的路由方法是异步的，页面数据传递需要通过 EventCannal 传递，不够简单**
 

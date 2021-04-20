@@ -43,7 +43,7 @@ const config = {
 
 在启动项目后，tarojs-router-next 会自动监听项目下 `src/pages` 的变动，自动为 [Router](/api/class/router) 类生成对应的路由方法，路由跳转方法名字以 [to](/api/class/router#to-options-) 起头。如以下左边页面结构会为 [Router](/api/class/router) 生成的路由方法：
 
-![](/tarojs-router-next/images/code1.png)
+![](/images/code1.png)
 
 如果关闭了路由方法的自动生成，还可以通过 [Router.navigate](/api/class/router#navigate-route-options-) 方法进行路由跳转
 

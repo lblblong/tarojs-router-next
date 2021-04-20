@@ -1,12 +1,13 @@
 import { defineConfig } from 'umi'
 
 export default defineConfig({
-  logo: '/tarojs-router-next/logo.png',
+  logo: '/logo.png',
   title: ' ',
   description: '最好的taro，小程序路由解决方案',
   mode: 'site',
-  publicPath: process.env.NODE_ENV === 'production' ? '/tarojs-router-next/' : '/',
+  exportStatic: {},
   base: process.env.NODE_ENV === 'production' ? '/tarojs-router-next/' : '/',
+  publicPath: process.env.NODE_ENV === 'production' ? '/tarojs-router-next/' : '/',
   navs: [
     {
       title: '使用指南',

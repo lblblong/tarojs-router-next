@@ -9,7 +9,7 @@ group:
 
 路由中间件将在跳转到目标页面之前执行，中间件的执行流程参考 koa 的洋葱模型：
 
-![](/tarojs-router-next/images/koa.png)
+![](/images/koa.png)
 
 koa 是一个 web 后端框架，用户发起一个 http 请求给 koa 启动的服务，请求一层层进入 koa 的中间件，变成响应后再一层层出来丢给用户的客户端（app、浏览器）
 
@@ -108,7 +108,7 @@ const router = new VueRouter({
 
 首先，我们要定义附加数据，在页面文件夹下面新建 [route.config.ts](/guide/quike/route-config) 文件，然后导出 [Ext](/guide/quike/route-config#导出附加数据-ext)：
 
-![](/tarojs-router-next/images/code3.png)
+![](/images/code3.png)
 
 然后就可以在中间件中访问并使用：
 
