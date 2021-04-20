@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "target": "ES5",
+    "outDir": "dist",
+    "rootDir": "./src",
+    "baseUrl": ".",
+    "removeComments": true,
+    "sourceMap": true
+  },
+  "include": ["./src"]
+}
