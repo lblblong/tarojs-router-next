@@ -1,0 +1,37 @@
+name: 构建文档
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v2
+
+      - name: 构建
+        run: |
+          yarn
+          yarn doc:build
+
+      - name: Format dir
+        run: |
+          mkdir ../dist
+          mv ./dist/* ../dist/
+          mkdir ../.git
+          mv .git/* ../.git
+          rm -rf *
+          mv ../dist/* .
+          mv ../.git ./.git
+
+      - name: 部署 Pages
+        run: |
+          git branch -v
+          git config --global user.email "1162275271@qq.com"
+          git config --global user.name "lblblong"
+          git add .
+          git commit -m "更新文档"
+          git checkout -b gh-pages
+          git push origin gh-pages -f
