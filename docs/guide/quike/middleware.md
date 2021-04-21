@@ -21,7 +21,7 @@ koa 是一个 web 后端框架，用户发起一个 http 请求给 koa 启动的
 
 ```typescript
 import Taro from '@tarojs/taro'
-import { Middleware, registerMiddleware } from 'tarojs-router-next'
+import { Middleware, registerMiddlewares } from 'tarojs-router-next'
 
 export const M1: Middleware = async (ctx, next) => {
   console.log('第一个中间件执行：', ctx.route.url)
@@ -54,6 +54,7 @@ Router.toMe() // 进行页面跳转
 ```
 
 在 `/pages/me/index` 页面打印内容
+
 ```typescript
 // pages/me/index.tsx
 export default function Page() {
@@ -61,7 +62,6 @@ export default function Page() {
   return <View></View>
 }
 ```
-
 
 输出：
 
@@ -73,6 +73,41 @@ export default function Page() {
 第二个中间件执行结束
 第一个中间件执行结束
 成功进入了页面：me
+```
+
+## 注册路由中间件
+
+上面的例子中我们注册了三个中间件，用的是 [registerMiddlewares](/api/method/register-middlewares)，注册单个中间件可以使用 [registerMiddlewares](/api/method/register-middleware)
+
+```typescript
+import Taro from '@tarojs/taro'
+import { Middleware, registerMiddleware } from 'tarojs-router-next'
+
+export const M1: Middleware = async (ctx, next) => {
+  console.log('中间件执行：', ctx.route.url)
+  await next()
+  console.log('中间件执行结束')
+}
+
+registerMiddleware(M1)
+```
+
+## 动态注册路由中间件
+
+有的时候我们希望某个中间件只为特定的页面工作，这个需求可以在中间件中增加判断条件来实现，但在中间件中做这些判断会使中间件的职能不够专一，并且这些判断逻辑无法在多个中间件中复用
+
+怎么解决呢，我们可以在注册中间件时传递一个方法，将本来要写到中间件中的判断逻辑抽取到该方法中。在路由进入时该方法会被调用并传入当前路由的上下文，若方法返回 `true` 则为当前路由执行这些中间件
+
+```typescript
+// 仅为 me 和 home 页面注册该路由中间件
+registerMiddleware(Logger, (ctx) => {
+  return ['/pages/me/index', '/pages/home/index'].indexOf(ctx.route.url) !== -1
+})
+
+// 注册多个中间件
+registerMiddlewares([Logger, Auth], (ctx) => {
+  return ['/pages/me/index', '/pages/home/index'].indexOf(ctx.route.url) !== -1
+})
 ```
 
 ## 路由附加数据
