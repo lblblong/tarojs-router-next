@@ -77,7 +77,7 @@ export default function Page() {
 
 ## 注册路由中间件
 
-上面的例子中我们注册了三个中间件，用的是 [registerMiddlewares](/api/method/register-middlewares)，注册单个中间件可以使用 [registerMiddlewares](/api/method/register-middleware)
+上面的例子中我们注册了三个中间件，用的是 [registerMiddlewares](/api/method/register-middlewares)，注册单个中间件可以使用 [registerMiddleware](/api/method/register-middleware)
 
 ```typescript
 import Taro from '@tarojs/taro'
