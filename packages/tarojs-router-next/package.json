@@ -1,6 +1,6 @@
 {
   "name": "tarojs-router-next",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "main": "./dist/index.js",
   "scripts": {
     "build": "npm run clean && npm run prod",
