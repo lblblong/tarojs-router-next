@@ -3,9 +3,12 @@ title: 介绍
 ---
 
 # 介绍
+它是一个小巧的 [Taro(小程序)](https://taro-docs.jd.com/taro/docs/README/index.html) 路由库，为你提供以下特性：
 
-tarojs-router-next 是 [Taro(小程序)](https://taro-docs.jd.com/taro/docs/README/index.html) 路由库
-
+- 自动生成带参数类型提示的路由方法
+- 允许传递任意类型、任意大小的参数数据
+- 同步的路由方法调用
+- koa体验一致的路由中间件
 ## 解决什么问题
 
 1. 路由跳转的页面 url 没有类型提示容易输错
