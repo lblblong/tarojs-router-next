@@ -10,21 +10,21 @@ group:
 我们经常需要在返回到当前页面时做一些操作，思考一下以下场景在 Taro 中如何实现：
 
 - 在编辑页跳转到选择城市页面选择一个城市，然后返回赋值给编辑页的表单项
-- 在文章列表页点击其中一项进入到编辑页，编辑完成后返回编辑的数据赋值到列表页更新页面，取消编辑则不做操作
+- 在文章列表页点击其中一项进入到编辑页，编辑完成后返回数据给上一个页面局部更新，取消编辑则不做操作
 
 
 
 
 ## 之前的实现方式：EventChannel
 
-通过 [EventChannel](https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateTo.html#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81) 建立页面通讯，在选择城市页面通过 `event.emit` 发送数据到编辑页，然后再调用 `Taro.
+通过 [EventChannel](https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateTo.html#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81) 建立页面通讯，在选择城市页面先获取 `eventChannel`，然后通过 `emit` 方法发送数据到到上一个页面注册的事件回调方法中，然后再调用 `Taro.
 navigateBack` 返回编辑页
 
-***不够理想：事件回调会打乱代码编排方式，不符合编码直觉，并且需要目标页面配合写 event***
+***不好的地方：事件的回调方法可读性差、耦合度高、只能在回调内部处理异常，并且需要目标页面配合写 event***
 
 
 
-## 理想的实现方式：同步的路由方法调用
+## 好的实现方式：同步的路由方法调用
 
 在 tarojs-router-next 中，所有路由跳转都变成了同步方法，比如：
 
