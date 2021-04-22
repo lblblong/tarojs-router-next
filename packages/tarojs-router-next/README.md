@@ -1,14 +1,23 @@
 # tarojs-router-next
 
-tarojs-router-next 是 [Taro(小程序)](https://taro-docs.jd.com/taro/docs/README/index.html) 路由库
+它是一个小巧的 [Taro(小程序)](https://taro-docs.jd.com/taro/docs/README/index.html) 路由库，为你提供以下特性：
 
-[快速开始](http://lblblib.gitee.io/tarojs-router-next/guide/quike/start)	[API 文档](http://lblblib.gitee.io/tarojs-router-next/api/class/router)
+- 自动生成带参数类型提示的路由方法
+- 允许传递任意类型、任意大小的参数数据
+- 同步的路由方法调用
+- koa体验一致的路由中间件
 
-[Demo（代码）](https://github.com/lblblong/tarojs-router-next/tree/master/examples)		[Demo（微信开发者工具打开）](https://developers.weixin.qq.com/s/2CcFkJmo7Dpb)
+
+
+## 快速开始
+
+[使用文档](http://lblblib.gitee.io/tarojs-router-next/guide/quike/start)，[API 文档](http://lblblib.gitee.io/tarojs-router-next/api/class/router)
+
+[Demo（代码）](https://github.com/lblblong/tarojs-router-next/tree/master/examples)，[Demo（微信开发者工具打开）](https://developers.weixin.qq.com/s/2CcFkJmo7Dpb)
 
 
 
-## 安装核心依赖
+#### 安装核心依赖
 
 ```shell
 $ npm install --save tarojs-router-next
@@ -22,7 +31,7 @@ import 'tarojs-router-next/register'
 
 
 
-## 安装路由方法自动生成插件
+#### 安装路由方法自动生成插件
 
 ```shell
 $ npm install --dev tarojs-router-next-plugin
