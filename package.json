@@ -1,12 +1,15 @@
 {
   "name": "root",
   "private": true,
+  "author": "lblblong",
+  "homepage": "https://github.com/lblblong/tarojs-router-next",
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
     "clean": "lerna clean",
     "doc:serve": "dumi dev",
-    "doc:build": "dumi build"
+    "doc:build": "dumi build",
+    "commit": "git-cz"
   },
   "devDependencies": {
     "@tarojs/service": "^3.2.1",
@@ -19,7 +22,10 @@
     "@types/webpack": "^4.41.26",
     "@types/webpack-dev-server": "^3.11.3",
     "@umijs/plugin-analytics": "^0.2.2",
+    "commitizen": "^4.2.3",
     "color-string": "^1.5.5",
+    "cz-conventional-changelog": "^3.3.0",
+    "cz-customizable": "^6.3.0",
     "dumi": "^1.1.14",
     "eslint": "^7.23.0",
     "eslint-config-taro": "3.1.1",
@@ -30,6 +36,11 @@
     "release-it": "^14.5.0",
     "rimraf": "^3.0.2",
     "typescript": "^4.2.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    }
   },
   "workspaces": {
     "packages": [
