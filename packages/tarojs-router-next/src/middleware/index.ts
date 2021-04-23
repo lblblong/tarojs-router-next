@@ -1,8 +1,6 @@
-import { Middleware, RouteContext } from './type'
+import { Middleware, RouteContext, MiddlewareCondition } from './type'
 
-export { Middleware, RouteContext, MiddlewareCondition as MiddlewareHandler }
-
-type MiddlewareCondition = (ctx: RouteContext) => boolean
+export { Middleware, RouteContext, MiddlewareCondition }
 
 export const middlewareCollection: {
   middlewares: Middleware[]

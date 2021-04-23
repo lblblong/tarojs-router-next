@@ -8,3 +8,5 @@ export interface RouteContext<E = any> {
 }
 
 export type Middleware<E = any> = (ctx: RouteContext<E>, next: () => Promise<any>) => Promise<void>
+
+export type MiddlewareCondition = (ctx: RouteContext) => boolean
