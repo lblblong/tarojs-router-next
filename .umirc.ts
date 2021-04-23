@@ -30,4 +30,7 @@ export default defineConfig({
       path: 'https://github.com/lblblong/tarojs-router-next',
     },
   ],
+  analytics: {
+    baidu: '86dd7440f66d97b070760cdd2d2b1312'
+  }
 })

@@ -3268,8 +3268,8 @@
 
 "@umijs/plugin-analytics@^0.2.2":
   version "0.2.2"
-  resolved "https://registry.npm.taobao.org/@umijs/plugin-analytics/download/@umijs/plugin-analytics-0.2.2.tgz#575fd231d4327ea13413217aa1b5fc6bdd89465e"
-  integrity sha1-V1/SMdQyfqE0EyF6obX8a92JRl4=
+  resolved "https://registry.yarnpkg.com/@umijs/plugin-analytics/-/plugin-analytics-0.2.2.tgz#575fd231d4327ea13413217aa1b5fc6bdd89465e"
+  integrity sha512-dVDzUfgIdEwdCC6a5IsMYpIPI+bEZjBEqIhAvw9dic6Vk77w9RxQxyRfW11dDmdXLAwWphp22NntQNt1ejZPtg==
 
 "@umijs/preset-built-in@3.4.8":
   version "3.4.8"

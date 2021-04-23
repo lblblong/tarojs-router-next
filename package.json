@@ -18,6 +18,7 @@
     "@types/react": "^17.0.3",
     "@types/webpack": "^4.41.26",
     "@types/webpack-dev-server": "^3.11.3",
+    "@umijs/plugin-analytics": "^0.2.2",
     "color-string": "^1.5.5",
     "dumi": "^1.1.14",
     "eslint": "^7.23.0",
