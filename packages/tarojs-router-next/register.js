@@ -8,16 +8,16 @@ if (typeof document !== "undefined") {
 
   function getCurrentInstance() {
     let count = 20
-    const query = {...{route_key:undefined}, ...qs.parse(window.location.href.split('?')[1])}
+    const query = { ...{ route_key: undefined }, ...qs.parse(window.location.href.split('?')[1]) }
     return new Promise((ok, fail) => {
       time = setInterval(() => {
-        if(count-- === 0){
+        if (count-- === 0) {
           clearInterval(time)
           fail(Error('获取当前页面超时'))
           return
         }
         const cur_route_key = Taro.getCurrentInstance().router?.params?.route_key
-        if(query.route_key == cur_route_key){
+        if (query.route_key == cur_route_key) {
           ok(Taro.getCurrentInstance())
           clearInterval(time)
         }
