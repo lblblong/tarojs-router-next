@@ -3,6 +3,10 @@ title: 介绍
 ---
 
 # 介绍
+[![](https://img.shields.io/npm/v/tarojs-router-next.svg?style=flat-square)](https://www.npmjs.com/package/tarojs-router-next)
+[![](https://img.shields.io/npm/l/tarojs-router-next.svg?style=flat-square)](https://www.npmjs.com/package/tarojs-router-next)
+[![](https://img.shields.io/npm/dt/tarojs-router-next.svg?style=flat-square)](https://www.npmjs.com/package/tarojs-router-next)
+
 它是一个小巧的 [Taro(小程序)](https://taro-docs.jd.com/taro/docs/README/index.html) 路由库，为你提供以下特性：
 
 - 自动生成带参数类型提示的路由方法
@@ -39,3 +43,18 @@ tarojs-router-next 的路由跳转会返回一个 `Promise`，可以用 `async/a
 **4. 路由跳转的鉴权等实现起来比较麻烦**
 
 自己实现路由的鉴权是比较麻烦的事情，而 tarojs-router-next 提供非常易于理解的路由中间件功能，详细参考 [路由中间件](/guide/quike/middleware)
+
+
+## 平台与框架支持
+
+#### 框架支持
+支持所有 `Taro` 可支持的框架（`React`、`Vue`、`Vue3`、`Nerv`）
+
+#### 小程序支持
+理论上支持所有 `Taro` 可支持的小程序平台，目前已在 `微信小程序`、`QQ小程序`、`支付宝小程序` 测试通过
+
+#### H5 支持
+支持
+
+#### React Native 支持
+暂不支持
