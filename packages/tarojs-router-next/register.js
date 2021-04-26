@@ -35,7 +35,7 @@ if (typeof document !== "undefined") {
     const originOnUnload = page.onUnload
     page.onUnload = function () {
       // 由于 router和 page 在 onHide 生命周期被抹除，在这里还原
-      const instance = window.getCurrent()
+      const instance = Taro.getCurrentInstance()
       instance.router = router
       instance.page = page
       originOnUnload && originOnUnload.apply(this)
