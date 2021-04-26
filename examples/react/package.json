@@ -1,6 +1,6 @@
 {
   "name": "react",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "private": true,
   "description": "tarojs-router-next-react",
   "templateInfo": {
@@ -42,7 +42,7 @@
     "@tarojs/taro": "3.2.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
-    "tarojs-router-next": "^2.0.7"
+    "tarojs-router-next": "^2.0.8"
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",
