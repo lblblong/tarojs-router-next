@@ -4,7 +4,7 @@ import { NoPageException } from '../exception/no-page'
 import { compose } from '../lib/compose'
 import { getMiddlewares } from '../middleware'
 import { PageData } from '../page-data'
-import { formatPath } from '../util'
+import { formatPath, platformPageId } from '../util'
 import { Route, NavigateOptions, NavigateType } from './type'
 
 export { NavigateType, NavigateOptions, Route } from './type'
@@ -32,6 +32,22 @@ export class Router {
     const fn = compose(middlewares)
     await fn(context)
     const url = formatPath(route, options.params!)
+
+    const page_id = platformPageId(url)
+    Taro.eventCenter.once(`${page_id}.onReady`, () => {
+      const { page, router } = Taro.getCurrentInstance()
+      if (!page) return
+      const originOnUnload = page.onUnload
+      page.onUnload = function () {
+        // 兼容 h5
+        const instance = Taro.getCurrentInstance()
+        instance.page = page
+        instance.router = router
+
+        originOnUnload.apply(this)
+        PageData.emitBack()
+      }
+    })
 
     return new Promise((res, rej) => {
       PageData.setPagePromise(route_key, { res, rej })

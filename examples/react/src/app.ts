@@ -1,5 +1,4 @@
 import { Component } from 'react'
-import 'tarojs-router-next/register'
 import './app.css'
 import './middleware'
 

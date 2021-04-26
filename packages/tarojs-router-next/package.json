@@ -14,7 +14,6 @@
   "files": [
     "dist",
     "src",
-    "register.js",
     "package.json",
     "tsconfig.json"
   ],
@@ -27,5 +26,8 @@
     "npm": {
       "skipChecks": true
     }
+  },
+  "dependencies": {
+    "query-string": "^7.0.0"
   }
 }

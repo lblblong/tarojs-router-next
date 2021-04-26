@@ -1,5 +1,4 @@
 import { createApp } from 'vue'
-import 'tarojs-router-next/register'
 import './app.css'
 import './middleware'
 
