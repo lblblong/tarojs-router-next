@@ -7,16 +7,32 @@ import { Parser } from './parse/index'
 export class RouterCodeGenerator {
   private parser: Parser
   private generator: Generator
+  private appConfigPath: string
+  private appConfig: {
+    pages: string[]
+    subpackages?: {
+      root: string
+      pages: string[]
+    }[]
+    window: any
+  }
+
   constructor(private readonly ctx: IPluginContext, private config: IConfig) {
+    this.initAppConfig()
     this.parser = new Parser(ctx, config)
     this.generator = new Generator(ctx, config)
     this.config = Object.assign({ watch: true }, this.config)
   }
 
+  initAppConfig() {
+    this.appConfigPath = this.ctx.helper.resolveMainFilePath(path.resolve(this.ctx.paths.sourcePath, './app.config'))
+    this.appConfig = this.ctx.helper.readConfig(this.appConfigPath)
+  }
+
   listenBuildStart() {
     this.ctx.onBuildStart(() => {
       this.start()
-      if (this.config.watch && process.env.NODE_ENV === 'development') this.watch()
+      if (this.config.watch && this.ctx.runOpts.options.isWatch) this.watch()
     })
     return this
   }
