@@ -1,38 +1,35 @@
-import { IPluginContext } from '@tarojs/service'
 import fs from 'fs'
 import path from 'path'
-import { IConfig } from 'src/config'
 import { Project, SourceFile } from 'ts-morph'
+import { RouterCodeGenerator } from '..'
+import { PackageConfig } from '../entites/package'
 import { Page } from '../entites/page'
 import { extractType, extractValue } from '../util'
 import { QueryMeta } from './type'
 
 export class Parser {
-  private pagesPath: string
-  constructor(private readonly ctx: IPluginContext, private config: IConfig) {
-    this.pagesPath = path.resolve(this.ctx.paths.sourcePath, 'pages')
-  }
+  constructor(private readonly root: RouterCodeGenerator) {}
 
   start() {
-    const { pagesPath } = this
-    const project = new Project()
-    project.addSourceFilesAtPaths(this.pagesPath + '/**/route.config.ts')
-    project.resolveSourceFileDependencies()
-    const configSourceFiles = project
-      .getSourceFiles()
-      .filter((it) => it.compilerNode.fileName.endsWith('route.config.ts'))
+    for (const pkg of this.root.packageConfigs) {
+      this.parse({ pkg })
+    }
+  }
 
-    const pages = fs.readdirSync(pagesPath).map((d) => {
-      const p = new Page()
-      p.dir = d
-      p.fullDir = path.resolve(pagesPath, d)
-      console.log('发现页面：', p.fullDir)
-      return p
-    })
+  parse(options: { pkg: PackageConfig }) {
+    const { pkg } = options
+    const project = new Project()
+
+    const configSourceFiles = this.readConfigSourceFiles({ pkg, project })
+    let pages = this.createPages({ pkg })
+
+    for (const p of pages) {
+      p.config = pkg.pageConfigs.find((it) => it.dir === p.dir)
+    }
 
     for (const sourceFile of configSourceFiles) {
       const page = pages.find((p) => {
-        return path.resolve(p.fullDir, 'route.config.ts') === path.normalize(sourceFile.compilerNode.fileName)
+        return path.resolve(p.fullPath, 'route.config.ts') === path.normalize(sourceFile.compilerNode.fileName)
       })
       if (!page) continue
       this.parseSourceFile({
@@ -42,7 +39,26 @@ export class Parser {
       })
     }
 
-    return pages
+    pkg.pages = pages
+  }
+
+  readConfigSourceFiles(options: { pkg: PackageConfig; project: Project }) {
+    const { project } = options
+    const { fullPagesPath } = options.pkg
+    project.addSourceFilesAtPaths(fullPagesPath + '/**/route.config.ts')
+    project.resolveSourceFileDependencies()
+    return project.getSourceFiles().filter((it) => it.compilerNode.fileName.endsWith('route.config.ts'))
+  }
+
+  createPages(options: { pkg: PackageConfig }) {
+    const { fullPagesPath, pagesPath } = options.pkg
+    return fs.readdirSync(fullPagesPath).map((d) => {
+      const p = new Page()
+      p.dir = d
+      p.path = path.join(pagesPath, d, 'index').replace(/\\/g, '/')
+      p.fullPath = path.resolve(fullPagesPath, d)
+      return p
+    })
   }
 
   parseSourceFile(options: { page: Page; project: Project; sourceFile: SourceFile }) {

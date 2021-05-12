@@ -1,7 +1,7 @@
-import { IPluginContext } from '@tarojs/service'
 import * as path from 'path'
-import { IConfig } from 'src/config'
 import { Project, SourceFile } from 'ts-morph'
+import { RouterCodeGenerator } from '..'
+import { PackageConfig } from '../entites/package'
 import { Page } from '../entites/page'
 import { formatPageDir } from '../util'
 
@@ -10,8 +10,8 @@ export class Generator {
   routerSourceFile: SourceFile
   targetModulePath: string
 
-  constructor(private readonly ctx: IPluginContext, private config: IConfig) {
-    this.targetModulePath = path.resolve(this.ctx.paths.nodeModulesPath, 'tarojs-router-next')
+  constructor(private readonly root: RouterCodeGenerator) {
+    this.targetModulePath = path.resolve(this.root.ctx.paths.nodeModulesPath, 'tarojs-router-next')
     const tsConfigFilePath = path.resolve(this.targetModulePath, 'tsconfig.json')
     this.project = new Project({
       tsConfigFilePath,
@@ -21,36 +21,70 @@ export class Generator {
     )
   }
 
-  start(options: { pages: Page[] }) {
+  start() {
     this.routerSourceFile.refreshFromFileSystemSync()
 
-    const methods = options.pages.map((p) => this.generateTsMethod(p)).join('\n')
-
     const methodSourceFile = this.project.createSourceFile('methods.ts', (writer) => {
-      writer.writeLine('class Router {').write(methods).writeLine('}')
-    })
-    const routerClass = this.routerSourceFile.getClass('Router')!
-    const ms = methodSourceFile.getClass('Router')!.getStaticMethods()
-    routerClass.addMethods(ms.map((m) => m.getStructure() as any))
+      writer.writeLine('class Router {')
 
-    ms.forEach((m) => {
-      console.log(`生成方法：Router.${m.getName()}`)
+      for (const pkg of this.root.packageConfigs) {
+        const methods = this.generateMethods(pkg)
+        writer.write(methods)
+      }
+
+      writer.writeLine('}')
     })
+
+    const routerClass = this.routerSourceFile.getClass('Router')!
+    const staticMembers = methodSourceFile.getClass('Router')!.getStaticMembers()
+    routerClass.addMembers(staticMembers.map((m) => m.getStructure() as any))
 
     this.routerSourceFile.emitSync()
     methodSourceFile.delete()
   }
 
-  generateTsMethod(p: Page) {
-    const { query, dir } = p
+  generateMethods(pkg: PackageConfig) {
+    pkg.pages.forEach((page) => this.generateTsMethod({ page }))
 
-    const methodName = 'to' + formatPageDir(dir)
-    const methodBody = `return Router.navigate({ url: "/pages/${dir}/index"${
-      p.query?.ext ? ', ext: ' + p.query.ext : ''
+    const filterHandler = (p: Page) => {
+      if (this.root.isWatch) return true
+      return !!p.config
+    }
+
+    if (pkg.name === 'main') {
+      pkg.methods = pkg.pages
+        .filter(filterHandler)
+        .map((p) => {
+          return `static ${p.methodName} = ${p.method}`
+        })
+        .join('\n\n')
+    } else {
+      pkg.methods = `
+      static ${pkg.name} = {
+          ${pkg.pages
+            .filter(filterHandler)
+            .map((p) => {
+              return `${p.methodName}: ${p.method}`
+            })
+            .join(',\n')}
+        }
+      `
+    }
+    return pkg.methods
+  }
+
+  generateTsMethod(options: { page: Page }) {
+    const { page } = options
+    const { query, dir } = page
+
+    page.methodName = 'to' + formatPageDir(dir)
+    const methodBody = `return Router.navigate({ url: "/${page.path}"${
+      page.query?.ext ? ', ext: ' + page.query.ext : ''
     } }, options)`
 
     if (!query) {
-      return `static ${methodName}(options?: NavigateOptions){${methodBody}}`
+      page.method = `function (options?: NavigateOptions){${methodBody}}`
+      return page
     }
 
     const optionsType = ['NavigateOptions']
@@ -74,6 +108,7 @@ export class Generator {
       }
     }
 
-    return `static ${methodName}(options${optionsOptional ? '?' : ''}: ${optionsType.join(' & ')}){${methodBody}}`
+    page.method = `function (options${optionsOptional ? '?' : ''}: ${optionsType.join(' & ')}){${methodBody}}`
+    return page
   }
 }

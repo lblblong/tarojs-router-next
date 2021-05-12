@@ -103,6 +103,7 @@ const Index: FC = () => {
       >
         跳转页面携带数据、参数
       </Button>
+
       <View>路由中间件</View>
       <Button
         type="primary"
@@ -115,6 +116,18 @@ const Index: FC = () => {
       <View>Class页面</View>
       <Button type="primary" onClick={onClassDemo}>
         Class页面使用示例
+      </Button>
+
+      <View>分包路由</View>
+      <Button
+        type="primary"
+        onClick={() => {
+          Router.packageA.toCat({
+            params: { id: 11 },
+          })
+        }}
+      >
+        前往分包页面
       </Button>
     </View>
   )

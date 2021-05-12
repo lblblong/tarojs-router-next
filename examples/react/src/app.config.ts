@@ -9,10 +9,18 @@ export default {
     'pages/login/index',
     'pages/class-demo/index',
   ],
+  subpackages: [
+    {
+      name: 'packageA',
+      root: 'packageA',
+      pagesPath: 'packageA/pages',
+      pages: ['pages/cat/index', 'pages/dog/index'],
+    }
+  ],
   window: {
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#fff',
     navigationBarTitleText: 'WeChat',
-    navigationBarTextStyle: 'black'
-  }
+    navigationBarTextStyle: 'black',
+  },
 }
