@@ -20,7 +20,8 @@ export class RouterCodeGenerator {
   isWatch: boolean
 
   constructor(public readonly ctx: IPluginContext, public config: IConfig) {
-    this.isWatch = this.ctx.runOpts.options.isWatch
+    this.config = Object.assign({ watch: true }, this.config)
+    this.isWatch = config.watch && this.ctx.runOpts.options.isWatch
     this.initAppConfig()
     this.initPackageConfigs()
     this.parser = new Parser(this)
@@ -54,14 +55,25 @@ export class RouterCodeGenerator {
       pagesConfig: this.appConfig.pages,
       pagesPath: 'pages',
     })
-    const subPackages = (this.appConfig.subpackages || this.appConfig.subPackages || []).map((it) =>
-      createPackage({
-        name: it.name,
-        pagesConfig: it.pages,
-        pagesPath: it.pagesPath,
-        root: it.root,
+    const subPackages = (this.appConfig.subpackages || this.appConfig.subPackages || [])
+      .filter((it) => {
+        if (!it.pagesPath || !it.name) {
+          this.ctx.helper.printLog(
+            processTypeEnum.WARNING,
+            `请为分包 ${it.root} 配置 pagesPath 和 name 字段，请参考：http://lblblib.gitee.io/tarojs-router-next/guide/quike/subpackage`
+          )
+          return false
+        }
+        return true
       })
-    )
+      .map((it) =>
+        createPackage({
+          name: it.name,
+          pagesConfig: it.pages,
+          pagesPath: it.pagesPath,
+          root: it.root,
+        })
+      )
     this.packageConfigs = [mainPackage, ...subPackages]
   }
 

@@ -1,6 +1,6 @@
 ---
 title: 路由跳转
-order: 2
+order: 3
 group:
   title: 快速开始
 ---

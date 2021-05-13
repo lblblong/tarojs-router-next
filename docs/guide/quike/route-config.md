@@ -1,6 +1,6 @@
 ---
 title: 路由配置
-order: 6
+order: 7
 group:
   title: 快速开始
 ---

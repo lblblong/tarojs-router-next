@@ -1,6 +1,6 @@
 ---
 title: 同步的路由方法
-order: 4
+order: 5
 group:
   title: 快速开始
 ---

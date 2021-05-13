@@ -1,6 +1,6 @@
 ---
 title: 路由中间件
-order: 5
+order: 6
 group:
   title: 快速开始
 ---

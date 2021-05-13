@@ -13,8 +13,6 @@ group:
 $ npm install --save tarojs-router-next
 ```
 
-***Tip: 2.1.0版本后无需在 app.ts 调用 tarojs-router-next/register***
-
 ## 安装路由方法自动生成插件
 
 ```shell

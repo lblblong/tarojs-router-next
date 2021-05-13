@@ -1,6 +1,6 @@
 ---
 title: 路由传参
-order: 3
+order: 4
 group:
   title: 快速开始
 ---
