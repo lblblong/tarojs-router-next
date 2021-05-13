@@ -69,7 +69,7 @@ tarojs-router-next 允许直接传递一个对象给 `params`，它会把 `param
 
 ![](http://lblblib.gitee.io/tarojs-router-next/images/code2.gif)
 
-**3. 路由方法是异步的，页面通过 `EventCannal` 通信，事件的回调方法可读性差、耦合度高、只能在回调内部处理异常**
+**3. 路由方法是异步的，页面通过 `EventChannel` 通信，事件的回调方法可读性差、耦合度高、只能在回调内部处理异常**
 
 tarojs-router-next 的路由跳转会返回一个 `Promise`，可以用 `async/await` 写出同步代码，详细参考 [同步的路由方法](http://lblblib.gitee.io/tarojs-router-next/guide/quike/sync-router)
 
@@ -81,14 +81,14 @@ tarojs-router-next 的路由跳转会返回一个 `Promise`，可以用 `async/a
 
 ## 平台与框架支持
 
-#### 框架支持
+#### 框架
 支持所有 `Taro` 可支持的框架（`React`、`Vue`、`Vue3`、`Nerv`）
 
-#### 小程序支持
+#### 小程序
 理论上支持所有 `Taro` 可支持的小程序平台，目前已在 `微信小程序`、`QQ小程序`、`支付宝小程序` 测试通过
 
-#### H5 支持
+#### H5
 支持
 
-#### React Native 支持
+#### React Native
 暂不支持
