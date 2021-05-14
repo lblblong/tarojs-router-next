@@ -17,11 +17,15 @@ module.exports = {
       name: '👌 性能优化',
     },
     {
-      value: 'build & ci',
-      name: '📦 构建与CI修改',
+      value: 'build',
+      name: '📦 构建过程修改',
     },
     {
-      value: 'doc',
+      value: 'ci',
+      name: '📦 CI修改',
+    },
+    {
+      value: 'docs',
       name: '📖 文档更新',
     },
     {

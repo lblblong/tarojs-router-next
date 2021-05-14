@@ -9,9 +9,13 @@
     "clean": "lerna clean",
     "doc:serve": "dumi dev",
     "doc:build": "dumi build",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "prepare": "husky install"
   },
   "devDependencies": {
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "@commitlint/prompt-cli": "^12.1.4",
     "@tarojs/service": "^3.2.1",
     "@tarojs/taro": "^3.2.1",
     "@types/fs-extra": "^9.0.9",
@@ -22,8 +26,8 @@
     "@types/webpack": "^4.41.26",
     "@types/webpack-dev-server": "^3.11.3",
     "@umijs/plugin-analytics": "^0.2.2",
-    "commitizen": "^4.2.3",
     "color-string": "^1.5.5",
+    "commitizen": "^4.2.3",
     "cz-conventional-changelog": "^3.3.0",
     "cz-customizable": "^6.3.0",
     "dumi": "^1.1.14",
@@ -32,6 +36,7 @@
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-react": "^7.8.2",
     "eslint-plugin-react-hooks": "^1.6.1",
+    "husky": "^6.0.0",
     "lerna": "^4.0.0",
     "release-it": "^14.5.0",
     "rimraf": "^3.0.2",
