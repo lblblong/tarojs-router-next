@@ -28,11 +28,13 @@ export class RouterCodeGenerator {
     this.generator = new Generator(this)
   }
 
+  /** 读取 app.config.ts 信息 */
   initAppConfig() {
     this.appConfigPath = this.ctx.helper.resolveMainFilePath(path.resolve(this.ctx.paths.sourcePath, './app.config'))
     this.appConfig = this.ctx.helper.readConfig(this.appConfigPath)
   }
 
+  /** 读取 app.config.ts 中主包和分包信息 */
   initPackageConfigs() {
     const createPackage = (options: { name: string; pagesPath: string; root: string; pagesConfig: string[] }) => {
       const pkg = new PackageConfig()
@@ -77,6 +79,7 @@ export class RouterCodeGenerator {
     this.packageConfigs = [mainPackage, ...subPackages]
   }
 
+  /** 监听 taro-cli 的 BuildStart 生命周期事件触发路由方法生成 */
   listenBuildStart() {
     this.ctx.onBuildStart(() => {
       this.start()
@@ -85,6 +88,7 @@ export class RouterCodeGenerator {
     return this
   }
 
+  /** 注册 taro router-gen 命名 */
   registerCommand() {
     const { ctx } = this
     ctx.registerCommand({
@@ -102,6 +106,7 @@ export class RouterCodeGenerator {
     return this
   }
 
+  /** 监听 pages 下文件变化重新生成路由方法 */
   watch() {
     const { ctx } = this
     this.ctx.helper.printLog(processTypeEnum.REMIND, '正在监听页面变化自动生成 Router.to...')
@@ -144,6 +149,7 @@ export class RouterCodeGenerator {
     }
   }
 
+  /** 打印路由方法到控制台，仅 watch 模式打印 */
   printMethods() {
     if (!this.isWatch) return
     for (const pkg of this.packageConfigs) {

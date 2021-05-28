@@ -46,12 +46,14 @@ export class Generator {
   generateMethods(pkg: PackageConfig) {
     pkg.pages.forEach((page) => this.generateTsMethod({ page }))
 
+    // 生产模式只为已注册的页面生成
     const filterHandler = (p: Page) => {
       if (this.root.isWatch) return true
       return !!p.config
     }
 
     if (pkg.name === 'main') {
+      // 主包直接挂载为 Router 类静态方法
       pkg.methods = pkg.pages
         .filter(filterHandler)
         .map((p) => {
@@ -59,6 +61,7 @@ export class Generator {
         })
         .join('\n\n')
     } else {
+      // 子包路由方法挂载在 Router.[包名] 下
       pkg.methods = `
       static ${pkg.name} = {
           ${pkg.pages
