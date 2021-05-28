@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - master
+    paths:
+      - 'docs/**'
+      - 'public/**'
+      - '.umirc.ts'
 
 jobs:
   deploy:
