@@ -145,9 +145,10 @@ export class RouterCodeGenerator {
   }
 
   printMethods() {
+    if (!this.isWatch) return
     for (const pkg of this.packageConfigs) {
       for (const page of pkg.pages) {
-        if (!this.isWatch && !page.config) continue
+        if (!page.config) continue
         this.ctx.helper.printLog(
           processTypeEnum.GENERATE,
           `Router.${pkg.name === 'main' ? '' : pkg.name + '.'}${page.methodName}`
