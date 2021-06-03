@@ -55,14 +55,20 @@ export class Parser {
   /** 为传入包页面路径下所有目录生成 Page 配置对象 */
   createPages(options: { pkg: PackageConfig }) {
     const { fullPagesPath, pagesPath } = options.pkg
-    return fs.readdirSync(fullPagesPath).map((d) => {
-      const p = new Page()
-      p.dir = d
-      // 生成跳转路径 pages/xx/xx
-      p.path = path.join(pagesPath, d, 'index').replace(/\\/g, '/')
-      p.fullPath = path.resolve(fullPagesPath, d)
-      return p
-    })
+    return (
+      fs
+        .readdirSync(fullPagesPath)
+        // 过滤一些非页面文件夹
+        .filter((d) => this.root.config.ignore.indexOf(d) === -1)
+        .map((d) => {
+          const p = new Page()
+          p.dir = d
+          // 生成跳转路径 pages/xx/xx
+          p.path = path.join(pagesPath, d, 'index').replace(/\\/g, '/')
+          p.fullPath = path.resolve(fullPagesPath, d)
+          return p
+        })
+    )
   }
 
   /** 解析 route.config.ts 导出的 Params、Data、Ext */

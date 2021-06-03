@@ -20,7 +20,7 @@ export class RouterCodeGenerator {
   isWatch: boolean
 
   constructor(public readonly ctx: IPluginContext, public config: IConfig) {
-    this.config = Object.assign({ watch: true }, this.config)
+    this.config = Object.assign({ watch: true, ignore: ['.DS_Store'] }, this.config)
     this.isWatch = this.config.watch && this.ctx.runOpts.options.isWatch
     this.initAppConfig()
     this.initPackageConfigs()
