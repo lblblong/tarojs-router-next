@@ -21,7 +21,7 @@ export class RouterCodeGenerator {
 
   constructor(public readonly ctx: IPluginContext, public config: IConfig) {
     this.config = Object.assign({ watch: true, ignore: ['.DS_Store'] }, this.config)
-    this.isWatch = this.config.watch && this.ctx.runOpts.options.isWatch
+    this.isWatch = this.config.watch && (this.ctx.runOpts.options.isWatch || this.ctx.runOpts.options.watch)
     this.initAppConfig()
     this.initPackageConfigs()
     this.parser = new Parser(this)
