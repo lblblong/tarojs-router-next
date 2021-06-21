@@ -1,3 +1,3 @@
 export default {
-  navigationBarTitleText: '分包页面'
+  navigationBarTitleText: '分包页面-cat'
 }

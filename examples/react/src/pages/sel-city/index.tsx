@@ -1,4 +1,5 @@
 import { Button, View } from '@tarojs/components'
+import Taro from '@tarojs/taro'
 import React, { FC } from 'react'
 import { Router } from 'tarojs-router-next'
 import './index.css'
@@ -37,6 +38,26 @@ const Index: FC = () => {
         }}
       >
         取消选择
+      </Button>
+
+      <Button
+        onClick={async () => {
+          try {
+            const res = await Router.toSelCity()
+            Taro.showModal({
+              title: '数据',
+              content: JSON.stringify(res),
+            })
+          } catch (err) {
+            console.log(err)
+            Taro.showModal({
+              title: '提示',
+              content: '用户取消选择',
+            })
+          }
+        }}
+      >
+        再选择城市
       </Button>
     </View>
   )

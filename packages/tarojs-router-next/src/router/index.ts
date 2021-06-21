@@ -1,13 +1,13 @@
-import Taro, { getCurrentInstance } from '@tarojs/taro'
+import Taro, { Current, getCurrentInstance } from '@tarojs/taro'
 import { ROUTE_KEY } from '../constants'
 import { NoPageException } from '../exception/no-page'
 import { compose } from '../lib/compose'
 import { getMiddlewares } from '../middleware'
 import { PageData } from '../page-data'
-import { formatPath, platformPageId } from '../util'
-import { Route, NavigateOptions, NavigateType } from './type'
+import { formatPath } from '../util'
+import { NavigateOptions, NavigateType, Route } from './type'
 
-export { NavigateType, NavigateOptions, Route } from './type'
+export { NavigateOptions, NavigateType, Route } from './type'
 
 export class Router {
   /**
@@ -18,8 +18,30 @@ export class Router {
   static async navigate<T = Taro.General.CallbackResult>(route: Route, options?: NavigateOptions): Promise<T> {
     options = { ...{ type: NavigateType.navigateTo, params: {} }, ...options }
     options.params = Object.assign({}, options.params)
-    if (options.params![ROUTE_KEY]) throw Error('params 中 route_key 为保留字段，请用其他名称')
-    const route_key = (options.params![ROUTE_KEY] = Date.now() + '')
+    const route_key = Date.now() + ''
+
+    Object.defineProperties(Current, {
+      page: {
+        set: function (page) {
+          if (page === undefined || page === null) {
+            this._page = page
+            return
+          }
+          if (!page[ROUTE_KEY]) {
+            const originOnUnload = page.onUnload
+            page.onUnload = function () {
+              originOnUnload && originOnUnload.apply(this)
+              PageData.emitBack(route_key)
+            }
+            page[ROUTE_KEY] = route_key
+          }
+          this._page = page
+        },
+        get: function () {
+          return this._page
+        },
+      },
+    })
 
     if (options.data) {
       PageData.setPageData(route_key, options.data)
@@ -32,22 +54,6 @@ export class Router {
     const fn = compose(middlewares)
     await fn(context)
     const url = formatPath(route, options.params!)
-
-    const page_id = platformPageId(url)
-    Taro.eventCenter.once(`${page_id}.onReady`, () => {
-      const { page, router } = Taro.getCurrentInstance()
-      if (!page) return
-      const originOnUnload = page.onUnload
-      page.onUnload = function () {
-        // 兼容 h5
-        const instance = Taro.getCurrentInstance()
-        instance.page = page
-        instance.router = router
-
-        originOnUnload.apply(this)
-        PageData.emitBack()
-      }
-    })
 
     return new Promise((res, rej) => {
       PageData.setPagePromise(route_key, { res, rej })
@@ -97,8 +103,6 @@ export class Router {
   /** 获取上一个页面携带过来的参数 */
   static getParams() {
     const instance = getCurrentInstance()
-    const params = Object.assign({}, instance.router?.params)
-    delete params.route_key
-    return params
+    return Object.assign({}, instance.router?.params)
   }
 }
