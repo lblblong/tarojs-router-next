@@ -36,7 +36,6 @@ export default {
 
 ```
 
-
 ## 关于路由方法生成
 
 开发模式会为所有 `pages` 下的页面生成路由方法，而生产模式仅为 `app.config.ts/js` 中注册的页面生成路由方法
@@ -50,3 +49,8 @@ export default {
 ## pages/xxx/index 页面不存在
 
 出现这种情况一般是因为页面文件名非 `index.tsx / index.jsx / index.vue`，建议修改页面文件名为 `index`
+
+## 自定义了 h5 路由路径，是否支持
+
+自定义了 h5 端路由路径后，同步的路由方法将无法生效。
+其他问题暂未可知，能不自定义 h5 路径尽量不要自定义。
