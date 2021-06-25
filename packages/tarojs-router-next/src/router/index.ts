@@ -20,6 +20,7 @@ export class Router {
     options.params = Object.assign({}, options.params)
     const route_key = Date.now() + ''
 
+    Current['_page'] = Current.page
     Object.defineProperties(Current, {
       page: {
         set: function (page) {
