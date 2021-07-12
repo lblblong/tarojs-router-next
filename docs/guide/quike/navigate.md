@@ -34,7 +34,7 @@ Router.navigate({ url: '/pages/login/index' })
 // 带参跳转
 Router.navigate({ url: '/pages/login/index' }, { params: { username: 'router' } })
 // 关闭当前页面，重定向到 login 页面
-Router.navigate({ url: '/pages/login/index', type: NavigateType.redirectTo })
+Router.navigate({ url: '/pages/login/index' }, { type: NavigateType.redirectTo })
 ```
 
 跳转类型参考：[NavigateType](/api/other#navigatetype)
