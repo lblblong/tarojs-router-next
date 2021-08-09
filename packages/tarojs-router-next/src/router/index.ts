@@ -48,7 +48,7 @@ export class Router {
       PageData.setPageData(route_key, options.data)
     }
 
-    const context = { route, params: options?.params }
+    const context = { route, type: options.type, params: options?.params, data: options?.data }
 
     const middlewares = getMiddlewares(context)
 
