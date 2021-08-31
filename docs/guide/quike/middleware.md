@@ -11,9 +11,13 @@ group:
 
 ![](/tarojs-router-next/images/koa.png)
 
-koa 是一个 web 后端框架，用户发起一个 http 请求给 koa 启动的服务，请求一层层进入 koa 的中间件，变成响应后再一层层出来丢给用户的客户端（app、浏览器）
+koa 是一个后端框架，在 koa 中，用户发起一个 http 请求给 koa 启动的服务，请求一层层进入 koa 的中间件，最终进入到一段 `具体的逻辑`（数据库操作或其他），然后再原路返回一段响应给用户。
 
-换到这里就是，用户发起一个请求（进入页面的请求，包含目标页面的 url，ext 数据），请求一层层进入注册的中间件，然后再一层层的出来最终进入到目标页面
+换到这里就是，用户发起一个请求（进入页面的请求，包含目标页面的 url，ext 数据），请求一层层进入注册的中间件，然后进入到最后一个中间件：`跳转到目标页面的中间件`。然后再原路返回。
+
+## 跳转到目标页面的中间件
+
+在 tarojs-router-next 的路由跳转中，有一个隐藏的中间件：`跳转到目标页面的中间件`，它会默认添加在当前路由要执行的中间件的最后一个 `[...你的中间件, 跳转到目标页面的中间件]`，它即代表了 `目标页面`。
 
 ## 通过一个示例理解
 
@@ -26,23 +30,22 @@ import { Middleware, registerMiddlewares } from 'tarojs-router-next'
 export const M1: Middleware = async (ctx, next) => {
   console.log('第一个中间件执行：', ctx.route.url)
   await next() // 执行下一个中间件
-  console.log('第一个中间件执行结束')
 }
 
 export const M2: Middleware = async (ctx, next) => {
   console.log('第二个中间件执行：', ctx.route.url)
   await next() // 执行下一个中间件
-  console.log('第二个中间件执行结束')
 }
 
 export const M3: Middleware = async (ctx, next) => {
   console.log('第三个中间件执行：', ctx.route.url)
   await next() // 执行下一个中间件
-  console.log('第三个中间件执行结束')
 }
 
 // 注册路由中间件
 registerMiddlewares([M1, M2, M3])
+
+// 其实会执行四个中间件 [M1, M2, M3, 跳转到目标页面的中间件]
 ```
 
 然后在 `/pages/home/index` 页进行跳转到 `/pages/me/index` 页面
@@ -69,10 +72,21 @@ export default function Page() {
 第一个中间件执行：/pages/me/index
 第二个中间件执行：/pages/me/index
 第三个中间件执行：/pages/me/index
-第三个中间件执行结束
-第二个中间件执行结束
-第一个中间件执行结束
 成功进入了页面：me
+```
+
+现在我们想要在第二个中间件中判断用户是否登录，如果未登录就不要进入 me 页面，则只需要进行一些判断即可：
+
+```typescript
+export const M2: Middleware = async (ctx, next) => {
+  console.log('第二个中间件执行：', ctx.route.url)
+  if (hasLogin()) {
+    await next() // 执行下一个中间件
+  } else {
+    // 只要不执行 next，不进入后面的中间件即可
+    console.log('请登录')
+  }
+}
 ```
 
 ## 注册路由中间件
@@ -162,8 +176,8 @@ export const AuthCheck: Middleware<{ mustLogin: boolean }> = async (ctx, next) =
 
       if (confirm) Router.toLogin()
 
-      // 打断路由执行
-      throw Error('该页面必须要登陆：' + ctx.route.url)
+      // 直接返回，不执行 next 即可打断中间件向下执行
+      return
     }
   }
 
