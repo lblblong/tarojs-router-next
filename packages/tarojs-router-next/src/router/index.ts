@@ -51,14 +51,8 @@ export class Router {
     const context = { route, type: options.type, params: options.params, data: options.data }
 
     const middlewares = getMiddlewares(context)
-
-    const fn = compose(middlewares)
-    await fn(context)
-    const url = formatPath(route, options.params!)
-
-    return new Promise((res, rej) => {
-      PageData.setPagePromise(route_key, { res, rej })
-
+    const url = formatPath(route, options!.params!)
+    middlewares.push(async (ctx, next) => {
       switch (options!.type) {
         case NavigateType.reLaunch:
           Taro.reLaunch({ url })
@@ -73,6 +67,14 @@ export class Router {
           Taro.navigateTo({ url })
           break
       }
+      next()
+    })
+
+    return new Promise(async (res, rej) => {
+      PageData.setPagePromise(route_key, { res, rej })
+
+      const fn = compose(middlewares)
+      await fn(context)
     })
   }
 

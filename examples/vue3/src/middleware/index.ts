@@ -1,5 +1,4 @@
-import { registerMiddlewares } from 'tarojs-router-next'
-import { AuthCheck } from './auth-check'
-import { FetchInfo } from './fetch-info'
+// 注意引入顺序，该顺序是中间件的执行顺序
+import './auth-check'
+import './fetch-info'
 
-registerMiddlewares([AuthCheck, FetchInfo])

@@ -1,12 +1,10 @@
 import Taro from '@tarojs/taro'
-import { Middleware } from 'tarojs-router-next'
+import { registerMiddleware } from 'tarojs-router-next'
 import { UserStore } from '../store/user'
 import { sleep } from '../utils'
 
-export const FetchInfo: Middleware<{ mustLogin: boolean }> = async (ctx, next) => {
-  const token = Taro.getStorageSync('token')
-
-  if (token && !UserStore.userinfo) {
+registerMiddleware(
+  async (_, next) => {
     // 请求用户信息
     Taro.showLoading({ title: '请求用户信息中' })
     await sleep()
@@ -15,7 +13,12 @@ export const FetchInfo: Middleware<{ mustLogin: boolean }> = async (ctx, next) =
       name: 'lblblong',
     }
     Taro.hideLoading()
+    await next()
+  },
+  // 中间件注册条件
+  (_) => {
+    // 仅当用户已登录且用户信息为空时才获取用户信息
+    const token = Taro.getStorageSync('token')
+    return token && !UserStore.userinfo
   }
-
-  await next()
-}
+)
