@@ -15,7 +15,7 @@ export class Router {
    * @param route 目标路由对象
    * @param options 跳转选项
    */
-  static async navigate<T = Taro.General.CallbackResult>(route: Route, options?: NavigateOptions): Promise<T> {
+  static async navigate<T = any>(route: Route, options?: NavigateOptions): Promise<T> {
     options = { ...{ type: NavigateType.navigateTo, params: {} }, ...options }
     options.params = Object.assign({}, options.params)
     const route_key = Date.now() + ''
