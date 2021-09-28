@@ -140,6 +140,7 @@ export class RouterCodeGenerator {
       this.parser.start()
       this.generator.start()
       this.printMethods()
+      this.ctx.helper.printLog(processTypeEnum.REMIND, '生成完成')
     } catch (err) {
       this.ctx.helper.printLog(
         processTypeEnum.ERROR,
