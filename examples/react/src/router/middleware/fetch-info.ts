@@ -1,7 +1,7 @@
 import Taro from '@tarojs/taro'
 import { registerMiddleware } from 'tarojs-router-next'
-import { UserStore } from '../store/user'
-import { sleep } from '../utils'
+import { UserStore } from '../../store/user'
+import { sleep } from '../../utils'
 
 registerMiddleware(
   async (_, next) => {

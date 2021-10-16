@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import './app.css'
-import './middleware'
+import './router'
 
 const App = createApp({
   onShow(options) {},
