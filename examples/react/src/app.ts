@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import './app.css'
-import './middleware'
+import './router'
 
 class App extends Component {
   componentDidMount() {}

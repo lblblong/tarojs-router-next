@@ -1,4 +1,5 @@
 import Taro, { Current, getCurrentInstance } from '@tarojs/taro'
+import { execRouterBackListener } from '../router-back-listener'
 import { ROUTE_KEY } from '../constants'
 import { NoPageException } from '../exception/no-page'
 import { compose } from '../lib/compose'
@@ -33,6 +34,7 @@ export class Router {
             page.onUnload = function () {
               originOnUnload && originOnUnload.apply(this)
               PageData.emitBack(route_key)
+              setTimeout(() => execRouterBackListener(route))
             }
             page[ROUTE_KEY] = route_key
           }

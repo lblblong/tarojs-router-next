@@ -1,6 +1,6 @@
 {
   "name": "vue3",
-  "version": "2.5.3",
+  "version": "2.6.0",
   "private": true,
   "description": "tarojs-router-next-vue3",
   "templateInfo": {
@@ -39,7 +39,7 @@
     "@tarojs/components": "3.2.1",
     "@tarojs/runtime": "3.2.1",
     "@tarojs/taro": "3.2.1",
-    "tarojs-router-next": "^2.5.3",
+    "tarojs-router-next": "^2.6.0",
     "vue": "^3.0.0"
   },
   "devDependencies": {
@@ -55,7 +55,7 @@
     "eslint-config-taro": "3.2.1",
     "eslint-plugin-vue": "^7.0.0",
     "stylelint": "9.3.0",
-    "tarojs-router-next-plugin": "^2.5.3",
+    "tarojs-router-next-plugin": "^2.6.0",
     "typescript": "^4.1.0",
     "vue-loader": "^16.0.0-beta.8"
   }
