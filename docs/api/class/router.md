@@ -98,3 +98,22 @@ try {
 参数：
 
 1. `result` 返回的数据，可以为任意类型，但当 `result` 是 `Error` 的实例时，则是往上一个页面抛出异常
+
+
+## setBackResult( result: any )
+
+设置要返回到上一个页面的数据，适用于非 `Router.back` 方法触发页面回退的场景，通过这个方法设置返回数据后，用户点击物理按键返回也会带数据到上一个页面
+
+```typescript
+Router.setBackResult({ id: 1, name: '深圳' }) // 设置返回到上一个页面的数据
+Router.setBackResult(new Error('用户取消选择')) // 当数据是 Error 实例时，则是抛出一个异常到上一个页面
+```
+
+该方法与 Router.back 方法混用时注意以下情况：
+
+```typescript
+Router.setBackResult(123)
+Router.back() // 虽然 back 方法没有带参，但是也会返回 123 到上一个页面
+
+Router.back(234)  // 带参之后则会覆盖上面设置的值，返回数据是 234
+```
