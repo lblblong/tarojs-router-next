@@ -1,3 +1,6 @@
+## v2.7.0 (2021-10-25)
+- 新增设置页面返回数据方法：[setBackResult](http://lblblib.gitee.io/tarojs-router-next/api/class/router#setbackresult-result-any-)
+
 ## v2.6.0 (2021-10-16)
 - 新增全局监听路由返回功能：registerRouterBackListener
 
