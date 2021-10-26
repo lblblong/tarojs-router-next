@@ -101,7 +101,7 @@ export class Router {
    * 设置页面返回的数据
    * 当物理键返回和左上角返回也需要带数据时会使用到
    */
-  setBackResult(result: any) {
+  static setBackResult(result: any) {
     PageData.setBackResult(result)
   }
 
