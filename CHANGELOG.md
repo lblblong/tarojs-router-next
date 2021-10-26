@@ -1,3 +1,6 @@
+## v2.7.1 (2021-10-26)
+- 修复 [setBackResult](http://lblblib.gitee.io/tarojs-router-next/api/class/router#setbackresult-result-any-) 非静态方法问题
+
 ## v2.7.0 (2021-10-25)
 - 新增设置页面返回数据方法：[setBackResult](http://lblblib.gitee.io/tarojs-router-next/api/class/router#setbackresult-result-any-)
 
