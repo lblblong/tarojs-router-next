@@ -9,9 +9,7 @@
 - 自动生成带参数类型提示的路由方法
 - 允许传递任意类型、任意大小的参数数据
 - 同步的路由方法调用
-- koa体验一致的路由中间件
-
-
+- koa 体验一致的路由中间件
 
 ## 快速开始
 
@@ -19,14 +17,11 @@
 
 [Demo（代码）](https://github.com/lblblong/tarojs-router-next/tree/master/examples)，[Demo（微信开发者工具打开）](https://developers.weixin.qq.com/s/2CcFkJmo7Dpb)
 
-
-
 #### 安装核心依赖
 
 ```shell
 $ npm install --save tarojs-router-next
 ```
-
 
 #### 安装路由方法自动生成插件
 
@@ -42,16 +37,12 @@ const config = {
 }
 ```
 
-
-
 ## 解决什么问题
 
 1. 路由跳转的页面 url 没有类型提示容易输错
 2. 路由传参需要手动拼接参数、无法携带任意类型、任意大小的数据
 3. 路由方法是异步的，页面通过 `EventChannel` 通信，事件的回调方法可读性差、耦合度高、只能在回调内部处理异常
 4. 路由跳转的鉴权等实现起来比较麻烦
-
-
 
 ## 如何解决
 
@@ -77,18 +68,29 @@ tarojs-router-next 的路由跳转会返回一个 `Promise`，可以用 `async/a
 
 自己实现路由的鉴权是比较麻烦的事情，而 tarojs-router-next 提供非常易于理解的路由中间件功能，详细参考 [路由中间件](http://lblblib.gitee.io/tarojs-router-next/guide/quike/middleware)
 
-
-
 ## 平台与框架支持
 
 #### 框架
+
 支持所有 `Taro` 可支持的框架（`React`、`Vue`、`Vue3`、`Nerv`）
 
 #### 小程序
+
 理论上支持所有 `Taro` 可支持的小程序平台，目前已在 `微信小程序`、`QQ小程序`、`支付宝小程序` 测试通过
 
 #### H5
+
 支持
 
 #### React Native
+
 暂不支持
+
+## 友情推荐
+
+#### Taroify
+
+地址：https://github.com/mallfoundry/taroify
+
+Taroify 是移动端组件库 Vant 的 Taro 版本，两者基于相同的视觉规范，提供一致的 API 接口，助力开发者快速搭建小程序应用。
+
