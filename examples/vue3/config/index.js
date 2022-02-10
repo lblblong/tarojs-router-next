@@ -9,7 +9,21 @@ const config = {
   },
   sourceRoot: 'src',
   outputRoot: 'dist',
-  plugins: ['tarojs-router-next-plugin'],
+  plugins: [
+    'tarojs-router-next-plugin',
+    // wsl 下同步 dist 目录到 c 盘，非 wsl 请忽略报错
+    [
+      'taro-plugin-sync-in-wsl',
+      {
+        weapp: [
+          {
+            sourcePath: `dist`,
+            outputPath: `/mnt/c/tarojs-router-next-vue3`,
+          },
+        ],
+      },
+    ],
+  ],
   defineConstants: {},
   copy: {
     patterns: [],
