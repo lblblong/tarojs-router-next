@@ -43,7 +43,7 @@
     "@tarojs/taro": "3.4.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
-    "tarojs-router-next": "^2.7.1"
+    "tarojs-router-next": "workspace:*"
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",
@@ -61,7 +61,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "stylelint": "9.3.0",
     "taro-plugin-sync-in-wsl": "^2.0.1",
-    "tarojs-router-next-plugin": "^2.7.1",
+    "tarojs-router-next-plugin": "workspace:*",
     "typescript": "^4.1.0"
   }
 }

@@ -39,7 +39,7 @@
     "@tarojs/components": "3.4.1",
     "@tarojs/runtime": "3.4.1",
     "@tarojs/taro": "3.4.1",
-    "tarojs-router-next": "^2.7.1",
+    "tarojs-router-next": "workspace:*",
     "vue": "^3.0.0"
   },
   "devDependencies": {
@@ -55,7 +55,7 @@
     "eslint-config-taro": "3.4.1",
     "eslint-plugin-vue": "^7.0.0",
     "stylelint": "9.3.0",
-    "tarojs-router-next-plugin": "^2.7.1",
+    "tarojs-router-next-plugin": "workspace:*",
     "typescript": "^4.1.0",
     "vue-loader": "^16.0.0-beta.8"
   }
