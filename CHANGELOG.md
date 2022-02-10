@@ -1,3 +1,7 @@
+## v2.7.2 (2022-02-10)
+- 更新 taro 依赖版本至 3.4.1
+- 切换包管理为 pnpm
+
 ## v2.7.1 (2021-10-26)
 - 修复 [setBackResult](http://lblblib.gitee.io/tarojs-router-next/api/class/router#setbackresult-result-any-) 非静态方法问题
 
