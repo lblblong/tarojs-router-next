@@ -1,14 +1,5 @@
-import Taro from '@tarojs/taro'
 import QueryString from 'query-string'
-import { ROUTE_KEY } from '../constants'
 import { Route } from '../router/type'
-
-export function getCurrentRouteKey(): string {
-  if (!Taro.Current.page) {
-    return ''
-  }
-  return Taro.Current.page[ROUTE_KEY]
-}
 
 export function formatPath(route: Route, params: object) {
   let url = route.url

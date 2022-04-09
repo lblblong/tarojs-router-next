@@ -1,4 +1,4 @@
-import { getCurrentRouteKey } from '../util'
+import { getCurrentRouteKey } from '../func'
 
 export class PageData {
   private static pageData: Map<string, any> = new Map()

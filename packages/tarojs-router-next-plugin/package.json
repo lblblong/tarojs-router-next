@@ -1,6 +1,6 @@
 {
   "name": "tarojs-router-next-plugin",
-  "version": "2.7.2",
+  "version": "2.8.0",
   "main": "index.js",
   "homepage": "https://github.com/lblblong/tarojs-router-next",
   "scripts": {
@@ -8,8 +8,8 @@
     "serve": "tsc -w",
     "prod": "tsc",
     "clean": "rimraf dist",
-    "release": "release-it",
-    "postinstall": "node ./bin/generate.js"
+    "postinstall": "node ./bin/generate.js",
+    "prepublishOnly": "npm run clean && npm run prod"
   },
   "dependencies": {
     "ts-morph": "^10.0.2"
@@ -22,13 +22,5 @@
   ],
   "author": "lblblong",
   "license": "MIT",
-  "release-it": {
-    "github": {
-      "release": true
-    },
-    "npm": {
-      "skipChecks": true
-    }
-  },
   "gitHead": "9f2c076f148295c8aba61e8387b547892829d88f"
 }

@@ -1,11 +1,12 @@
 import Taro, { Current, getCurrentInstance } from '@tarojs/taro'
-import { execRouterBackListener } from '../router-back-listener'
+import { isNil } from 'src/func/isNil'
 import { ROUTE_KEY } from '../constants'
 import { NoPageException } from '../exception/no-page'
+import { formatPath } from '../func'
 import { compose } from '../lib/compose'
 import { getMiddlewares } from '../middleware'
 import { PageData } from '../page-data'
-import { formatPath } from '../util'
+import { execRouterBackListener } from '../router-back-listener'
 import { NavigateOptions, NavigateType, Route } from './type'
 
 export { NavigateOptions, NavigateType, Route } from './type'
@@ -83,15 +84,22 @@ export class Router {
   /**
    * 返回上一个页面
    * @param result 返回给上一个页面的数据，如果 result 是 Error 的实例，则是抛出异常给上一个页面
+   * @param options 其他选项
    */
-  static back(result?: any) {
-    if (result) {
+  static back(
+    result?: any,
+    options?: {
+      /** 返回的页面数，如果 delta 大于现有页面数，则返回到首页。 */
+      delta?: number
+    }
+  ) {
+    if (!isNil(result)) {
       PageData.setBackResult(result)
     }
 
     const currentPages = Taro.getCurrentPages()
     if (currentPages.length > 1) {
-      return Taro.navigateBack()
+      return Taro.navigateBack(options)
     }
 
     throw new NoPageException()

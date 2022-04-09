@@ -1,6 +1,6 @@
 {
   "name": "tarojs-router-next",
-  "version": "2.7.2",
+  "version": "2.8.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "homepage": "https://github.com/lblblong/tarojs-router-next",
@@ -9,7 +9,7 @@
     "serve": "tsc -w",
     "prod": "tsc",
     "clean": "rimraf dist",
-    "release": "release-it"
+    "prepublishOnly": "npm run clean && npm run prod"
   },
   "files": [
     "dist",
@@ -19,14 +19,6 @@
   ],
   "author": "lblblong",
   "license": "MIT",
-  "release-it": {
-    "github": {
-      "release": true
-    },
-    "npm": {
-      "skipChecks": true
-    }
-  },
   "dependencies": {
     "query-string": "^7.0.0"
   },
