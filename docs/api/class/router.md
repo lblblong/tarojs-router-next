@@ -43,7 +43,7 @@ Router.toArticleEdit({ data: { title: 'taro', content: '小程序框架' } })
 参数：
 
 1. `options` 跳转选项
-   - `options.params` 传递参数，默认 `{ [key: string]: string | number | boolean | undefined  }` 类型，可以通过页面下 [route.config.ts](/guide/quike/route-config) 配置类型
+   - `options.params` 传递参数，默认 `{ [key: string]: string | number | boolean | undefined }` 类型，可以通过页面下 [route.config.ts](/guide/quike/route-config) 配置类型
    - `options.data` 传递数据，默认 `any` 类型，可以通过页面下 [route.config.ts](/guide/quike/route-config) 配置类型
    - `options.type` 跳转类型，[NavigateType](/api/other#navigatetype) 类型
 
@@ -68,11 +68,11 @@ Router.navigate({ url: '/pages/login/index' }, { type: NavigateType.redirectTo }
    - `route.url` 目标页面的 url ，`string` 类型
    - `route.ext` 附加数据，该数据是给路由中间件访问的，类似 vue-router 的 [路由元信息](https://router.vuejs.org/zh/guide/advanced/meta.html)
 2. `options` 跳转选项
-   - `options.params` 传递参数，`{ [key: string]: string | number | boolean | undefined  }` 类型
+   - `options.params` 传递参数，`{ [key: string]: string | number | boolean | undefined }` 类型
    - `options.data` 传递数据，`any` 类型
    - `options.type` 跳转类型，[NavigateType](/api/other#navigatetype) 类型
 
-## back( result? )
+## back( result?, options? )
 
 返回到上一个页面
 
@@ -90,15 +90,22 @@ Router.back(new Error('用户取消选择')) // 返回上一个页面并抛出�
 try {
   const result = await Router.navigate({ url: '/pages/sel-city/index' })
   console.log('选择城市：', result)
-} catch ( err ) {
-  console.log( err.message )
+} catch (err) {
+  console.log(err.message)
 }
+```
+
+返回多级页面：
+
+```typescript
+Router.back(undefined, { delta: 3 }) // 向上返回 3 级页面
+Router.back({ id: 1, name: '深圳' }, { delta: 3 }) // 向上返回 3 级页面，注意，这里的 result 是返回到上一个页面的
 ```
 
 参数：
 
 1. `result` 返回的数据，可以为任意类型，但当 `result` 是 `Error` 的实例时，则是往上一个页面抛出异常
-
+2. `options.delta` 返回的页面数，如果 delta 大于现有页面数，则返回到首页
 
 ## setBackResult( result: any )
 
@@ -115,5 +122,5 @@ Router.setBackResult(new Error('用户取消选择')) // 当数据是 Error 实�
 Router.setBackResult(123)
 Router.back() // 虽然 back 方法没有带参，但是也会返回 123 到上一个页面
 
-Router.back(234)  // 带参之后则会覆盖上面设置的值，返回数据是 234
+Router.back(234) // 带参之后则会覆盖上面设置的值，返回数据是 234
 ```
