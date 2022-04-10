@@ -16,7 +16,7 @@
       window.routerBase = "/tarojs-router-next";
     </script>
     <script>
-      //! umi version: 3.4.8
+      //! umi version: 3.5.20
     </script>
     <script>
       !(function () {
@@ -25,7 +25,7 @@
           r = ["light", "dark", "auto"];
         document.documentElement.setAttribute(
           "data-prefers-color",
-          e === r[2] ? (t ? r[1] : r[0]) : r.includes(e) ? e : r[0]
+          e === r[2] ? (t ? r[1] : r[0]) : r.indexOf(e) > -1 ? e : r[0]
         );
       })();
     </script>
@@ -40,7 +40,7 @@
         s.parentNode.insertBefore(hm, s);
       })();
     </script>
-    <title>registerRouterBackListener</title>
+    <title>registerRouterBackListener -</title>
   </head>
   <body>
     <div id="root"></div>
