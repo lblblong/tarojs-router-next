@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro'
-import { ROUTE_KEY } from 'src/constants'
+import { ROUTE_KEY } from '../constants'
 
 export function getCurrentRouteKey(): string {
   if (!Taro.Current.page) {
