@@ -22,5 +22,9 @@
   "dependencies": {
     "query-string": "^7.0.0"
   },
-  "gitHead": "9f2c076f148295c8aba61e8387b547892829d88f"
+  "keywords": [
+    "taro",
+    "weapp",
+    "router"
+  ]
 }
