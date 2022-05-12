@@ -1,10 +1,3 @@
----
-title: 路由跳转
-order: 3
-group:
-  title: 快速开始
----
-
 # 路由跳转
 
 在项目启动后，tarojs-router-next 会自动监听项目下 `src/pages` 的变动，为 [Router](/api/class/router) 类生成对应的路由方法，路由方法名字以 [to](/api/class/router#to-options-) 起头。
@@ -22,7 +15,7 @@ Router.toLogin({ type: NavigateType.redirectTo }) // 关闭当前页面，重定
 
 ```
 
-以上是自动生成的 [Router.to\*\*](/api/class/router#to-options-) 方法，具体参考 API 文档：[Router.to\*\*(options)](/api/class/router#to-options-) 
+以上是自动生成的 [Router.to\*\*](/api/class/router#to-options-) 方法，具体参考 API 文档：[Router.to\*\*(options)](/api/class/router#to-options-)
 
 如果禁用了路由方法的自动生成，还可以通过 [Router.navigate](/api/class/router#navigate-route-options-) 方法进行路由跳转
 

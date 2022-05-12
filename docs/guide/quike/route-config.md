@@ -1,10 +1,3 @@
----
-title: 路由配置
-order: 7
-group:
-  title: 快速开始
----
-
 # 路由配置
 
 每一个页面都可以通过文件夹下的 `route.config.ts` 文件：
@@ -15,18 +8,22 @@ group:
 通过 `route.config.ts` 导出类型定义后，可让 `Router.to**` 方法获得完备的类型提示
 
 ## route.config.ts
+
 该文件添加在页面文件夹下，比如原文件夹结构：
+
 - src/pages/index
   - index.config.ts
   - index.css
   - index.tsx
 
 增加 route.config.ts 后：
+
 - src/pages/index
   - index.config.ts
   - index.css
   - index.tsx
   - `route.config.ts`
+
 ## 定义进入该页面需要传入的 params 参数的类型
 
 在 `route.config.ts` 中导出类型定义 `Params`

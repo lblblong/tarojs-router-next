@@ -1,11 +1,3 @@
----
-title: registerRouterBackListener
-order: 3
-group:
-  order: 2
-  title: 方法
----
-
 # registerRouterBackListener
 
 注册全局路由返回监听
@@ -26,5 +18,4 @@ import { registerRouterBackListener } from 'tarojs-router-next'
 registerRouterBackListener((to, from) => {
   console.log(`全局监听页面返回：从 ${from.url} 返回到 ${to.url}`)
 })
-
 ```

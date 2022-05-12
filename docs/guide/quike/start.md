@@ -1,10 +1,3 @@
----
-title: 安装及使用
-order: 1
-group:
-  title: 快速开始
----
-
 # 安装及使用
 
 ## 安装核心依赖
@@ -18,7 +11,6 @@ $ npm install --save tarojs-router-next
 ```shell
 $ npm install --dev tarojs-router-next-plugin
 ```
-
 
 在 [编译配置(/config/index.js)](https://taro-docs.jd.com/taro/docs/config-detail/#plugins) 的 plugins 字段中引入插件：
 

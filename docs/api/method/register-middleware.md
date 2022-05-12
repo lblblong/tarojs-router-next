@@ -1,11 +1,3 @@
----
-title: registerMiddleware
-order: 1
-group:
-  order: 2
-  title: 方法
----
-
 # registerMiddleware
 
 注册路由中间件，注册的中间件按照注册顺序执行

@@ -1,8 +1,5 @@
----
-title: 介绍
----
-
 # 介绍
+
 [![](https://img.shields.io/npm/v/tarojs-router-next.svg?style=flat-square)](https://www.npmjs.com/package/tarojs-router-next)
 [![](https://img.shields.io/npm/l/tarojs-router-next.svg?style=flat-square)](https://www.npmjs.com/package/tarojs-router-next)
 [![](https://img.shields.io/npm/dt/tarojs-router-next.svg?style=flat-square)](https://www.npmjs.com/package/tarojs-router-next)
@@ -12,7 +9,8 @@ title: 介绍
 - 自动生成带参数类型提示的路由方法
 - 允许传递任意类型、任意大小的参数数据
 - 同步的路由方法调用
-- koa体验一致的路由中间件
+- koa 体验一致的路由中间件
+
 ## 解决什么问题
 
 1. 路由跳转的页面 url 没有类型提示容易输错
@@ -26,7 +24,7 @@ title: 介绍
 
 tarojs-router-next 不需要使用者手写页面 url，它会监听项目 `src/pages` 内容变化，自动为使用者生成对应的路由方法并附加到 [Router](/api/class/router) 类上，比如以下列子：
 
-左边的页面结构会生成右边的 [Router.to**](/api/class/router#to-options-) 系列方法，全都挂在 [Router](/api/class/router) 类上
+左边的页面结构会生成右边的 [Router.to\*\*](/api/class/router#to-options-) 系列方法，全都挂在 [Router](/api/class/router) 类上
 
 ![](/tarojs-router-next/images/code1.png)
 
@@ -44,17 +42,20 @@ tarojs-router-next 的路由跳转会返回一个 `Promise`，可以用 `async/a
 
 自己实现路由的鉴权是比较麻烦的事情，而 tarojs-router-next 提供非常易于理解的路由中间件功能，详细参考 [路由中间件](/guide/quike/middleware)
 
-
 ## 平台与框架支持
 
 #### 框架支持
+
 支持所有 `Taro` 可支持的框架（`React`、`Vue`、`Vue3`、`Nerv`）
 
 #### 小程序支持
+
 理论上支持所有 `Taro` 可支持的小程序平台，目前已在 `微信小程序`、`QQ小程序`、`支付宝小程序` 测试通过
 
 #### H5 支持
+
 支持
 
 #### React Native 支持
+
 暂不支持

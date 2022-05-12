@@ -1,10 +1,3 @@
----
-title: Router
-group:
-  order: 1
-  title: 类
----
-
 # Router
 
 `Router` 类是 tarojs-router-next 的核心，该类提供各种导航的静态方法，以及获取路由参数的方法。

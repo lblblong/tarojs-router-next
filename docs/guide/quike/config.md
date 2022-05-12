@@ -1,11 +1,4 @@
----
-title: 插件配置
-order: 99
-group:
-  title: 快速开始
----
-
-## 关闭自动生成 Router.to\*\* 
+## 关闭自动生成 Router.to\*\*
 
 如果要关闭自动生成 [Router.to\*\*](/api/class/router#to-options-) ，需要修改配置项 `watch` 为 `false：`
 

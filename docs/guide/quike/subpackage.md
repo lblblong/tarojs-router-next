@@ -1,10 +1,3 @@
----
-title: 分包支持
-order: 8
-group:
-  title: 快速开始
----
-
 # 分包支持
 
 tarojs-router-next 支持为分包生成路由方法，只需在 `src/app.config.ts` 或 js 文件中的分包配置加入两个字段：
