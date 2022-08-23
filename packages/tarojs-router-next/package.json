@@ -1,6 +1,6 @@
 {
   "name": "tarojs-router-next",
-  "version": "2.8.1",
+  "version": "2.9.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "homepage": "https://github.com/lblblong/tarojs-router-next",

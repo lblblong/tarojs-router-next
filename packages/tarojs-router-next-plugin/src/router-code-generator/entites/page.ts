@@ -9,5 +9,6 @@ export class Page {
   isTabbar?: boolean
   query?: PageQuery
   method?: string
+  methodType?: string
   methodName?: string
 }

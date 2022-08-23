@@ -1,6 +1,5 @@
 export class QueryMeta {
   text: string
-  optional: boolean
   name: string
 }
 

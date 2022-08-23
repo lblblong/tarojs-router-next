@@ -4,8 +4,8 @@ import { Project, SourceFile } from 'ts-morph'
 import { RouterCodeGenerator } from '..'
 import { PackageConfig } from '../entites/package'
 import { Page } from '../entites/page'
-import { extractType, extractValue } from '../util'
-import { QueryMeta } from './type'
+import { PageQuery } from '../entites/page-query'
+import { extractValue } from '../util'
 
 export class Parser {
   constructor(private readonly root: RouterCodeGenerator) {}
@@ -73,38 +73,30 @@ export class Parser {
 
   /** 解析 route.config.ts 导出的 Params、Data、Ext */
   parseSourceFile(options: { page: Page; project: Project; sourceFile: SourceFile }) {
-    const { page, project, sourceFile } = options
-    const checker = project.getTypeChecker()
+    const { page, sourceFile } = options
 
-    const pageQuery: {
-      params?: QueryMeta
-      data?: QueryMeta
-      ext?: string
-    } = {}
+    const pageQuery: PageQuery = {}
 
     sourceFile.getExportedDeclarations().forEach((declarations, name) => {
       if (declarations.length > 1) return
       const declaration = declarations[0] as any
       switch (name) {
         case 'Params':
-          pageQuery.params = extractType({
+          pageQuery.params = {
             name,
-            declaration,
-            checker,
-          })
+            text: `import('${page.fullPath}/route.config').Params`,
+          }
           break
         case 'Data':
-          pageQuery.data = extractType({
+          pageQuery.data = {
             name,
-            declaration,
-            checker,
-          })
+            text: `import('${page.fullPath}/route.config').Data`,
+          }
           break
         case 'Ext':
           pageQuery.ext = extractValue({
             name,
             declaration,
-            checker,
           })
           break
       }

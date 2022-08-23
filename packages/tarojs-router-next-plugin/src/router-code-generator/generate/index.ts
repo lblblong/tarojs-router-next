@@ -25,6 +25,9 @@ export class Generator {
     this.routerSourceFile.refreshFromFileSystemSync()
 
     const methodSourceFile = this.project.createSourceFile('methods.ts', (writer) => {
+      writer.writeLine('type RequiredKeys<T> = { [K in keyof T]-?: {} extends Pick<T, K> ? never : K }[keyof T]')
+      writer.writeLine('type Data<Q = any> = RequiredKeys<Q> extends never ? { data?: Q } : { data: Q }')
+      writer.writeLine('type Params<P = any> = RequiredKeys<P> extends never ? { params?: P } : { params: P }')
       writer.writeLine('class Router {')
 
       for (const pkg of this.root.packageConfigs) {
@@ -37,6 +40,7 @@ export class Generator {
 
     const routerClass = this.routerSourceFile.getClass('Router')!
     const staticMembers = methodSourceFile.getClass('Router')!.getStaticMembers()
+    this.routerSourceFile.addTypeAliases(methodSourceFile.getTypeAliases().map((m) => m.getStructure()))
     routerClass.addMembers(staticMembers.map((m) => m.getStructure() as any))
 
     this.routerSourceFile.emitSync()
@@ -57,13 +61,20 @@ export class Generator {
       pkg.methods = pkg.pages
         .filter(filterHandler)
         .map((p) => {
-          return `static ${p.methodName} = ${p.method}`
+          return `static ${p.methodName}: ${p.methodType} = ${p.method}`
         })
         .join('\n\n')
     } else {
       // 子包路由方法挂载在 Router.[包名] 下
       pkg.methods = `
-      static ${pkg.name} = {
+      static ${pkg.name}: {
+        ${pkg.pages
+          .filter(filterHandler)
+          .map((p) => {
+            return `${p.methodName}: ${p.methodType}`
+          })
+          .join(',\n')}
+      } = {
           ${pkg.pages
             .filter(filterHandler)
             .map((p) => {
@@ -85,33 +96,25 @@ export class Generator {
       page.query?.ext ? ', ext: ' + page.query.ext : ''
     } }, options)`
 
+    page.method = `function (options) {${methodBody}}`
+
     if (!query) {
-      page.method = `function (options?: NavigateOptions){${methodBody}}`
+      page.methodType = `<T = any>(options?: NavigateOptions) => Promise<T>`
       return page
     }
 
     const optionsType = ['NavigateOptions']
-    let optionsOptional = true
 
     if (query.params) {
-      if (query.params.optional) {
-        optionsType.push(`{ params?: ${query.params.text} }`)
-      } else {
-        optionsOptional = false
-        optionsType.push(`{ params: ${query.params.text} }`)
-      }
+      optionsType.push(`Params<${query.params.text}>`)
     }
 
     if (query.data) {
-      if (query.data.optional) {
-        optionsType.push(`{ data?: ${query.data.text} }`)
-      } else {
-        optionsOptional = false
-        optionsType.push(`{ data: ${query.data.text} }`)
-      }
+      optionsType.push(`Data<${query.data.text}>`)
     }
 
-    page.method = `function (options${optionsOptional ? '?' : ''}: ${optionsType.join(' & ')}){${methodBody}}`
+    const optionsTypeString = optionsType.join(' & ')
+    page.methodType = `RequiredKeys<${optionsTypeString}> extends never ? <T = any>(options?: ${optionsTypeString}) => Promise<T> : <T = any>(options: ${optionsTypeString}) => Promise<T>`
     return page
   }
 }
