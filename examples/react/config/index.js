@@ -1,3 +1,21 @@
+const isWsl = require('is-wsl')
+
+const plugins = ['tarojs-router-next-plugin']
+
+if (isWsl) {
+  plugins.push([
+    'taro-plugin-sync-in-wsl',
+    {
+      weapp: [
+        {
+          sourcePath: `dist`,
+          outputPath: `/mnt/c/code/taro/tarojs-router-next-react`,
+        },
+      ],
+    },
+  ])
+}
+
 const config = {
   projectName: 'react',
   date: '2021-4-20',
@@ -9,27 +27,17 @@ const config = {
   },
   sourceRoot: 'src',
   outputRoot: 'dist',
-  plugins: [
-    'tarojs-router-next-plugin',
-    // wsl 下同步 dist 目录到 c 盘，非 wsl 请忽略报错
-    [
-      'taro-plugin-sync-in-wsl',
-      {
-        weapp: [
-          {
-            sourcePath: `dist`,
-            outputPath: `/mnt/c/tarojs-router-next-react`,
-          },
-        ],
-      },
-    ],
-  ],
+  plugins,
   defineConstants: {},
   copy: {
     patterns: [],
     options: {},
   },
   framework: 'react',
+  compiler: 'webpack5',
+  cache: {
+    enable: true, // Webpack 持久化缓存配置，建议开启。默认配置请参考：https://docs.taro.zone/docs/config-detail#cache
+  },
   mini: {
     postcss: {
       pxtransform: {
@@ -49,6 +57,9 @@ const config = {
           generateScopedName: '[name]__[local]___[hash:base64:5]',
         },
       },
+    },
+    miniCssExtractPluginOption: {
+      ignoreOrder: true,
     },
   },
   h5: {
