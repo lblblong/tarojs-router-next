@@ -1,4 +1,4 @@
-import { processTypeEnum } from '@tarojs/helper/types/constants'
+import { processTypeEnum } from '@tarojs/helper/dist/constants'
 import { IPluginContext } from '@tarojs/service'
 import path from 'path'
 import { IConfig } from '../config'
