@@ -1,4 +1,4 @@
-import { VariableDeclaration } from 'ts-morph';
+import { VariableDeclaration } from 'ts-morph'
 
 export function extractValue(options: { name: string; declaration: VariableDeclaration }) {
   const { name, declaration } = options
@@ -16,5 +16,9 @@ export function formatPageDir(dirName: string) {
     .replace(/\_(\w)/g, (all, letter) => {
       return letter.toUpperCase()
     })
-    .replace(/^\S/, (s) => s.toUpperCase())
+    .replace(/^\S/, s => s.toUpperCase())
+}
+
+export function isNil(val: any) {
+  return val === undefined || val === null
 }

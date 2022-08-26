@@ -1,12 +1,12 @@
 {
   "name": "tarojs-router-next",
-  "version": "2.9.0",
+  "version": "3.0.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "homepage": "https://github.com/lblblong/tarojs-router-next",
   "scripts": {
     "build": "npm run clean && npm run prod",
-    "serve": "tsc -w",
+    "dev": "tsc -w",
     "prod": "tsc",
     "clean": "rimraf dist",
     "prepublishOnly": "npm run clean && npm run prod"

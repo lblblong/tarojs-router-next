@@ -1,6 +1,6 @@
 import { IPluginContext } from '@tarojs/service'
-import { RouterCodeGenerator } from './router-code-generator'
+import { Plugin } from './plugin'
 
 export default (ctx: IPluginContext, config: any) => {
-  new RouterCodeGenerator(ctx, config).listenBuildStart().registerCommand()
+  new Plugin(ctx, config).onBuildStart().registerCommand()
 }

@@ -20,7 +20,7 @@ export interface NavigateOptions {
   /** 跳转类型 */
   type?: NavigateType
   /** 跳转页面携带的数据，可以是任何类型 */
-  data?: any
+  data?: unknown
   /** 路由参数，将拼接在 url 后面，不适合携带大量数据，携带大量数据请使用 data */
   params?: Record<string, string | number | boolean | undefined>
 }

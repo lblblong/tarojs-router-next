@@ -1,6 +1,24 @@
 const isWsl = require('is-wsl')
+const path = require('path')
 
-const plugins = ['tarojs-router-next-plugin']
+const plugins = [
+  [
+    'tarojs-router-next-plugin',
+    {
+      packages: [
+        // 可选，当主包页面路径不在 src/pages 下时通过以下方式配置
+        // {
+        //   name: 'main',
+        //   pagePath: path.resolve(__dirname, '../src/pages'),
+        // },
+        {
+          name: 'packageA',
+          pagePath: path.resolve(__dirname, '../src/packageA/pages'),
+        },
+      ],
+    },
+  ],
+]
 
 if (isWsl) {
   plugins.push([

@@ -24,14 +24,14 @@ export class Router {
     Current['_page'] = Current.page
     Object.defineProperties(Current, {
       page: {
-        set: function (page) {
+        set: function(page) {
           if (page === undefined || page === null) {
             this._page = page
             return
           }
           if (!page[ROUTE_KEY]) {
             const originOnUnload = page.onUnload
-            page.onUnload = function () {
+            page.onUnload = function() {
               originOnUnload && originOnUnload.apply(this)
               PageData.emitBack(route_key)
               setTimeout(() => execRouterBackListener(route))
@@ -40,10 +40,10 @@ export class Router {
           }
           this._page = page
         },
-        get: function () {
+        get: function() {
           return this._page
-        },
-      },
+        }
+      }
     })
 
     if (options.data) {

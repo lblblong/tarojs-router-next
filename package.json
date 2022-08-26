@@ -4,7 +4,7 @@
   "author": "lblblong",
   "homepage": "https://github.com/lblblong/tarojs-router-next",
   "scripts": {
-    "build": "pnpm run build --filter 'tarojs-router-next*'",
+    "build": "pnpm --filter 'tarojs-router-next*' build",
     "clean": "rm -rf node_modules ./**/**/node_modules",
     "doc:serve": "dumi dev",
     "doc:build": "dumi build",
