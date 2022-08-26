@@ -1,38 +1,25 @@
-## 关闭自动生成 Router.to\*\*
+# 插件配置
 
-如果要关闭自动生成 [Router.to\*\*](/api/class/router#to-options-) ，需要修改配置项 `watch` 为 `false：`
+`tarojs-router-next-plugin` 插件接受两个配置项：
 
-```javascript | pure
-/**
- * title: /config/index.js
- */
+- `ignore`：要忽略的文件夹
+- `packages`：分包配置
 
-const config = {
-  plugins: [
-    [
-      'tarojs-router-next-plugin',
-      {
-        watch: false,
-      },
-    ],
-  ],
-}
+## ignore
+
+该项配置可以用于忽略一些不是页面的文件夹，比如 `src/pages` 目录下有一个 `api` 文件夹不是页面，那么向如下配置后就不会生成 `Router.toApi` 方法了：
+
+```javascript
+plugins: [
+  [
+    'tarojs-router-next-plugin',
+    {
+      ignore: ['api']
+    }
+  ]
+]
 ```
 
-禁用自动生成后可通过如下命令生成 `Router` 的路由方法：
+## packages
 
-```shell
-$ taro router-gen
-# 启用监听文件夹变化自动生成
-$ taro router-gen --watch
-```
-
-可将该命令添加到 package 的 script 中方便使用
-
-```json
-{
-  "scripts": {
-    "router-gen": "taro router-gen --watch"
-  }
-}
-```
+具体使用参见 [分包支持](/guide/quike/subpackage)

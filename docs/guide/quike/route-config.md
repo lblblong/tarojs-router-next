@@ -58,6 +58,6 @@ export type Data = {
 ```typescript
 export const Ext = {
   mustLogin: true,
-  role: [1, 2, 3],
+  role: [1, 2, 3]
 }
 ```

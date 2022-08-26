@@ -17,7 +17,7 @@ Router.toLogin({ type: NavigateType.redirectTo }) // 关闭当前页面，重定
 
 以上是自动生成的 [Router.to\*\*](/api/class/router#to-options-) 方法，具体参考 API 文档：[Router.to\*\*(options)](/api/class/router#to-options-)
 
-如果禁用了路由方法的自动生成，还可以通过 [Router.navigate](/api/class/router#navigate-route-options-) 方法进行路由跳转
+如果没有使用路由方法自动生成插件，还可以通过 [Router.navigate](/api/class/router#navigate-route-options-) 方法进行路由跳转
 
 ```typescript
 import { Router, NavigateType } from 'tarojs-router-next'

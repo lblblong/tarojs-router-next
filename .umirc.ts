@@ -65,7 +65,7 @@ export default defineConfig({
           },
           {
             title: '路由配置',
-            path: '/quike/route-config',
+            path: '/guide/quike/route-config',
           },
           {
             title: '分包支持',
@@ -101,7 +101,7 @@ export default defineConfig({
         children: [
           {
             title: 'Router',
-            path: '',
+            path: '/api/class/router',
           },
         ],
       },
