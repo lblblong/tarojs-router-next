@@ -3,7 +3,6 @@ export interface IConfigPackage {
   pagePath: string
 }
 export interface IConfig {
-  watch: boolean
   ignore: string[]
   packages: IConfigPackage[]
 }
