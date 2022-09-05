@@ -6,6 +6,7 @@ import { IConfigPackage } from './config'
 import { ConfigPage, Page, RouteConfig } from './entitys'
 import { Plugin } from './plugin'
 import { extractValue, formatPageDir, isNil } from './utils'
+import normalize from 'normalize-path'
 
 export class Loader {
   project = new Project()
@@ -77,7 +78,7 @@ export class Loader {
           page.dirName = pageDirName
           page.dirPath = path.resolve(pkg.pagePath, pageDirName)
           // 生成跳转路径 pages/xx/xx
-          page.path = path.resolve(pkg.pagePath.replace(this.root.paths.sourcePath, ''), pageDirName, 'index')
+          page.path = normalize(path.join(pkg.pagePath.replace(this.root.paths.sourcePath, ''), pageDirName, 'index'))
           page.fullPath = fullPath
 
           const sourceFile = routeConfigSourceFiles.find(sourceFile => {
@@ -100,7 +101,6 @@ export class Loader {
   }
 
   loadPage(pageDirPath: string, pkg: IConfigPackage) {
-    pageDirPath = path.normalize(pageDirPath)
     const index = this.root.pages.findIndex(page => page.dirPath === pageDirPath)
 
     const isExist = fs.existsSync(pageDirPath)

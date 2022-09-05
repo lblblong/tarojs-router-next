@@ -233,11 +233,15 @@ importers:
   packages/tarojs-router-next-plugin:
     specifiers:
       '@types/node': ^18.7.12
+      '@types/normalize-path': ^3.0.0
+      normalize-path: ^3.0.0
       ts-morph: ^15.1.0
     dependencies:
+      normalize-path: 3.0.0
       ts-morph: 15.1.0
     devDependencies:
       '@types/node': 18.7.12
+      '@types/normalize-path': 3.0.0
 
 packages:
 
@@ -3684,6 +3688,10 @@ packages:
 
   /@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
+    dev: true
+
+  /@types/normalize-path/3.0.0:
+    resolution: {integrity: sha512-Nd8y/5t/7CRakPYiyPzr/IAfYusy1FkcZYFEAcoMZkwpJv2n4Wm+olW+e7xBdHEXhOnWdG9ddbar0gqZWS4x5Q==}
     dev: true
 
   /@types/parse-json/4.0.0:
