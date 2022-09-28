@@ -1,3 +1,6 @@
+## v3.1.0 (2022-09-28)
+- 导出内部 getMiddlewares 和 execMiddlewares 给外部使用
+
 ## v3.0.1 (2022-09-05)
 - 修复 win 平台下路径导致的问题
 

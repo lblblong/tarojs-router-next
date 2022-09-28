@@ -2,8 +2,7 @@ import Taro, { Current, getCurrentInstance } from '@tarojs/taro'
 import { ROUTE_KEY } from '../constants'
 import { NoPageException } from '../exception/no-page'
 import { formatPath, isNil } from '../func'
-import { compose } from '../lib/compose'
-import { getMiddlewares } from '../middleware'
+import { execMiddlewares, getMiddlewares } from '../middleware'
 import { PageData } from '../page-data'
 import { execRouterBackListener } from '../router-back-listener'
 import { NavigateOptions, NavigateType, Route } from './type'
@@ -75,8 +74,7 @@ export class Router {
     return new Promise(async (res, rej) => {
       PageData.setPagePromise(route_key, { res, rej })
 
-      const fn = compose(middlewares)
-      await fn(context)
+      await execMiddlewares(middlewares, context)
     })
   }
 
