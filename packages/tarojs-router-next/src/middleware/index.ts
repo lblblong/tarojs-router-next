@@ -1,4 +1,4 @@
-import { compose } from 'src/lib/compose'
+import { compose } from '../lib/compose'
 import { Middleware, MiddlewareCondition, RouteContext } from './type'
 
 export { Middleware, RouteContext, MiddlewareCondition }
