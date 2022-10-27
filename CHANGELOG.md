@@ -1,3 +1,6 @@
+## v3.2.0 (2022-10-27)
+- 向外抛出异常 [#57](https://github.com/lblblong/tarojs-router-next/issues/57)
+
 ## v3.1.1 (2022-09-28)
 - 修复引用路径错误
 
