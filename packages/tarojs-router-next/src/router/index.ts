@@ -56,25 +56,28 @@ export class Router {
     middlewares.push(async (ctx, next) => {
       switch (options!.type) {
         case NavigateType.reLaunch:
-          Taro.reLaunch({ url })
+          await Taro.reLaunch({ url })
           break
         case NavigateType.redirectTo:
-          Taro.redirectTo({ url })
+          await Taro.redirectTo({ url })
           break
         case NavigateType.switchTab:
-          Taro.switchTab({ url })
+          await Taro.switchTab({ url })
           break
         default:
-          Taro.navigateTo({ url })
+          await Taro.navigateTo({ url })
           break
       }
       next()
     })
 
     return new Promise(async (res, rej) => {
-      PageData.setPagePromise(route_key, { res, rej })
-
-      await execMiddlewares(middlewares, context)
+      try {
+        PageData.setPagePromise(route_key, { res, rej })
+        await execMiddlewares(middlewares, context)
+      } catch (err) {
+        rej(err)
+      }
     })
   }
 
