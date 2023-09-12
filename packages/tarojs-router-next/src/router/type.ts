@@ -23,4 +23,10 @@ export interface NavigateOptions {
   data?: unknown
   /** 路由参数，将拼接在 url 后面，不适合携带大量数据，携带大量数据请使用 data */
   params?: Record<string, string | number | boolean | undefined>
+  /** 路由参数，将拼接在 url 后面，不适合携带大量数据，携带大量数据请使用 data */
+  complete?: (res: TaroGeneral.CallbackResult) => void
+  /** 接口调用失败的回调函数 */
+  fail?: (res: TaroGeneral.CallbackResult) => void
+  /** 接口调用成功的回调函数 */
+  success?: (res: TaroGeneral.CallbackResult) => void
 }
