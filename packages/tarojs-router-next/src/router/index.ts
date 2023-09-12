@@ -56,16 +56,36 @@ export class Router {
     middlewares.push(async (ctx, next) => {
       switch (options!.type) {
         case NavigateType.reLaunch:
-          await Taro.reLaunch({ url })
+          await Taro.reLaunch({ 
+            url, 
+            complete: options?.complete,
+            fail: options?.fail,
+            success: options?.success,
+          })
           break
         case NavigateType.redirectTo:
-          await Taro.redirectTo({ url })
+          await Taro.redirectTo({ 
+            url, 
+            complete: options?.complete,
+            fail: options?.fail,
+            success: options?.success,
+          })
           break
         case NavigateType.switchTab:
-          await Taro.switchTab({ url })
+          await Taro.switchTab({ 
+            url, 
+            complete: options?.complete,
+            fail: options?.fail,
+            success: options?.success,
+          })
           break
         default:
-          await Taro.navigateTo({ url })
+          await Taro.navigateTo({ 
+            url, 
+            complete: options?.complete,
+            fail: options?.fail,
+            success: options?.success,
+          })
           break
       }
       next()
