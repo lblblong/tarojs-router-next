@@ -1,8 +1,8 @@
 # 路由跳转
 
-在项目启动后，tarojs-router-next 会自动监听项目下 `src/pages` 的变动，为 [Router](/api/class/router) 类生成对应的路由方法，路由方法名字以 [to](/api/class/router#to-options-) 起头。
+在项目启动后，tarojs-router-next 会自动监听项目下 `src/pages` 的变动，为 [Router](/api/router) 类生成对应的路由方法，路由方法名字以 [to](/api/router#to-options-) 起头。
 
-如以下左边页面结构会为 [Router](/api/class/router) 生成的路由方法：
+如以下左边页面结构会为 [Router](/api/router) 生成的路由方法：
 
 ![](/tarojs-router-next/images/code1.png)
 
@@ -15,9 +15,9 @@ Router.toLogin({ type: NavigateType.redirectTo }) // 关闭当前页面，重定
 
 ```
 
-以上是自动生成的 [Router.to\*\*](/api/class/router#to-options-) 方法，具体参考 API 文档：[Router.to\*\*(options)](/api/class/router#to-options-)
+以上是自动生成的 [Router.to\*\*](/api/router#to-options-) 方法，具体参考 API 文档：[Router.to\*\*(options)](/api/router#to-options-)
 
-如果没有使用路由方法自动生成插件，还可以通过 [Router.navigate](/api/class/router#navigate-route-options-) 方法进行路由跳转
+如果没有使用路由方法自动生成插件，还可以通过 [Router.navigate](/api/router#navigate-route-options-) 方法进行路由跳转
 
 ```typescript
 import { Router, NavigateType } from 'tarojs-router-next'
@@ -34,7 +34,7 @@ Router.navigate({ url: '/pages/login/index' }, { type: NavigateType.redirectTo }
 
 ## 页面返回
 
-tarojs-router-next 提供了 [Router.back](/api/class/router#back-result-) 方法以供页面返回
+tarojs-router-next 提供了 [Router.back](/api/router#back-result-) 方法以供页面返回
 
 该方法可以返回数据到前一个页面，也可抛出异常到前一个页面
 

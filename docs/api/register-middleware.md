@@ -39,7 +39,7 @@ registerMiddleware(Logger, (ctx) => {
 
 ## 获取路由的附带数据
 
-路由的附加数据可以在 [route.config.ts](/guide/quike/route-config) 配置，当直接使用 [Router.navigate](/api/class/router#navigate-route-options-) 方法时则通过参数 [route.ext](/guide/quike/route-config#导出附加数据-ext) 传递给中间件
+路由的附加数据可以在 [route.config.ts](/guide/quike/route-config) 配置，当直接使用 [Router.navigate](/api/router#navigate-route-options-) 方法时则通过参数 [route.ext](/guide/quike/route-config#导出附加数据-ext) 传递给中间件
 
 一个检查必须登录的路由中间件示例：
 

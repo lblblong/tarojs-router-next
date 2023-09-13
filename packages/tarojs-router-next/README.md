@@ -13,7 +13,7 @@
 [![](https://img.shields.io/npm/l/tarojs-router-next.svg?style=flat-square)](https://www.npmjs.com/package/tarojs-router-next)
 [![](https://img.shields.io/npm/dt/tarojs-router-next.svg?style=flat-square)](https://www.npmjs.com/package/tarojs-router-next)
 
-[使用文档](http://lblblib.gitee.io/tarojs-router-next/guide/quike/start)，[API 文档](http://lblblib.gitee.io/tarojs-router-next/api/class/router)
+[使用文档](http://lblblib.gitee.io/tarojs-router-next/guide/quike/start)，[API 文档](http://lblblib.gitee.io/tarojs-router-next/api/router)
 
 [Demo（代码）](https://github.com/lblblong/tarojs-router-next/tree/master/examples)，[Demo（微信开发者工具打开）](https://developers.weixin.qq.com/s/2CcFkJmo7Dpb)
 
@@ -48,9 +48,9 @@ const config = {
 
 **1. 路由跳转的页面 url 没有类型提示容易输错**
 
-tarojs-router-next 不需要使用者手写页面 url，它会监听项目 `src/pages` 内容变化，自动为使用者生成对应的路由方法并附加到 [Router](http://lblblib.gitee.io/tarojs-router-next/api/class/router) 类上，比如以下列子：
+tarojs-router-next 不需要使用者手写页面 url，它会监听项目 `src/pages` 内容变化，自动为使用者生成对应的路由方法并附加到 [Router](http://lblblib.gitee.io/tarojs-router-next/api/router) 类上，比如以下列子：
 
-左边的页面结构会生成右边的 [Router.to\*\*](http://lblblib.gitee.io/tarojs-router-next/api/class/router#to-options-) 系列方法，全都挂在 [Router](http://lblblib.gitee.io/tarojs-router-next/api/class/router) 类上
+左边的页面结构会生成右边的 [Router.to\*\*](http://lblblib.gitee.io/tarojs-router-next/api/router#to-options-) 系列方法，全都挂在 [Router](http://lblblib.gitee.io/tarojs-router-next/api/router) 类上
 
 ![](http://lblblib.gitee.io/tarojs-router-next/images/code1.png)
 

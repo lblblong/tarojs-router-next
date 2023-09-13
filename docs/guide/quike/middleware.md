@@ -84,7 +84,7 @@ export const M2: Middleware = async (ctx, next) => {
 
 ## 注册路由中间件
 
-上面的例子中我们注册了三个中间件，用的是 [registerMiddlewares](/api/method/register-middlewares)，注册单个中间件可以使用 [registerMiddleware](/api/method/register-middleware)
+上面的例子中我们注册了三个中间件，用的是 [registerMiddlewares](/api/register-middlewares)，注册单个中间件可以使用 [registerMiddleware](/api/register-middleware)
 
 ```typescript
 import Taro from '@tarojs/taro'
@@ -178,7 +178,7 @@ export const AuthCheck: Middleware<{ mustLogin: boolean }> = async (ctx, next) =
 }
 ```
 
-但是请注意的是，通过 [route.config.ts](/guide/quike/route-config) 这种方式定义的附加数据，只有通过 [Router.to\*\*](/api/class/router#to-options-) 跳转时才会携带，通过 [Router.navigate](/api/class/router#navigate-route-options-) 跳转时，请通过 route.ext 参数携带
+但是请注意的是，通过 [route.config.ts](/guide/quike/route-config) 这种方式定义的附加数据，只有通过 [Router.to\*\*](/api/router#to-options-) 跳转时才会携带，通过 [Router.navigate](/api/router#navigate-route-options-) 跳转时，请通过 route.ext 参数携带
 
 ```typescript
 import { Router } from 'tarojs-router-next'

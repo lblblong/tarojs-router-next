@@ -1,0 +1,13 @@
+.dumi-default-hero {
+  height: 800px;
+}
+
+.dumi-default-hero-title {
+  font-size: 88px;
+}
+
+.dumi-default-features-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -11,4 +11,4 @@
 1. `middlewares` 中间件，`Middleware` 类型
 2. `condition` 注册条件，`(ctx: RouteContext): boolean` 类型
 
-使用方法参考 [registerMiddleware](/api/method/register-middleware)
+使用方法参考 [registerMiddleware](/api/register-middleware)

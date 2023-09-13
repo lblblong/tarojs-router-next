@@ -24,10 +24,10 @@
 - 切换包管理为 pnpm
 
 ## v2.7.1 (2021-10-26)
-- 修复 [setBackResult](http://lblblib.gitee.io/tarojs-router-next/api/class/router#setbackresult-result-any-) 非静态方法问题
+- 修复 [setBackResult](http://lblblib.gitee.io/tarojs-router-next/api/router#setbackresult-result-any-) 非静态方法问题
 
 ## v2.7.0 (2021-10-25)
-- 新增设置页面返回数据方法：[setBackResult](http://lblblib.gitee.io/tarojs-router-next/api/class/router#setbackresult-result-any-)
+- 新增设置页面返回数据方法：[setBackResult](http://lblblib.gitee.io/tarojs-router-next/api/router#setbackresult-result-any-)
 
 ## v2.6.0 (2021-10-16)
 - 新增全局监听路由返回功能：registerRouterBackListener

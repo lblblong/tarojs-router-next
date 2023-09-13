@@ -29,7 +29,7 @@
     "commitizen": "^4.2.3",
     "cz-conventional-changelog": "^3.3.0",
     "cz-customizable": "^6.3.0",
-    "dumi": "^1.1.14",
+    "dumi": "^2.2.7",
     "eslint": "^7.23.0",
     "eslint-config-taro": "3.6.16",
     "eslint-plugin-import": "^2.12.0",

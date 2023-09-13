@@ -13,7 +13,11 @@
     "strictNullChecks": true,
     "resolveJsonModule": true,
     "sourceMap": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@@/*": [".dumi/tmp/*"]
+    }
   },
   "exclude": [
     "__tests__",

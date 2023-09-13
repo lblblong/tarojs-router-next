@@ -1,5 +1,7 @@
 node_modules
-.umi
-.umi-production
 dist
 yarn-error.log
+.umi
+.dumi/tmp
+.dumi/tmp-test
+.dumi/tmp-production

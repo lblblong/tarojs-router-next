@@ -1,6 +1,6 @@
 # 路由回退监听
 
-通过 [registerRouterBackListener](/api/method/register-router-back-listener) 方法全局监听路由回退事件
+通过 [registerRouterBackListener](/api/register-router-back-listener) 方法全局监听路由回退事件
 
 ```typescript
 import { registerRouterBackListener } from 'tarojs-router-next'

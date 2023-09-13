@@ -20,7 +20,7 @@ const config = {
 }
 ```
 
-如果要关闭自动生成 [Router.to\*\*](/api/class/router#to-options-) 相关的路由方法，需要修改配置项 `watch` 为 `false`，请参考 [关闭自动生成 Router.to\*\*](/guide/quike/config#关闭自动生成-routerto)
+如果要关闭自动生成 [Router.to\*\*](/api/router#to-options-) 相关的路由方法，需要修改配置项 `watch` 为 `false`，请参考 [关闭自动生成 Router.to\*\*](/guide/quike/config#关闭自动生成-routerto)
 
 请注意，如果使用 Taro 3.5 及以上版本，请在 [编译配置(config/index.js)](https://taro-docs.jd.com/docs/config-detail#compilerprebundleexclude) 中将 tarojs-router-next 从预编译中排除：
 
@@ -38,11 +38,11 @@ const config = {
 
 #### 路由跳转
 
-在启动项目后，tarojs-router-next 会自动监听项目下 `src/pages` 的变动，自动为 [Router](/api/class/router) 类生成对应的路由方法，路由跳转方法名字以 [to](/api/class/router#to-options-) 起头。如以下左边页面结构会为 [Router](/api/class/router) 生成的路由方法：
+在启动项目后，tarojs-router-next 会自动监听项目下 `src/pages` 的变动，自动为 [Router](/api/router) 类生成对应的路由方法，路由跳转方法名字以 [to](/api/router#to-options-) 起头。如以下左边页面结构会为 [Router](/api/router) 生成的路由方法：
 
 ![](/tarojs-router-next/images/code1.png)
 
-如果关闭了路由方法的自动生成，还可以通过 [Router.navigate](/api/class/router#navigate-route-options-) 方法进行路由跳转
+如果关闭了路由方法的自动生成，还可以通过 [Router.navigate](/api/router#navigate-route-options-) 方法进行路由跳转
 
 查看关于路由跳转的更多信息：[路由跳转](/guide/quike/navigate)
 
