@@ -12,15 +12,27 @@ $ npm install --save tarojs-router-next
 $ npm install --dev tarojs-router-next-plugin
 ```
 
-在 [编译配置(/config/index.js)](https://taro-docs.jd.com/taro/docs/config-detail/#plugins) 的 plugins 字段中引入插件：
+在 [编译配置(config/index.js)](https://taro-docs.jd.com/docs/config-detail#plugins) 的 plugins 字段中引入插件：
 
 ```typescript
 const config = {
-  plugins: ['tarojs-router-next-plugin'],
+  plugins: ['tarojs-router-next-plugin']
 }
 ```
 
 如果要关闭自动生成 [Router.to\*\*](/api/class/router#to-options-) 相关的路由方法，需要修改配置项 `watch` 为 `false`，请参考 [关闭自动生成 Router.to\*\*](/guide/quike/config#关闭自动生成-routerto)
+
+请注意，如果使用 Taro 3.5 及以上版本，请在 [编译配置(config/index.js)](https://taro-docs.jd.com/docs/config-detail#compilerprebundleexclude) 中将 tarojs-router-next 从预编译中排除：
+
+```typescript
+const config = {
+  compiler: {
+    prebundle: {
+      exclude: ['tarojs-router-next']
+    }
+  }
+}
+```
 
 ## 开始使用
 
