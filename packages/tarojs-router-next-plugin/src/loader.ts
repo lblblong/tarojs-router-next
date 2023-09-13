@@ -163,10 +163,10 @@ export class Loader {
       const declaration = declarations[0] as any
       switch (name) {
         case 'Params':
-          routeConfig.params = `import('${path.resolve(page.dirPath, 'route.config')}').Params`
+          routeConfig.params = `import('${path.resolve(page.dirPath, 'route.config').replace(/\\/g, '/')}').Params`
           break
         case 'Data':
-          routeConfig.data = `import('${path.resolve(page.dirPath, 'route.config')}').Data`
+          routeConfig.data = `import('${path.resolve(page.dirPath, 'route.config').replace(/\\/g, '/')}').Data`
           break
         case 'Ext':
           routeConfig.ext = extractValue({
