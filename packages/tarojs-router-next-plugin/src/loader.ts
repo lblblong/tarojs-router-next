@@ -1,12 +1,12 @@
 import { processTypeEnum } from '@tarojs/helper/dist/constants'
 import fs from 'fs'
+import normalize from 'normalize-path'
 import path from 'path'
 import { Project, SourceFile } from 'ts-morph'
 import { IConfigPackage } from './config'
 import { ConfigPage, Page, RouteConfig } from './entitys'
 import { Plugin } from './plugin'
 import { extractValue, formatPageDir, isNil } from './utils'
-import normalize from 'normalize-path'
 
 export class Loader {
   project = new Project()
@@ -33,27 +33,17 @@ export class Loader {
     for (const page of this.appConfig.pages) {
       this.configPages.push({
         path: page,
-        packageName: 'main',
         packageRoot: '',
-        fullPath: path.resolve(this.root.paths.sourcePath, page)
+        fullPath: path.resolve(this.root.paths.sourcePath, page),
       })
     }
 
     for (const pkg of this.appConfig.subpackages || this.appConfig.subPackages || []) {
-      if (!pkg.name) {
-        this.root.log(
-          processTypeEnum.WARNING,
-          `请为分包 ${pkg.root} 配置 name 字段，请参考：http://lblblib.gitee.io/tarojs-router-next/guide/quike/subpackage`
-        )
-        continue
-      }
-
       for (const page of pkg.pages) {
         this.configPages.push({
           path: page,
-          packageName: pkg.name,
           packageRoot: pkg.root,
-          fullPath: path.resolve(this.root.paths.sourcePath, pkg.root, page)
+          fullPath: path.resolve(this.root.paths.sourcePath, pkg.root, page),
         })
       }
     }
@@ -66,10 +56,13 @@ export class Loader {
 
       fs.readdirSync(pkg.pagePath)
         // 过滤一些非页面文件夹
-        .filter(pageDirName => this.root.config.ignore.indexOf(pageDirName) === -1)
-        .forEach(pageDirName => {
+        .filter((pageDirName) => this.root.config.ignore.indexOf(pageDirName) === -1)
+        .forEach((pageDirName) => {
           const fullPath = path.resolve(pkg.pagePath, pageDirName, 'index')
-          if (!this.root.isWatch && this.configPages.findIndex(configPage => configPage.fullPath === fullPath) === -1) {
+          if (
+            !this.root.isWatch &&
+            this.configPages.findIndex((configPage) => configPage.fullPath === fullPath) === -1
+          ) {
             return
           }
 
@@ -81,7 +74,7 @@ export class Loader {
           page.path = normalize(path.join(pkg.pagePath.replace(this.root.paths.sourcePath, ''), pageDirName, 'index'))
           page.fullPath = fullPath
 
-          const sourceFile = routeConfigSourceFiles.find(sourceFile => {
+          const sourceFile = routeConfigSourceFiles.find((sourceFile) => {
             return path.normalize(sourceFile.compilerNode.fileName) === path.resolve(page.dirPath, 'route.config.ts')
           })
 
@@ -101,7 +94,7 @@ export class Loader {
   }
 
   loadPage(pageDirPath: string, pkg: IConfigPackage) {
-    const index = this.root.pages.findIndex(page => page.dirPath === pageDirPath)
+    const index = this.root.pages.findIndex((page) => page.dirPath === pageDirPath)
 
     const isExist = fs.existsSync(pageDirPath)
     if (isExist) {
@@ -171,7 +164,7 @@ export class Loader {
         case 'Ext':
           routeConfig.ext = extractValue({
             name,
-            declaration
+            declaration,
           })
           break
       }
@@ -197,7 +190,7 @@ export class Loader {
       page.method = {
         name: methodName,
         type: methodType,
-        value: method
+        value: method,
       }
       return
     }
@@ -217,7 +210,7 @@ export class Loader {
     page.method = {
       name: methodName,
       type: methodType,
-      value: method
+      value: method,
     }
   }
 }

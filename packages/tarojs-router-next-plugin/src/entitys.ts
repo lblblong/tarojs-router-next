@@ -21,7 +21,6 @@ export class RouteConfig {
 }
 
 export class ConfigPage {
-  packageName: string
   packageRoot: string
   path: string
   fullPath: string
