@@ -1,39 +1,64 @@
+## v3.3.2 (2023-09-13)
+
+- 修复分包在 build 时提示需要 name 的问题
+
+## v3.3.1 (2023-09-13)
+
+- 修复 win 下路径导致生成 toRoute 路由方法的问题
+
+## v3.3.0 (2023-09-13)
+
+- 修复 win 下路径导致生成的方法没有参数提示的问题
+- 增加 complete、fail、success 回调
+
 ## v3.2.0 (2022-10-27)
+
 - 向外抛出异常 [#57](https://github.com/lblblong/tarojs-router-next/issues/57)
 
 ## v3.1.1 (2022-09-28)
+
 - 修复引用路径错误
 
 ## v3.1.0 (2022-09-28)
+
 - 导出内部 getMiddlewares 和 execMiddlewares 给外部使用
 
 ## v3.0.1 (2022-09-05)
+
 - 修复 win 平台下路径导致的问题
 
 ## v3.0.0 (2022-08-26)
+
 - 大幅提升编译速度，优化分包支持
 
 ## v2.9.0 (2022-08-23)
+
 - 优化路由方法的类型生成，提升生成速度
 
 ## v2.8.1 (2022-04-12)
+
 - Router.back 方法允许多层页面回退
 
 ## v2.7.2 (2022-02-10)
+
 - 更新 taro 依赖版本至 3.4.1
 - 切换包管理为 pnpm
 
 ## v2.7.1 (2021-10-26)
+
 - 修复 [setBackResult](http://lblblib.gitee.io/tarojs-router-next/api/router#setbackresult-result-any-) 非静态方法问题
 
 ## v2.7.0 (2021-10-25)
+
 - 新增设置页面返回数据方法：[setBackResult](http://lblblib.gitee.io/tarojs-router-next/api/router#setbackresult-result-any-)
 
 ## v2.6.0 (2021-10-16)
+
 - 新增全局监听路由返回功能：registerRouterBackListener
 
 ## v2.5.3 (2021-9-6)
-- 修复to方法返回值类型问题
+
+- 修复 to 方法返回值类型问题
 
 ## v2.5.2 (2021-8-31)
 
