@@ -7,6 +7,7 @@ on:
       - 'docs/**'
       - 'public/**'
       - '.umirc.ts'
+      - '.github/workflows/**'
 
 jobs:
   deploy:
