@@ -61,7 +61,7 @@ export class Plugin {
 
     for (const pkg of this.config.packages) {
       const onChange = (value: string) => {
-        if (value.endsWith('route.config.ts')) value = value.replace('/route.config.ts', '')
+        if (value.endsWith('route.config.ts')) value = value.replace(`${path.sep}route.config.ts`, '')
         loadPge(value, pkg)
       }
 
