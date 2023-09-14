@@ -17,6 +17,7 @@ export class PageMethod {
 export class RouteConfig {
   params?: string
   data?: string
+  backData?: string
   ext?: string
 }
 

@@ -161,6 +161,9 @@ export class Loader {
         case 'Data':
           routeConfig.data = `import('${path.resolve(page.dirPath, 'route.config').replace(/\\/g, '/')}').Data`
           break
+        case 'BackData':
+          routeConfig.backData = `import('${path.resolve(page.dirPath, 'route.config').replace(/\\/g, '/')}').BackData`
+          break
         case 'Ext':
           routeConfig.ext = extractValue({
             name,
@@ -205,8 +208,13 @@ export class Loader {
       optionsType.push(`Data<${routeConfig.data}>`)
     }
 
+    let ReturnType = 'any'
+    if (routeConfig.backData) {
+      ReturnType = routeConfig.backData
+    }
+
     const optionsTypeString = optionsType.join(' & ')
-    methodType = `RequiredKeys<${optionsTypeString}> extends never ? <T = any>(options?: ${optionsTypeString}) => Promise<T> : <T = any>(options: ${optionsTypeString}) => Promise<T>`
+    methodType = `RequiredKeys<${optionsTypeString}> extends never ? <T = ${ReturnType}>(options?: ${optionsTypeString}) => Promise<T> : <T = ${ReturnType}>(options: ${optionsTypeString}) => Promise<T>`
     page.method = {
       name: methodName,
       type: methodType,

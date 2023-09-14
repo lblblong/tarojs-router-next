@@ -23,14 +23,14 @@ export class Router {
     Current['_page'] = Current.page
     Object.defineProperties(Current, {
       page: {
-        set: function(page) {
+        set: function (page) {
           if (page === undefined || page === null) {
             this._page = page
             return
           }
           if (!page[ROUTE_KEY]) {
             const originOnUnload = page.onUnload
-            page.onUnload = function() {
+            page.onUnload = function () {
               originOnUnload && originOnUnload.apply(this)
               PageData.emitBack(route_key)
               setTimeout(() => execRouterBackListener(route))
@@ -39,10 +39,10 @@ export class Router {
           }
           this._page = page
         },
-        get: function() {
+        get: function () {
           return this._page
-        }
-      }
+        },
+      },
     })
 
     if (options.data) {
@@ -56,32 +56,32 @@ export class Router {
     middlewares.push(async (ctx, next) => {
       switch (options!.type) {
         case NavigateType.reLaunch:
-          await Taro.reLaunch({ 
-            url, 
+          await Taro.reLaunch({
+            url,
             complete: options?.complete,
             fail: options?.fail,
             success: options?.success,
           })
           break
         case NavigateType.redirectTo:
-          await Taro.redirectTo({ 
-            url, 
+          await Taro.redirectTo({
+            url,
             complete: options?.complete,
             fail: options?.fail,
             success: options?.success,
           })
           break
         case NavigateType.switchTab:
-          await Taro.switchTab({ 
-            url, 
+          await Taro.switchTab({
+            url,
             complete: options?.complete,
             fail: options?.fail,
             success: options?.success,
           })
           break
         default:
-          await Taro.navigateTo({ 
-            url, 
+          await Taro.navigateTo({
+            url,
             complete: options?.complete,
             fail: options?.fail,
             success: options?.success,
@@ -142,8 +142,8 @@ export class Router {
   }
 
   /** 获取上一个页面携带过来的参数 */
-  static getParams() {
+  static getParams<T = Partial<Record<string, string>>>(): T {
     const instance = getCurrentInstance()
-    return Object.assign({}, instance.router?.params)
+    return Object.assign({}, instance.router?.params) as T
   }
 }
