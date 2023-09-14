@@ -3,6 +3,7 @@
 每一个页面都可以通过文件夹下的 `route.config.ts` 文件：
 
 - 定义进入该页面的 `Router.to**` 方法的参数 (`params`)、数据 (`data`) 的类型
+- 定义页面返回的数据的类型 `BackData`
 - 定义提供给路由中间件的 [附加数据](/guide/quike/middleware#路由附加数据)
 
 通过 `route.config.ts` 导出类型定义后，可让 `Router.to**` 方法获得完备的类型提示
@@ -58,6 +59,17 @@ export type Data = {
 ```typescript
 export const Ext = {
   mustLogin: true,
-  role: [1, 2, 3]
+  role: [1, 2, 3],
+}
+```
+
+## 定义该页面返回的数据的类型
+
+在 `route.config.ts` 中导出类型定义 `BackData`
+
+```typescript
+export type BackData = {
+  id: number
+  name: string
 }
 ```
