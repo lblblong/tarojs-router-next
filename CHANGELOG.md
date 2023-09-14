@@ -1,3 +1,8 @@
+## v3.4.0 (2023-09-14)
+
+- 支持在 route.config.ts 中配置 BackData 来指定页面返回数据的类型
+- 为 Router.getParams 方法添加泛型支持
+
 ## v3.3.2 (2023-09-13)
 
 - 修复分包在 build 时提示需要 name 的问题
