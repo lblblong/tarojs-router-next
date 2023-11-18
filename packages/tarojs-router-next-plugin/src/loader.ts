@@ -194,7 +194,8 @@ export class Loader {
     }
     
     if (!routeConfig || (isNil(routeConfig.params) && isNil(routeConfig.data))) {
-      methodType = `<TBackData = ${ReturnType}, TData = unknown, TParams = unknown>(options?: NavigateOptions & Params<TParams> & Data<TData>) => Promise<TBackData>`;
+      methodType = `<TBackData = ${ReturnType}, TData = unknown, TParams = unknown>` +
+        "(options?: NavigateOptions & Params<NoInfer<TParams>> & Data<NoInfer<TData>>) => Promise<TBackData>";
       page.method = {
         name: methodName,
         type: methodType,
@@ -203,9 +204,9 @@ export class Loader {
       return
     }
 
-    methodType = `<TBackData = ${ReturnType}, TData = ${routeConfig.data ?? 'unknown'}, TParams = ${routeConfig.params ?? 'unknown'}>` + 
-      "(...options: RequiredKeys<NavigateOptions & Params<TParams> & Data<TData>> extends never " + 
-      "? [options?: NavigateOptions & Params<TParams> & Data<TData>] : [options: NavigateOptions & Params<TParams> & Data<TData>]) => Promise<TBackData>";
+    methodType = `<TBackData = ${ReturnType}, TData = ${routeConfig.data ?? 'unknown'}, TParams = ${routeConfig.params ?? 'unknown'}>` +
+      "(...options: RequiredKeys<NavigateOptions & Params<NoInfer<TParams>> & Data<NoInfer<TData>>> extends never " +
+      "? [options?: NavigateOptions & Params<NoInfer<TParams>> & Data<NoInfer<TData>>] : [options: NavigateOptions & Params<NoInfer<TParams>> & Data<NoInfer<TData>>]) => Promise<TBackData>";
     page.method = {
       name: methodName,
       type: methodType,
