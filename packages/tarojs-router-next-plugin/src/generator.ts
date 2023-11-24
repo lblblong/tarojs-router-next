@@ -28,6 +28,7 @@ export class Generator {
       this.routerSourceFile.refreshFromFileSystemSync()
 
       const tempSourceFile = this.project.createSourceFile('temp.ts', writer => {
+        writer.writeLine('type NoInfer<T> = T extends infer U ? U : never;')
         writer.writeLine('type RequiredKeys<T> = { [K in keyof T]-?: {} extends Pick<T, K> ? never : K }[keyof T]')
         writer.writeLine('type Data<Q> = RequiredKeys<Q> extends never ? { data?: Q } : { data: Q }')
         writer.writeLine('type Params<P> = RequiredKeys<P> extends never ? { params?: P } : { params: P }')

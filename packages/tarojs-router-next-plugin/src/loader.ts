@@ -188,8 +188,14 @@ export class Loader {
 
     let methodType: string
 
+    let ReturnType = 'any'
+    if (routeConfig.backData) {
+      ReturnType = routeConfig.backData
+    }
+    
     if (!routeConfig || (isNil(routeConfig.params) && isNil(routeConfig.data))) {
-      methodType = `<T = any>(options?: NavigateOptions) => Promise<T>`
+      methodType = `<TBackData = ${ReturnType}, TData = unknown, TParams = unknown>` +
+        "(options?: NavigateOptions & Params<NoInfer<TParams>> & Data<NoInfer<TData>>) => Promise<TBackData>";
       page.method = {
         name: methodName,
         type: methodType,
@@ -198,23 +204,9 @@ export class Loader {
       return
     }
 
-    const optionsType = ['NavigateOptions']
-
-    if (routeConfig.params) {
-      optionsType.push(`Params<${routeConfig.params}>`)
-    }
-
-    if (routeConfig.data) {
-      optionsType.push(`Data<${routeConfig.data}>`)
-    }
-
-    let ReturnType = 'any'
-    if (routeConfig.backData) {
-      ReturnType = routeConfig.backData
-    }
-
-    const optionsTypeString = optionsType.join(' & ')
-    methodType = `RequiredKeys<${optionsTypeString}> extends never ? <T = ${ReturnType}>(options?: ${optionsTypeString}) => Promise<T> : <T = ${ReturnType}>(options: ${optionsTypeString}) => Promise<T>`
+    methodType = `<TBackData = ${ReturnType}, TData = ${routeConfig.data ?? 'unknown'}, TParams = ${routeConfig.params ?? 'unknown'}>` +
+      "(...options: RequiredKeys<NavigateOptions & Params<NoInfer<TParams>> & Data<NoInfer<TData>>> extends never " +
+      "? [options?: NavigateOptions & Params<NoInfer<TParams>> & Data<NoInfer<TData>>] : [options: NavigateOptions & Params<NoInfer<TParams>> & Data<NoInfer<TData>>]) => Promise<TBackData>";
     page.method = {
       name: methodName,
       type: methodType,
