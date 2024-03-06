@@ -189,7 +189,7 @@ export class Loader {
     let methodType: string
 
     let ReturnType = 'any'
-    if (routeConfig.backData) {
+    if (routeConfig?.backData) {
       ReturnType = routeConfig.backData
     }
     
