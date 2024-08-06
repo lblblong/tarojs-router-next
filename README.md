@@ -29,7 +29,7 @@ $ npm install --save tarojs-router-next
 $ npm install --dev tarojs-router-next-plugin
 ```
 
-在 [编译配置(/config/index.js)](https://taro-docs.jd.com/taro/docs/config-detail/#plugins) 的 plugins 字段中引入插件：
+在 [编译配置(/config/index.js)](https://taro-docs.jd.com/docs/config-detail#plugins) 的 plugins 字段中引入插件：
 
 ```typescript
 const config = {
