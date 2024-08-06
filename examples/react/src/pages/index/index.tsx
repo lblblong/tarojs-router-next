@@ -27,8 +27,8 @@ const parmas = {
 
 const Index: FC = () => {
   useEffect(() => {
-    console.log('使用文档：http://lblblib.gitee.io/tarojs-router-next/guide')
-    console.log('API文档：http://lblblib.gitee.io/tarojs-router-next/api/class/router')
+    console.log('使用文档：https://lblblong.github.io/tarojs-router-next/guide')
+    console.log('API文档：https://lblblong.github.io/tarojs-router-next/api/class/router')
     console.log('Demo 源代码：https://github.com/lblblong/tarojs-router-next/tree/master/examples')
   }, [])
 
