@@ -1,6 +1,6 @@
 # tarojs-router-next
 
-它是一个小巧的 [Taro(小程序)](https://taro-docs.jd.com/taro/docs/README/index.html) 路由库，为你提供以下特性：
+它是一个小巧的 [Taro(小程序)](https://github.com/nervjs/taro) 路由库，为你提供以下特性：
 
 - 自动生成带参数类型提示的路由方法
 - 允许传递任意类型、任意大小的参数数据
@@ -29,7 +29,7 @@ $ npm install --save tarojs-router-next
 $ npm install --dev tarojs-router-next-plugin
 ```
 
-在 [编译配置(/config/index.js)](https://taro-docs.jd.com/taro/docs/config-detail/#plugins) 的 plugins 字段中引入插件：
+在 [编译配置(/config/index.js)](https://taro-docs.jd.com/docs/config-detail#plugins) 的 plugins 字段中引入插件：
 
 ```typescript
 const config = {
