@@ -18,14 +18,6 @@ export class PageData {
     return result
   }
 
-  private static delPageData(route_key: string) {
-    PageData.pageData.delete(route_key)
-  }
-
-  private static delPagePromise(route_key: string) {
-    PageData.pagePromise.delete(route_key)
-  }
-
   static setPageData(route_key: string, data: any) {
     this.pageData.set(route_key, data)
   }
@@ -40,16 +32,21 @@ export class PageData {
     this.pagePromise.set(route_key, options)
   }
 
+  /** 清理指定 route_key 的所有数据，避免内存泄漏 */
+  static cleanup(route_key: string) {
+    PageData.pageData.delete(route_key)
+    PageData.pagePromise.delete(route_key)
+    PageData.backResult.delete(route_key)
+  }
+
   static emitBack(route_key: string) {
     const pme = PageData.pagePromise.get(route_key)
     if (!pme) return
-    let result = PageData.backResult.get(route_key)
+    const result = PageData.backResult.get(route_key)
 
-    PageData.delPageData(route_key)
-    PageData.delPagePromise(route_key)
+    PageData.cleanup(route_key)
 
     if (result) {
-      PageData.backResult.delete(route_key)
       if (result instanceof Error) {
         pme.rej(result)
       } else {

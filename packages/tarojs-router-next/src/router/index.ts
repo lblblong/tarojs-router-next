@@ -20,6 +20,9 @@ export class Router {
     options.params = Object.assign({}, options.params)
     const route_key = Date.now() + ''
 
+    // 每次 navigate 都需要重新定义 Current.page 的 setter，
+    // 因为 setter 闭包捕获了本次调用的 route_key 和 route，
+    // 后续导航必须使用自己的 route_key/route 来正确匹配 Promise
     Current['_page'] = Current.page
     Object.defineProperties(Current, {
       page: {
@@ -53,7 +56,12 @@ export class Router {
 
     const middlewares = getMiddlewares(context)
     const url = formatPath(route, options!.params!)
+
+    // 标记终端中间件是否实际执行了导航
+    let navigated = false
+
     middlewares.push(async (ctx, next) => {
+      navigated = true
       switch (options!.type) {
         case NavigateType.reLaunch:
           await Taro.reLaunch({
@@ -78,6 +86,9 @@ export class Router {
             fail: options?.fail,
             success: options?.success,
           })
+          // switchTab 的目标页面被微信缓存，onUnload 永不触发，
+          // 因此 Taro API 调用完成后立即 resolve，不依赖页面生命周期
+          PageData.emitBack(route_key)
           break
         default:
           await Taro.navigateTo({
@@ -95,7 +106,17 @@ export class Router {
       try {
         PageData.setPagePromise(route_key, { res, rej })
         await execMiddlewares(middlewares, context)
+
+        // 中间件链执行完毕但终端中间件未执行（如被中间件拦截重定向），
+        // 此时原始导航的 Promise 永远不会通过页面 onUnload 触发 emitBack，
+        // 需要主动清理并 resolve，避免 Promise 泄漏
+        if (!navigated) {
+          PageData.cleanup(route_key)
+          ;(res as (val: T | null) => void)(null)
+        }
       } catch (err) {
+        // 导航失败时清理 PageData，避免内存泄漏
+        PageData.cleanup(route_key)
         rej(err)
       }
     })
